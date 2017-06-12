@@ -1,21 +1,41 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import { Styles, Buttons } from 'bitts';
 
-class App extends Component {
+const Landing = React.createClass({
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+      <div style={styles.app}>
+        <div style={styles.app_header}>
+          <img src={logo} style={styles.app_logo} alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+        <p style={styles.app_intro}>
+          To get started, edit <code>src/app.js</code> and save to reload.
         </p>
       </div>
     );
-  }
-}
+  },
 
-export default App;
+  styles () {
+    return {
+      app: {
+        textAlign: 'center'
+      },
+      app_logo: {
+        animation: 'app-logo-spin infinite 20s linear',
+        height: 80
+      },
+      app_header: {
+        backgroundColor: Styles.Colors.BLACK,
+        height: 150,
+        padding: 20,
+        color: Styles.Colors.WHITE
+      },
+      app_intro: {
+      fontSize: Styles.FontSizes.XLARGE,
+      }
+    }
+  }
+})
+export default Landing;
