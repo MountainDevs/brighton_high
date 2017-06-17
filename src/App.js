@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import { Tabs } from 'bitts'
 import logo from './logo.svg';
 import './App.css';
+import { Colors, FontSizes } from './constants/Styles.js'
 
 class App extends Component {
+
+  _handleTabClick (tab_name) {
+    this.setState({
+      active_tab: tab_name
+    })
+  }
+
   render() {
     const styles = this.styles()
     return (
@@ -12,22 +20,42 @@ class App extends Component {
           tabs={[
             {
               value: 'tab1',
-              label: 'Tab 1'
+              label: 'Tab 1',
+              onClick: this._handleTabClick.bind(null, 'tab1'),
+              isActive: this.state.active_tab === 'tab1'
             },
             {
               value: 'tab2',
-              label: 'Tab 2'
+              label: 'Tab 2',
+              onClick: this._handleTabClick.bind(null, 'tab2'),
+              isActive: this.state.active_tab === 'tab2'
             },
             {
               value: 'tab3',
-              label: 'Tab 3'
+              label: 'Tab 3',
+              onClick: this._handleTabClick.bind(null, 'tab3'),
+              isActive: this.state.active_tab === 'tab3'
             }
           ]}
         />
-        <div style={styles.app_header}>
-          <img src={logo} style={styles.app_logo} alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
+        {this.state.active_tab === 'tab1' ? (
+          <div style={styles.app_header}>
+            <img src={logo} style={styles.app_logo} alt="logo" />
+            <h2>Tab1</h2>
+          </div>
+        ) : null }
+        {this.state.active_tab === 'tab2' ? (
+          <div style={styles.app_header}>
+            <img src={logo} style={styles.app_logo} alt="logo" />
+            <h2>Tab2</h2>
+          </div>
+        ) : null }
+        {this.state.active_tab === 'tab3' ? (
+          <div style={styles.app_header}>
+            <img src={logo} style={styles.app_logo} alt="logo" />
+            <h2>Tab3</h2>
+          </div>
+        ) : null }
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
@@ -41,17 +69,16 @@ class App extends Component {
         textAlign: 'center'
       },
       app_logo: {
-        animation: 'App-logo-spin infinite 20s linear',
         height: 80
       },
       app_header: {
         backgroundColor: '#222',
         height: 150,
         padding: 20,
-        color: 'white'
+        color: Colors.RED
       },
       app_intro: {
-        fontSize: 'large'
+        fontSize: FontSizes.LARGE
       }
     }
   }
