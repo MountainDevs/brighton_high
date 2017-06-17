@@ -1,31 +1,20 @@
 {
-  "name": "brighton-high",
+  "name": "brighton_high",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.16.2",
-    "babel": "^6.23.0",
-    "babel-loader": "^7.0.0",
-    "bitts": "^1.3.2",
-    "es6-promise": "^4.1.0",
-    "extract-text-webpack-plugin": "^2.1.2",
-    "js-cookie": "^2.1.4",
-    "lodash": "^4.17.4",
-    "moment": "^2.18.1",
+    "bitts": "^1.4.1",
     "mx-react-components": "^5.0.0-rc.96",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "webpack-dev-server": "^2.4.5"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7",
-    "webpack": "^1.15.0"
+    "react-scripts": "1.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "webpack": "webpack -w"
+    "eject": "react-scripts eject"
   }
 }
