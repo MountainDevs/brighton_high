@@ -7,6 +7,6 @@ const cors = require('cors');
 
 app.use(express.static('./build'))
 app.use(bodyParser.json());
-app.listen(8080, function () {
+app.listen(9090, function () {
   console.log(`listening on port ${this.address().port}`);
 })
