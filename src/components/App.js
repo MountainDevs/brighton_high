@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import routes from './routes.js'
+import routes from '../routes.js'
 
-import Navigation from './components/Navigation/Navigation';
+import Navigation from './Navigation/Navigation';
 
 import './App.css';
 
