@@ -22,7 +22,7 @@ const DetailComponent = (props) => {
 
             </div>
             <div className="details-right">
-                <img className="logo" src={logo}/>
+                <img className="logo" src={logo} alt="Brighton Bengals"/>
             </div>
         </div>
     );
