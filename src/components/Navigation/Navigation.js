@@ -18,6 +18,11 @@ class Navigation extends Component {
                                     <p className="nav-title">Profiles</p>
                             </div>
                         </Link>
+                        <Link to="/contact">
+                            <div className="nav-item">
+                                    <p className="nav-title">Contact</p>
+                            </div>
+                        </Link>
                     </div>
                     <div className="right">
                         <Link to="/register">
