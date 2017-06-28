@@ -8,23 +8,23 @@ class Navigation extends Component {
         return (
                 <div className="nav-container">
                     <div className="left">
-                        <div className="nav-item">
-                            <Link to="/">
-                                <p className="nav-title">Event Info</p>
-                            </Link>
-                        </div>
-                        <div className="nav-item">
-                            <Link to="/profiles">
-                                <p className="nav-title">Profiles</p>
-                            </Link>
-                        </div>
+                        <Link to="/">
+                            <div className="nav-item">
+                                    <p className="nav-title">Event Info</p>
+                            </div>
+                        </Link>
+                        <Link to="/profiles">
+                            <div className="nav-item">
+                                    <p className="nav-title">Profiles</p>
+                            </div>
+                        </Link>
                     </div>
                     <div className="right">
-                        <div className="nav-item">
-                            <Link to="/register">
-                                <p className="nav-title">Register</p>
-                            </Link>
-                        </div>
+                        <Link to="/register">
+                            <div className="nav-item">
+                                    <p className="nav-title">Register</p>
+                            </div>
+                        </Link>
 
                     </div>
                 </div>

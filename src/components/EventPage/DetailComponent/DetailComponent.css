@@ -1,0 +1,39 @@
+.details-container {
+    width: 70vw;
+    height: 300px;
+    margin: auto;
+    background-color: #326096;
+    color: white;
+    display: flex;
+    justify-content: space-between
+}
+
+.details-left {
+    width: 70%;
+    /*display: inline-block*/
+}
+
+.details-left-big {
+    font-size: 34px;
+    font-weight: 300;
+    margin: 20px 15px 5px 30px;
+}
+.details-left-medium {
+    font-size: 23px;
+    font-weight: 100;
+    margin: 0 15px 0 30px;
+}
+.details-left-small {
+    font-size: 17px;
+    font-weight: 100;
+    margin: 0 15px 0 30px;
+}
+.details-right {
+    width: 30%;
+    /*display: inline-block*/
+}
+
+.logo {
+    width: 230px;
+    margin-top: -65px;
+}
