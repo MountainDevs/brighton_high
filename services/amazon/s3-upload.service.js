@@ -1,13 +1,14 @@
 import { multer } from 'multer';
 import { AWS } from 'aws-sdk';
 
+const config = require('../../config.json');
 const app = require('../../server');
 
 // Amazon s3 config
 const s3 = new AWS.S3();
 AWS.config.update({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: config.amazonAccess,
+    secretAccessKey: config.amazonSecretAccess,
     subregion: 'us-west-2',
   });
 
@@ -22,14 +23,13 @@ const upload = multer({
 app.post('/upload', upload.single('theseNamesMustMatch'), (req, res) => {
   // req.file is the 'theseNamesMustMatch' file
   s3.putObject({
-      Bucket: 'your-bucket-name',
-      Key: 'your-key-name', 
+      Bucket: 'brighton-high-1987',
+      Key: req.filename, 
       Body: req.file.buffer,
       ACL: 'public-read', // your permisions  
     }, (err) => { 
       if (err) return res.status(400).send(err);
+      console.log(res);
       res.send('File uploaded to S3');
   })
-}),
-
-module.exports = router;
+});
