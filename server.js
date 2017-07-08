@@ -19,9 +19,10 @@ massive(config.databaseString).then(instance => {
   const controller = require('./controller');
 
   app.get('/api/users', (req, res, next) => {
-    db.read_users().then((err, data) => {
-      if (err) res.status(500).json(err);
+    db.read_users().then(data => {
       res.json(data);
+    }).catch(err => {
+      res.status(500).json(err);
     });
   });
 
