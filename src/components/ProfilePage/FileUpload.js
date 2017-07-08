@@ -6,7 +6,7 @@ const superagent = require('superagent')
  class FileUpload extends React.Component{
    //TODO: Filename should include user name plus new date in order to distinguish between photos
     onDrop (files) {
-      superagent.post('/upload')
+      superagent.post('/api/s3/upload')
       .attach('theseNamesMustMatch.jpg', files[0], new Date().toDateString())
       .end((err, res) => {
         if (err) {

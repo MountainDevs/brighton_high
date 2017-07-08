@@ -17,6 +17,6 @@ const upload = multer({
 
 
 
-app.post('/upload', upload.single('theseNamesMustMatch.jpg'), amazon.upload);
+app.post('/api/s3/upload', upload.single('theseNamesMustMatch.jpg'), amazon.upload);
 
 module.exports = app;

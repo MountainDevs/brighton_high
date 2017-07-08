@@ -13,10 +13,17 @@ massive(config.databaseString).then(instance => {
   app.use(express.static('./build'))
   app.use(bodyParser.json());
   app.use(require('./services/amazon/s3-upload.controller'));
+  // app.use(require('./services/profile/user-profile.controller'));
   app.set('db', db);
 
-  //TODO: erase this if it isn't used
   const controller = require('./controller');
+
+  app.get('/api/users', (req, res, next) => {
+    db.read_users().then((err, data) => {
+      if (err) res.status(500).json(err);
+      res.json(data);
+    });
+  });
 
   var port = process.env.PORT || 8080;
   app.listen(port, function () {
