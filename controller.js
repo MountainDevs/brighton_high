@@ -9,8 +9,10 @@ db.set_user()
     console.log(err); 
   });
 
-// db.address_create_seed().then((err, data) => {
-//   if (err) console.log(err);
-//   else console.log('Address table successfully reset');
-// });
+// db.address_create_seed().then(data => {
+//   console.log("Address table successfully reset");
+// })
+    // .catch(err => {
+    //   console.log(err);
+    // });
 

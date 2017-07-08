@@ -23,8 +23,6 @@ const superagent = require('superagent')
             <Dropzone onDrop={this.onDrop} multiple={false}>
               <div>Try dropping a file here, or click to select a file to upload.</div>
             </Dropzone>
-            <p>Nothing</p>
-            <img src="https://s3-us-west-2.amazonaws.com/brighton-high-1987/theseNamesMustMatch"></img>
           </div>
       );
     }

@@ -13,7 +13,6 @@ massive(config.databaseString).then(instance => {
   app.use(express.static('./build'))
   app.use(bodyParser.json());
   app.use(require('./services/amazon/s3-upload.controller'));
-  // app.use(require('./services/profile/user-profile.controller'));
   app.set('db', db);
 
   const controller = require('./controller');
