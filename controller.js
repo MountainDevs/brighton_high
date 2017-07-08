@@ -14,4 +14,3 @@ db.set_user()
 //   else console.log('Address table successfully reset');
 // });
 
-// module.exports = app;

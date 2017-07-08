@@ -17,14 +17,9 @@ massive(config.databaseString).then(instance => {
   app.set('db', db);
 
   const controller = require('./controller');
+  const userProfile = require('./services/profile/user-profile.controller');
 
-  app.get('/api/users', (req, res, next) => {
-    db.read_users().then(data => {
-      res.json(data);
-    }).catch(err => {
-      res.status(500).json(err);
-    });
-  });
+  
 
   var port = process.env.PORT || 8080;
   app.listen(port, function () {
