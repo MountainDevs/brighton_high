@@ -12,7 +12,7 @@ massive(config.databaseString).then(instance => {
   const db = instance;
   app.use(express.static('./build'))
   app.use(bodyParser.json());
-  app.use(require('./services/amazon/s3-upload.service'));
+  app.use(require('./services/amazon/s3-upload.controller'));
   app.set('db', db);
 
   //TODO: erase this if it isn't used
