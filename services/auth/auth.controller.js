@@ -25,12 +25,3 @@ app.post('/sessions/create', (req, res, next) => {
   });
 });
 
-app.get('/auth',
-    (req, res, next) => {
-      if (!req.user) {
-        return res.sendStatus(401);
-      } else {
-        res.sendStatus(200);
-      }
-    }
-);
