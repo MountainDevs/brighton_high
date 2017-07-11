@@ -1,13 +1,9 @@
-// const users = require('./user-profile.service');
-
-// const express = require('express'),
-//       massive = require('massive'),
-//       app = express.Router(),
-//       bodyParser = require('body-parser'),
-//       config = require('../../config.json');
-
 const app = require('../../server'),
-      db = app.get('db');
+      db = app.get('db'),
+      jwt = require('express-jwt'),
+      config = require('../../config.json');
+
+app.use('/api/users', jwt({secret: config.secret}));
 
 app.get('/api/users', (req, res, next) => {
   db.read_users().then(data => {
