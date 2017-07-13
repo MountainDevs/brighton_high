@@ -8,14 +8,7 @@ const express = require('express'),
 
 //TODO: Have total services file, which imports everything from services then exports an app that uses everything so that the server only has to import the one file.
 
-// const storage = multer.diskStorage({
-//   destination: './files',
-//   filename: function(req, file, cb) {
-//     cb(null, `${file.originalname}.${file.mimetype.substring(file.mimetype.indexOf('/') + 1)}`);
-//   }
-// });
-// const upload = multer({ storage: storage });
-
+//It's worth noting that this will use up server ram, so we have to be careful not to get overloaded.
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 52428800 },
