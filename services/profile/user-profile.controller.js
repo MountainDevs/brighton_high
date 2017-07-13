@@ -3,8 +3,6 @@ const app = require('../../server'),
       jwt = require('express-jwt'),
       config = require('../../config.json');
 
-app.use('/api/users', jwt({secret: config.secret}));
-
 app.get('/api/users', (req, res, next) => {
   db.read_users().then(data => {
     res.json(data);

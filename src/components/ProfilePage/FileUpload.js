@@ -1,18 +1,18 @@
-
 const React = require('react');
 const Dropzone = require('react-dropzone');
 const superagent = require('superagent')
 
  class FileUpload extends React.Component{
-   //TODO: Filename should include user name plus new date in order to distinguish between photos
+   //TODO: Filename should include user name plus new date in order to distinguish between photos - replace 'fileName' with that information
     onDrop (files) {
       superagent.post('/api/s3/upload')
-      .attach('theseNamesMustMatch.jpg', files[0], new Date().toDateString())
+      .attach('file', files[0], 'fileName')
       .end((err, res) => {
         if (err) {
           console.log(err);
         } else {
-          console.log(res);
+          //Save the file name to the user: JSON.parse(res.text).fileName;
+          console.log(JSON.parse(res.text));
         }
       })
     }

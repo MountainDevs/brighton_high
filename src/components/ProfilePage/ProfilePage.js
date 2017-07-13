@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import FileUpload from './FileUpload';
 import axios from 'axios';
 
+let users = [];
+let userDisplay = [];
+let currentUser = {};
+
 class ProfilePage extends Component {
     constructor(props) {
       super(props)
@@ -23,6 +27,32 @@ class ProfilePage extends Component {
       }
 
       this.createUser = this.createUser.bind(this);
+    }
+
+    componentWillMount() {
+      this.getAllUsers();
+      this.getCurrentUser();
+    }
+
+    getCurrentUser() {
+
+    }
+
+    getAllUsers() {
+      axios.get('http://localhost:8080/api/users')
+        .then(res => {
+          users = res.data;
+          userDisplay = users.map(user => {
+            return (
+              <div key={user.id}>
+                <h2>{user.first_name + ' ' + user.last_name}</h2>
+              </div>
+            );
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
 
     createUser() {
@@ -73,9 +103,12 @@ class ProfilePage extends Component {
               <input type="text" placeholder="spouse last" onChange={ this.handleChange.bind(this, "spouse_last") } value={this.state.spouse_last}/>                
               <input type="text" placeholder="children" onChange={ this.handleChange.bind(this, "children") } value={this.state.children}/>                
               <input type="text" placeholder="memories" onChange={ this.handleChange.bind(this, "memories") } value={this.state.memories}/>                
-              <FileUpload></FileUpload>
+              {userDisplay}
+              <FileUpload user={currentUser}></FileUpload>
               <button type="button" onClick={this.createUser}>Big old button</button>
               {/*TODO: pass state to file upload for user info*/}
+              {/* TODO: This is the format for user photos */}
+              {/* <img alt="nothing" src="https://s3-us-west-2.amazonaws.com/brighton-high-1987/withJpegExtension.jpeg" /> */}
             </div>
         );
     }
