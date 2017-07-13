@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import FileUpload from './FileUpload';
 import axios from 'axios';
 
-// let users = [];
-let userDisplay = [];
-let currentUser = {};
-
 class ProfilePage extends Component {
     constructor(props) {
       super(props)
@@ -24,7 +20,8 @@ class ProfilePage extends Component {
         spouse_last: "",
         children: "",
         memories: "",
-        users: []
+        users: [],
+        currentUser: {}
       }
 
       this.createUser = this.createUser.bind(this);
@@ -42,16 +39,7 @@ class ProfilePage extends Component {
     getAllUsers() {
       axios.get('http://localhost:8080/api/users')
         .then(res => {
-          // users = res.data;
-          console.log(res.data);
           this.setState({ users: res.data });
-          // userDisplay = users.map(user => {
-          //   return (
-          //     <div key={user.id}>
-          //       <h2>{user.first_name + ' ' + user.last_name}</h2>
-          //     </div>
-          //   );
-          // });
         })
         .catch(err => {
           console.log(err);
@@ -113,7 +101,7 @@ class ProfilePage extends Component {
                   </div>
                 ); 
               })}
-              <FileUpload user={currentUser}></FileUpload>
+              <FileUpload user={this.state.currentUser}></FileUpload>
               <button type="button" onClick={this.createUser}>Big old button</button>
               {/*TODO: pass state to file upload for user info*/}
               {/* TODO: This is the format for user photos, where everything after brighton-high-1987, which is the bucket name, is the name and extension of the photo in the question */}
