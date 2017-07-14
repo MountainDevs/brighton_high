@@ -1,6 +1,8 @@
 .details-container {
     width: 70vw;
-    height: 300px;
+    height: auto;
+    padding-left: 30px;
+    padding-bottom: 20px;
     margin: auto;
     background-color: #326096;
     color: white;
@@ -16,17 +18,17 @@
 .details-left-big {
     font-size: 34px;
     font-weight: 300;
-    margin: 20px 15px 5px 30px;
+    margin: 20px 15px 5px 0;
 }
 .details-left-medium {
     font-size: 23px;
     font-weight: 100;
-    margin: 0 15px 0 30px;
+    margin: 0 15px 0 0;
 }
 .details-left-small {
     font-size: 17px;
     font-weight: 100;
-    margin: 0 15px 0 30px;
+    margin: 0 15px 0 0;
 }
 .details-right {
     width: 30%;
