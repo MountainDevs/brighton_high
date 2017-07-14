@@ -37,7 +37,7 @@ class ProfilePage extends Component {
     }
 
     getAllUsers() {
-      axios.get('http://localhost:8080/api/users')
+      axios.get('/api/users')
         .then(res => {
           this.setState({ users: res.data });
         })

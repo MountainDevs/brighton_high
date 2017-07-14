@@ -24,6 +24,7 @@ CREATE TABLE users (
     photo TEXT
 );
 
-INSERT INTO users (first_name, last_name, username, password) VALUES
-('Jon', 'Myrick', 'jon', '123'),
-('Sara', 'Johnson', 'sara', '123');
+INSERT INTO users (first_name, last_name, username, password, admin) VALUES
+('Jessica', 'Church', 'j_k_church', 'churchy_church_3000', true),
+('Jon', 'Myrick', 'jon', '123', false),
+('Sara', 'Johnson', 'sara', '123', false);

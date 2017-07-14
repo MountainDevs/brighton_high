@@ -13,6 +13,6 @@ export default (
         <Route path="/register" component={RegisterPage}/>
         <Route path="/profiles" component={ProfilePage}/>
         <Route path="/contact" component={ContactPage}/>
-        <Route path="/location" component={AlumniPage}/>
+        <Route path="/locate" component={AlumniPage}/>
     </Switch>
 )
