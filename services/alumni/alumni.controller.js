@@ -3,7 +3,7 @@ const app = require('../../server'),
       jwt = require('express-jwt'),
       config = require('../../config.json');
 
-// app.use(jwt({ secret: config.secret }));
+app.use(jwt({ secret: config.secret }));
 
 app.get('/api/alumni', (req, res, next) => {
   db.alumni.find()
