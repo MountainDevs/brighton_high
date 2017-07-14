@@ -25,6 +25,11 @@ class Navigation extends Component {
                         </Link>
                     </div>
                     <div className="right">
+                        <Link to="/locate">
+                            <div className="nav-item">
+                                    <p className="nav-title">Help Find Fellow Alumni</p>
+                            </div>
+                        </Link>
                         <Link to="/register">
                             <div className="nav-item">
                                     <p className="nav-title">Register</p>
