@@ -11,7 +11,9 @@ class App extends Component {
     return (
       <div>
         <Navigation />
-        {routes}
+        <div className="main-container">
+          {routes}
+        </div>
       </div>
     );
   }
