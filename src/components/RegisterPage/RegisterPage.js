@@ -12,6 +12,7 @@ import '../../styles/common.css';
 
 class RegisterPage extends Component {
     render() {
+        const styles = this.styles()
         return (
             <div className="details-container">
               <div className="details-left">
@@ -20,6 +21,54 @@ class RegisterPage extends Component {
                 <h3 className="details-left-medium">Registration is $104 after August 1st, and $120 the day of the event (October 14).</h3>
                 {/* spacing */}
                 <br />
+
+                <h3>
+                    Early Registration
+                </h3>
+                <table style={styles.table}>
+                    <tr>
+                        <td style={styles.table_description}>Alumni Only </td>
+                        <td style={styles.table_cost}>$94</td>
+                        <td style={styles.table_button}><StripeAlumniPre /></td>
+                    </tr>
+                    <tr>
+                        <td style={styles.table_description}>Alumni + Spouse </td>
+                        <td style={styles.table_cost}>$157</td>
+                        <td style={styles.table_button}><StripeAlumniSpousePre /></td>
+                    </tr>
+                </table>
+                <br />
+                <h3>
+                    Registration
+                </h3>
+                <table style={styles.table}>
+                    <tr>
+                        <td style={styles.table_description}>Alumni Only </td>
+                        <td style={styles.table_cost}>$104</td>
+                        <td style={styles.table_button}><StripeAlumni /></td>
+                    </tr>
+                    <tr>
+                        <td style={styles.table_description}>Alumni + Spouse </td>
+                        <td style={styles.table_cost}>$167</td>
+                        <td style={styles.table_button}><StripeAlumniSpouse /></td>
+                    </tr>
+                </table>
+                <br />
+                <h3>
+                    Day Of Registration
+                </h3>
+                <table style={styles.table}>
+                    <tr>
+                        <td style={styles.table_description}>Day Of - Alumni Only </td>
+                        <td style={styles.table_cost}>$120</td>
+                        <td style={styles.table_button}><StripeAlumniDayOf /></td>
+                    </tr>
+                    <tr>
+                        <td style={styles.table_description}>Day Of - Alumni + Spouse </td>
+                        <td style={styles.table_cost}>$183</td>
+                        <td style={styles.table_button}><StripeAlumniSpouseDayOf /></td>
+                    </tr>
+                </table>
 
                 <h5>Why so expensive?</h5>
 
@@ -49,54 +98,26 @@ class RegisterPage extends Component {
             </div>
             <div className="details-right flex-column column-spread">
                 <img className="logo no-margin" src={logo} alt="Brighton Bengals"/>
-                <h3>
-                    Early Registration
-                </h3>
-                <table>
-                    <tr>
-                        <td>Alumni Only </td>
-                        <td>$94</td>
-                        <td><StripeAlumniPre /></td>
-                    </tr>
-                    <tr>
-                        <td>Alumni + Spouse </td>
-                        <td>$157</td>
-                        <td><StripeAlumniSpousePre /></td>
-                    </tr>
-                </table>
-                <h3>
-                    Registration
-                </h3>
-                <table>
-                    <tr>
-                        <td>Alumni Only </td>
-                        <td>$104</td>
-                        <td><StripeAlumni /></td>
-                    </tr>
-                    <tr>
-                        <td>Alumni + Spouse </td>
-                        <td>$167</td>
-                        <td><StripeAlumniSpouse /></td>
-                    </tr>
-                </table>
-                <h3>
-                    Day Of Registration
-                </h3>
-                <table>
-                    <tr>
-                        <td>Day Of - Alumni Only </td>
-                        <td>$120</td>
-                        <td><StripeAlumniDayOf /></td>
-                    </tr>
-                    <tr>
-                        <td>Day Of - Alumni + Spouse </td>
-                        <td>$183</td>
-                        <td><StripeAlumniSpouseDayOf /></td>
-                    </tr>
-                </table>
             </div>
         </div>
         );
+    }
+
+    styles () {
+        return {
+            table: {
+                margin: 10
+            },
+            table_description: {
+                width: 200
+            },
+            table_cost: {
+                width: 75
+            },
+            table_button: {
+                width: 150
+            }
+        }
     }
 }
 

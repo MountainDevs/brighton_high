@@ -22,7 +22,7 @@ class StripeAlumniDayOf extends Component {
           panelLabel="Register"
           amount={12000}
           currency="USD"
-          stripeKey="pk_test_yFliojp5k9U6cxv0NRVL3W9U"
+          stripeKey="pk_test_mjnzkL9ebrh2Zbb5vy8hzniN"
           shippingAddress
           billingAddress={false}
           zipCode={false}
