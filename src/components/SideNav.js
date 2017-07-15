@@ -5,7 +5,7 @@ import './SideNav.css';
 class SideNav extends Component {
     render() {
         return (
-            <div>
+            <div className="sidenav-wrapper">
                 SideNav Component
             </div>
         );
