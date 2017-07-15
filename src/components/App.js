@@ -13,14 +13,16 @@ import Additional from './register/Additional';
 import ContactInfo from './register/ContactInfo';
 import Pay from './register/Pay';
 import Done from './register/Done';
+import Header from './Header';
+import Nav from './Nav';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div>
-        {/*Header */}
-        {/*Nav */}
+        <Header />
+        <Nav />
         <section className='pages'>
           <Switch>
               <Route exact path="/" component={Details}/>
