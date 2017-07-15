@@ -41,7 +41,7 @@ class RegisterPage extends Component {
                 <h3>
                     Registration
                 </h3>
-                <table>
+                <table style={styles.table}>
                     <tr>
                         <td style={styles.table_description}>Alumni Only </td>
                         <td style={styles.table_cost}>$104</td>
@@ -57,7 +57,7 @@ class RegisterPage extends Component {
                 <h3>
                     Day Of Registration
                 </h3>
-                <table>
+                <table style={styles.table}>
                     <tr>
                         <td style={styles.table_description}>Day Of - Alumni Only </td>
                         <td style={styles.table_cost}>$120</td>
