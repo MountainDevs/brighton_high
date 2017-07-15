@@ -24,18 +24,18 @@ class App extends Component {
         <section className='pages'>
           <Switch>
               <Route exact path="/" component={Details}/>
-              <Route path="/profiles" component={Profiles}/>
-              <Route path="/classmates" component={Classmates}/>
-              <Route path="/contact" component={Contact}/>
-              <Route path="/my_profile" component={MyProfile}/>
-              <Route path="/admin" component={Admin}/>
-              <Route path="/login" component={Login}/>
-              <Route path="/register" component={Register}/>
-              <Route path="/register/personal" component={Personal}/>
-              <Route path="/register/additional" component={Additional}/>
-              <Route path="/register/contact" component={ContactInfo}/>
-              <Route path="/register/pay" component={Pay}/>
-              <Route path="/register/done" component={Done}/>
+              <Route exact path="/profiles" component={Profiles}/>
+              <Route exact path="/classmates" component={Classmates}/>
+              <Route exact path="/contact" component={Contact}/>
+              <Route exact path="/my_profile" component={MyProfile}/>
+              <Route exact path="/admin" component={Admin}/>
+              <Route exact path="/login" component={Login}/>
+              <Route exact path="/register" component={Register}/>
+              <Route exact path="/register/personal" component={Personal}/>
+              <Route exact path="/register/additional" component={Additional}/>
+              <Route exact path="/register/contact" component={ContactInfo}/>
+              <Route exact path="/register/pay" component={Pay}/>
+              <Route exact path="/register/done" component={Done}/>
           </Switch>
         </section>
       </div>
