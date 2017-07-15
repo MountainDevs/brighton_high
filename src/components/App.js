@@ -37,7 +37,7 @@ class App extends Component {
                         <Header />
                         <div style={{display: 'flex'}}>
                           <SideNav />
-                          <Details />
+                          <Profiles />
                         </div>
                       </div>
               }/>
@@ -46,7 +46,7 @@ class App extends Component {
                         <Header />
                         <div style={{display: 'flex'}}>
                           <SideNav />
-                          <Details />
+                          <Classmates />
                         </div>
                       </div>
               }/>
@@ -55,7 +55,7 @@ class App extends Component {
                         <Header />
                         <div style={{display: 'flex'}}>
                           <SideNav />
-                          <Details />
+                          <Contact />
                         </div>
                       </div>
               }/>
@@ -64,7 +64,7 @@ class App extends Component {
                         <Header />
                         <div style={{display: 'flex'}}>
                           <SideNav />
-                          <Details />
+                          <MyProfile />
                         </div>
                       </div>
               }/>
@@ -73,7 +73,7 @@ class App extends Component {
                         <Header />
                         <div style={{display: 'flex'}}>
                           <SideNav />
-                          <Details />
+                          <Admin />
                         </div>
                       </div>
               }/>
