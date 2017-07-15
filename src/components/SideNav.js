@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-import './Nav.css';
+import './SideNav.css';
 
-class Nav extends Component {
+class SideNav extends Component {
     render() {
         return (
             <div>
-                Nav Component
+                SideNav Component
             </div>
         );
     }
 }
 
-export default Nav;
+export default SideNav;
