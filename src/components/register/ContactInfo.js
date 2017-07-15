@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-import './MyProfile.css';
+import './ContactInfo.css';
 
-class MyProfile extends Component {
+class ContactInfo extends Component {
     render() {
         return (
             <div>
-                MyProfile Component
+                ContactInfo Component
             </div>
         );
     }
 }
 
-export default MyProfile;
+export default ContactInfo;

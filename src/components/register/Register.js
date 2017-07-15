@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-import './MyProfile.css';
+import './Register.css';
 
-class MyProfile extends Component {
+class Register extends Component {
     render() {
         return (
             <div>
-                MyProfile Component
+                Register Component
             </div>
         );
     }
 }
 
-export default MyProfile;
+export default Register;
