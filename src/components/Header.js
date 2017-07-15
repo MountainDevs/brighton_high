@@ -6,8 +6,8 @@ class Header extends Component {
     render() {
         return (
             <header className="header-wrapper">
-                <div>Brighton High Class of 1987</div>
-                <div>Login Button</div>
+                <div className="header-title">Brighton High Class of 1987</div>
+                <div className="header-login">Login Button</div>
             </header>
         );
     }
