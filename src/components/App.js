@@ -21,21 +21,61 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <Nav />
         <section className='pages'>
           <Switch>
-              <Route exact path="/" component={Details}/>
-              <Route exact path="/profiles" component={Profiles}/>
-              <Route exact path="/classmates" component={Classmates}/>
-              <Route exact path="/contact" component={Contact}/>
-              <Route exact path="/my_profile" component={MyProfile}/>
-              <Route exact path="/admin" component={Admin}/>
+              <Route exact path="/" render={
+                () => <div>
+                        <Header />
+                        <Nav />
+                        <Details />
+                      </div>
+              }/>
+              <Route exact path="/profiles" render={
+                () => <div>
+                        <Header />
+                        <Nav />
+                        <Details />
+                      </div>
+              }/>
+              <Route exact path="/classmates" render={
+                () => <div>
+                        <Header />
+                        <Nav />
+                        <Details />
+                      </div>
+              }/>
+              <Route exact path="/contact" render={
+                () => <div>
+                        <Header />
+                        <Nav />
+                        <Details />
+                      </div>
+              }/>
+              <Route exact path="/my_profile" render={
+                () => <div>
+                        <Header />
+                        <Nav />
+                        <Details />
+                      </div>
+              }/>
+              <Route exact path="/admin" render={
+                () => <div>
+                        <Header />
+                        <Nav />
+                        <Details />
+                      </div>
+              }/>
+              <Route exact path="/register" render={
+                () => <div>
+                        <Header />
+                        <Nav />
+                        <Register />
+                      </div>
+              }/>
               <Route exact path="/login" component={Login}/>
-              <Route exact path="/register" component={Register}/>
               <Route exact path="/register/personal" component={Personal}/>
               <Route exact path="/register/additional" component={Additional}/>
-              <Route exact path="/register/contact" component={ContactInfo}/>
+              <Route exact path="/register/contactInfo" component={ContactInfo}/>
               <Route exact path="/register/pay" component={Pay}/>
               <Route exact path="/register/done" component={Done}/>
           </Switch>
