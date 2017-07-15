@@ -14,7 +14,7 @@ import ContactInfo from './register/ContactInfo';
 import Pay from './register/Pay';
 import Done from './register/Done';
 import Header from './Header';
-import Nav from './Nav';
+import SideNav from './SideNav';
 import './App.css';
 
 class App extends Component {
@@ -26,50 +26,64 @@ class App extends Component {
               <Route exact path="/" render={
                 () => <div>
                         <Header />
-                        <Nav />
-                        <Details />
+                        <div style={{display: 'flex'}}>
+                          <SideNav />
+                          <Details />
+                        </div>
                       </div>
               }/>
               <Route exact path="/profiles" render={
                 () => <div>
                         <Header />
-                        <Nav />
-                        <Details />
+                        <div style={{display: 'flex'}}>
+                          <SideNav />
+                          <Details />
+                        </div>
                       </div>
               }/>
               <Route exact path="/classmates" render={
                 () => <div>
                         <Header />
-                        <Nav />
-                        <Details />
+                        <div style={{display: 'flex'}}>
+                          <SideNav />
+                          <Details />
+                        </div>
                       </div>
               }/>
               <Route exact path="/contact" render={
                 () => <div>
                         <Header />
-                        <Nav />
-                        <Details />
+                        <div style={{display: 'flex'}}>
+                          <SideNav />
+                          <Details />
+                        </div>
                       </div>
               }/>
               <Route exact path="/my_profile" render={
                 () => <div>
                         <Header />
-                        <Nav />
-                        <Details />
+                        <div style={{display: 'flex'}}>
+                          <SideNav />
+                          <Details />
+                        </div>
                       </div>
               }/>
               <Route exact path="/admin" render={
                 () => <div>
                         <Header />
-                        <Nav />
-                        <Details />
+                        <div style={{display: 'flex'}}>
+                          <SideNav />
+                          <Details />
+                        </div>
                       </div>
               }/>
               <Route exact path="/register" render={
                 () => <div>
                         <Header />
-                        <Nav />
-                        <Register />
+                        <div style={{display: 'flex'}}>
+                          <SideNav />
+                          <Register />
+                        </div>
                       </div>
               }/>
               <Route exact path="/login" component={Login}/>
