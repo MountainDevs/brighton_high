@@ -1,18 +1,25 @@
 .profiles-wrapper {
     width: calc(100% - 300px);
 }
-.profiles-top {
+
+
+/* --------- Top Header --------- */
+ .profiles-top {
     height: 34px;
     display: flex;
     align-items: center;
-}
+} 
 
-.details-table-wrapper {
+
+/* --------- Table --------- */
+ /* .details-table-wrapper {
     width: 100%; 
-    /* border: 1px solid blue; */
-}
+     border: 1px solid blue; 
+} */
 
-.details-table {
+
+
+/* .details-table {
     width: 100%;
 }
 
@@ -21,6 +28,8 @@
     color: white;
     font-weight: 100;
     vertical-align: middle;
+    border: 1px solid red;
+    padding: 0.5rem;
 }
 .header-name {
     width: 400px;  
@@ -33,9 +42,6 @@
 
 
 
-.table-row {
-    /* vertical-align: middle; */
-}
 
 .table-row-item-name {
     text-align: center;
@@ -44,13 +50,13 @@
 .table-row-item-bool {
     padding-left: 10px;
     display: flex;
-}
+}  */
 
 
-/* 
-    The card component
-*/
-.table-row-item-card {
+
+
+/* --------- The card component --------- */
+/* .table-row-item-card {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,5 +71,74 @@
 
 .card-name {
 
+} */
+
+
+
+
+
+
+/* ===============================================
+                    New Design
+=============================================== */
+.profiles-table {
+    width: 100%;
+    height: 100%;
 }
 
+.table-header {
+    width: 100%;
+    height: 70px;
+    margin-top: 30px;
+    background-color: #537187;
+    display: flex;
+    align-items: center; 
+}
+
+.table-header div {
+    color: white;
+    font-size: 21px;
+    width: 335px;
+    margin-right: 13px;
+    text-align: center;
+}
+
+/* .table-card {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.card-left {
+    width: 380px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.card-left-photo {
+    width: 60px;
+    margin-left: 38px;
+    margin-right: 40px;
+}
+
+.card-left-photo img {
+    width: 100%;
+}
+.card-left-text {
+    font-size: 19px;
+}
+
+
+
+
+.card-right {
+    display: flex;
+    align-items: center;
+}
+
+.card-right-text {
+    font-size: 19px;
+    margin-left: 110px;
+} */

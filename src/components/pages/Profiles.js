@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+// Components
+import Card from './Profiles/Card';
+
 // Images
 import prof_pic from '../../assets/profile_pic.png'
 // CSS
@@ -11,19 +14,41 @@ class Profiles extends Component {
             <div className="profiles-wrapper">
                 <div className="profiles-top">
                      <div className="details-top-title">
-                        Profile Details
+                        Classmate Profiles
                      </div>
                 </div> 
 
-                <div className="details-table-wrapper">
+
+                <div className="profiles-table">
+                    <div className="table-header">
+                        <div>Name</div>
+                        <div>Attending?</div>
+                    </div>
+
+                    <Card name="Gustav Nordstrom" imageUrl={prof_pic} attending="Yes"/>
+                    <Card name="Jon Myrick" imageUrl={prof_pic} attending="Yes"/>
+                    <Card name="Steven Nagie" imageUrl={prof_pic} attending="Yes"/>
+                    <Card name="Abraham Lincoln" imageUrl={prof_pic} attending="Yes"/>
+                </div>
+
+
+
+
+
+                 {/* <div className="details-table-wrapper">
+
                     <table className="details-table">
+                       
                         <thead>
-                            <th className="table-header header-name">Name</th>
-                            <th className="table-header header-attending">Attending?</th>
+                            <tr>
+                                <th className="table-header header-name">Name</th>
+                                <th className="table-header header-attending">Attending?</th>
+                            </tr>
                         </thead>
 
+                      
                         <tbody>
-                            <tr className="table-row">
+                            <tr>
                                 <td className="table-row-item-name">
                                     <div className="table-row-item-card">
                                         <div className="card-img">
@@ -43,7 +68,7 @@ class Profiles extends Component {
                         </tbody>
                     </table>
 
-                </div>
+                </div>  */}
 
             </div>
         );
