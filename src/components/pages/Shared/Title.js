@@ -12,4 +12,8 @@ const Title = props => {
     );
 };
 
+Title.defaultProps = {
+    title: 'Remember to pass a Title prop'
+}
+
 export default Title;
