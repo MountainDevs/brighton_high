@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // Images
 import prof_pic from '../../assets/profile_pic.png';
 // CSS
@@ -7,12 +8,14 @@ import './NavHeader.css';
 const NavHeader = props => {
     return (
         <div className="navheader-wrapper">
-            <div className="navheader-content">
-                <div className="navheader-image-wrapper">
-                    <img className="navheader-image" src={props.imageUrl} alt="Profile"/>
+            <Link to="/my_profile">
+                <div className="navheader-content">
+                    <div className="navheader-image-wrapper">
+                        <img className="navheader-image" src={props.imageUrl} alt="Profile"/>
+                    </div>
+                    <div className="navheader-name">{props.name}</div>
                 </div>
-                <div className="navheader-name">{props.name}</div>
-            </div>
+            </Link>
         </div>
     );
 };
