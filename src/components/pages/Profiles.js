@@ -10,7 +10,7 @@ import './Profiles.css';
 class Profiles extends Component {
     render() {
         return (
-            <div className="profiles-wrapper">
+            <div className="component-wrapper">
                 <Title title="Classmate Profiles"/>
 
                 <div className="profiles-table">

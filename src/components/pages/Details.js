@@ -9,7 +9,7 @@ import './Details.css';
 class Details extends Component {
     render() {
         return (
-            <div className="details-wrapper">
+            <div className="component-wrapper">
                 <Title title="Event Details"/>
 
                 <div className="details-date-bar">
