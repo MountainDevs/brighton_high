@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('axios');
 
 const BASEURL = '';
 
@@ -58,5 +58,6 @@ module.exports = {
   updateUser,
   postStripeRecord,
   getUser,
+  getRegisterdUsers,
   getClassmates
 }
