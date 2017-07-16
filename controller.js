@@ -12,5 +12,5 @@ app.post('/api/user', userService.postUser);
 app.put('/api/user', userService.updateUser);
 app.post('/api/stripe_record', userService.postStripeRecord);
 app.get('/api/user', userService.getUser);
-app.get('/api/registered_users', userService.getRegisteredUsers);
+app.get('/api/all_users', userService.getAllUsers);
 app.get('/api/classmates', userService.getClassmates);
