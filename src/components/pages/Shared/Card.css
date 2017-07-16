@@ -4,9 +4,12 @@
     display: flex;
     border-bottom: 1px solid #e5e5e5;
 }
-/*===========
+
+/*
+====================
     Left
-===========*/
+====================
+*/
 .card-left {
     width: 380px;
     height: 100%;
@@ -25,9 +28,11 @@
     font-size: 19px;
 }
 
-/*===========
+/*
+====================
     Right
-===========*/
+====================
+*/
 .card-right {
     display: flex;
     align-items: center;

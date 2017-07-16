@@ -3,7 +3,11 @@
     width: calc(100% - 300px);
 }
 
-
+/* 
+====================
+    Date Bar
+====================
+*/
 .details-date-bar {
     background-color: #537187;
     margin-top: 30px;
@@ -12,27 +16,28 @@
     display: flex; 
     align-items: center; 
 }
-
 .details-date-bar-title {
     color: white;
     font-size: 25px;
     margin-left: 50px;
 }
 
+/* 
+====================
+    Content
+====================
+*/
 .details-content-wrapper {
     margin-top: 70px;
     display: flex;  
 }
-
 .details-content {
     margin-left: 40px;
     width: 60%;
 }
-
 .details-logo {
     width: 40%;
 }
-
 .bengal-logo {
     width: 230px;
     margin-top: -50px;
