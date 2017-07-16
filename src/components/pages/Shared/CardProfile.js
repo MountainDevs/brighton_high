@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 // Images
 import prof_pic from '../../../assets/profile_pic.png';
 // CSS
@@ -24,16 +23,10 @@ const CardProfile = props => {
 };
 
 CardProfile.defaultProps = {
-    name: 'John Doe',
+    name: 'John Smith',
     imageUrl: prof_pic,
     attending: 'N/A'
 }
-
-// CardProfile.propTypes = {
-//     name: PropTypes.string.isRequired,
-//     imageUrl: PropTypes.string.isRequired,
-//     attending: PropTypes.string.isRequired
-// };
 
 export default CardProfile;
 

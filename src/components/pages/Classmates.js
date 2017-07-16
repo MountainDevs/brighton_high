@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // Components
 import Title from './Shared/Title';
-
+import CardClassmates from './Shared/CardClassmates';
 // CSS
 import './Classmates.css';
 
@@ -14,8 +14,11 @@ class ClassMates extends Component {
                 <div className="classmates-table">
                     <div className="table-header">
                         <div>Name</div>
-                        <div>Found?</div>
+                        <div className="table-header-right">Found?</div>
                     </div>
+
+                    <CardClassmates />
+                    <CardClassmates />
                 
                 </div>
             </div>
