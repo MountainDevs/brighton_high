@@ -85,7 +85,7 @@ function updateUser(req, res, next) {
 }
 
 
-function getRegisteredUsers(req, res, next) {
+function getAllUsers(req, res, next) {
   //return all the registered user (picture, firstName, lastName, attending)
 }
 
@@ -98,13 +98,11 @@ function postStripeRecord(req, res, next) {
 }
 
 
-
-
 module.exports = {
   getUser,
   postUser,
   updateUser,
-  getRegisteredUsers, 
+  getAllUsers, 
   getClassmates,
   postStripeRecord
 }

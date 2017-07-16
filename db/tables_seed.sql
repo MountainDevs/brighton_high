@@ -25,6 +25,8 @@ CREATE TABLE stripe_records (
     record VARCHAR(255)
 );
 
+DROP TABLE IF EXISTS classmates;
+
 CREATE TABLE classmates (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
