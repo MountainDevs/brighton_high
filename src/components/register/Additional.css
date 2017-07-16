@@ -1,11 +1,11 @@
-.personal-bg {
+.additional-bg {
   font-weight: 100;
   width: 100vw;
   height: 100vh;
   background: #333;
 }
 
-.personal-wrapper {
+.additional-wrapper {
   background: #FFFFFF;
   width: 500px;
   height: 600px;
@@ -14,13 +14,48 @@
   top: calc((100% - 600px) / 2)
 }
 
-.personal-header {
+.additional-header {
   font-size: 15px;
   background: #537187;
   color: #ffffff;
   padding: 20px
 }
 
-.personal-body {
+.additional-body p {
+  margin: 30px 20px;
+}
 
+.additional-body textarea {
+  margin: 0 20px;
+  max-width: 90%;
+  min-width: 90%;
+  max-height: 300px;
+  min-height: 300px;
+  outline: none;
+  resize: none;
+  border: 1px solid #EAEAEA;
+}
+
+
+.additional-buttons {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.additional-buttons :nth-child(1){
+  font-size: 12px;
+  color: #72B9D7;
+  margin: 20px;
+  padding: 13px;
+}
+.additional-buttons :nth-child(2){
+  margin: 20px;
+  color: #ffffff;
+  font-size: 13px;
+  background: #FF8200;
+  text-align: center;
+  border-radius: 3px;
+  width: 75px;
+  padding: 13px;
 }
