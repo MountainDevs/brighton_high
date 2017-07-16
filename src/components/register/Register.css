@@ -6,15 +6,17 @@
 }
 
 .register-wrapper {
+  border-radius: 3px;
   background: #FFFFFF;
   width: 500px;
-  height: 600px;
+  height: 550px;
   position: absolute;
   left: calc((100% - 500px) / 2);
   top: calc((100% - 600px) / 2)
 }
 
 .register-header {
+  border-radius: 3px 3px 0 0;
   font-size: 15px;
   text-align: center;
   background: #537187;
@@ -62,6 +64,7 @@
   border-radius: 3px;
   color: #ffffff;
   text-align: center;
+  font-size: 13px;
   margin: 30px;
   width: 75px;
   padding: 15px;
