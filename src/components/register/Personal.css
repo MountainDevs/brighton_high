@@ -1,0 +1,27 @@
+.personal-bg {
+  font-weight: 100;
+  width: 100vw;
+  height: 100vh;
+  background: #333;
+}
+
+.personal-wrapper {
+  background: #FFFFFF;
+  width: 500px;
+  height: 600px;
+  position: absolute;
+  left: calc((100% - 500px) / 2);
+  top: calc((100% - 600px) / 2)
+}
+
+.personal-header {
+  font-size: 15px;
+  background: #537187;
+  color: #ffffff;
+  padding: 20px
+}
+
+.personal-body {
+
+}
+

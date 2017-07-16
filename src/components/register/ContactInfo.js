@@ -5,8 +5,13 @@ import './ContactInfo.css';
 class ContactInfo extends Component {
     render() {
         return (
-            <div>
-                ContactInfo Component
+            <div className='personal-bg'>
+                <div className='personal-wrapper'>
+                    <div className='personal-header'>Contact Information</div>
+                    <div className='personal-body'>
+                       Body 
+                    </div>
+                </div>
             </div>
         );
     }

@@ -77,19 +77,11 @@ class App extends Component {
                         </div>
                       </div>
               }/>
-              <Route exact path="/register" render={
-                () => <div>
-                        <Header />
-                        <div style={{display: 'flex'}}>
-                          <SideNav />
-                          <Register />
-                        </div>
-                      </div>
-              }/>
+              <Route exact path="/register" component={Register}/>
               <Route exact path="/login" component={Login}/>
               <Route exact path="/register/personal" component={Personal}/>
               <Route exact path="/register/additional" component={Additional}/>
-              <Route exact path="/register/contactInfo" component={ContactInfo}/>
+              <Route exact path="/register/contact_info" component={ContactInfo}/>
               <Route exact path="/register/pay" component={Pay}/>
               <Route exact path="/register/done" component={Done}/>
           </Switch>
