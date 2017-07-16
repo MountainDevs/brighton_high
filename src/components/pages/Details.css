@@ -1,20 +1,10 @@
-/* 
-    Colors 
-
-    navheader-bg #12222D
-    navitems-bg #242D33
-    date-header bg #537187
-    light blue font color - #5EC1EB
-    off white - #ffffff
-*/
-
 .details-wrapper {
     background-color: #fff;
     width: calc(100% - 300px);
 }
 
 .details-top {
-    height: 55px;
+    height: 34px;
     display: flex;
     align-items: center;
 }
@@ -42,7 +32,6 @@
 .details-content-wrapper {
     margin-top: 70px;
     display: flex;  
-      /* justify-content: center;   */
 }
 
 .details-content {

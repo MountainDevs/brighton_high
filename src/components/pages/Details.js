@@ -42,8 +42,7 @@ class Details extends Component {
                         
                         <p>    
                         Alternatively, <a href="http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=BRIGHTON%2030TH%20HIGH%20SCHOOL%20REUNION%5ESLCPC%60BBBBBBA%60119.00%60USD%60false%604%6010/11/17%6010/18/17%609/22/17&app=resvlink&stop_mobi=yes">
-                            follow this link 
-                            </a> to book online.
+                            follow this link</a> to book online.
                         </p>
                     </div>
 
