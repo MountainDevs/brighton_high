@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { NavLink } from 'react-router-dom';
 
 import './NavItems.css';
 
-const NavItems = props => {
+const NavItems = () => {
     return (
         <div className="navitems-wrapper">
             <div className="navitems-list">
@@ -50,10 +49,6 @@ const NavItems = props => {
             </div>
         </div>
     );
-};
-
-NavItems.propTypes = {
-
 };
 
 export default NavItems;
