@@ -10,44 +10,59 @@ let userData = {
   middleName: '',
   email: '',
   phone: '',
-  phone: '',
   address: '',
   city: '',
   state: '',
   zipcode: '',
-  bio: ''
+  bio: '',
+  attending: ''
 }
 
 function login(email, password) {
-  axios.post(`${BASEURL}`)
+  // login
 }
 
 function logout() {
-  // to be determined
+  // logout
 }
 
 function postUser(user) {
-  axios.post(`${BASEURL}/post_user`)
+  axios.post(`${BASEURL}/api/user`)
+  .then(res => {
+
+  })
 }
 
 function updateUser(user) {
-  axios.post(`${BASEURL}/update_user`)
+  axios.post(`${BASEURL}/api/user`)
+  .then(res => {
+
+  })
 }
 
 function postStripeRecord() {
-  axios.post(`${BASEURL}/post_stripe_record`)
+  axios.post(`${BASEURL}/api/stripe_record`)
 }
 
 function getUser(email) {
-  axios.get(`${BASEURL}/get_user`)
+  axios.get(`${BASEURL}/api/user`)
+  .then(res => {
+    
+  })
 }
 
 function getRegisterdUsers() {
-  axios.get(`${BASEURL}/get_registered_users`)
+  axios.get(`${BASEURL}/api/registered_users`)
+  .then(res => {
+    
+  })
 }
 
 function getClassmates() {
-  axios.get(`${BASEURL}/get_classmates`)
+  axios.get(`${BASEURL}/api/classmates`)
+  .then(res => {
+    
+  })
 } 
 
 module.exports = {
