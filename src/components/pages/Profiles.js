@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 // Components
-import Card from './Profiles/Card';
+import Card from './Shared/Card';
+import Title from './Shared/Title';
 
 // Images
 import prof_pic from '../../assets/profile_pic.png'
@@ -12,12 +13,13 @@ class Profiles extends Component {
     render() {
         return (
             <div className="profiles-wrapper">
-                <div className="profiles-top">
+                {/* <div className="profiles-top">
                      <div className="details-top-title">
                         Classmate Profiles
                      </div>
-                </div> 
+                </div>  */}
 
+                <Title title="Classmate Profiles"/>
 
                 <div className="profiles-table">
                     <div className="table-header">
@@ -30,46 +32,6 @@ class Profiles extends Component {
                     <Card name="Steven Nagie" imageUrl={prof_pic} attending="Yes"/>
                     <Card name="Abraham Lincoln" imageUrl={prof_pic} attending="Yes"/>
                 </div>
-
-
-
-
-
-                 {/* <div className="details-table-wrapper">
-
-                    <table className="details-table">
-                       
-                        <thead>
-                            <tr>
-                                <th className="table-header header-name">Name</th>
-                                <th className="table-header header-attending">Attending?</th>
-                            </tr>
-                        </thead>
-
-                      
-                        <tbody>
-                            <tr>
-                                <td className="table-row-item-name">
-                                    <div className="table-row-item-card">
-                                        <div className="card-img">
-                                            <img src={prof_pic} className="card-pic" alt="Profile Pic"/>
-                                        </div>
-                                        <div className="card-name">
-                                            Gustav
-                                        </div>
-
-                                    </div>
-                                </td>
-                                <td className="table-row-item-bool">
-                                    <div>Yes</div>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-
-                </div>  */}
-
             </div>
         );
     }

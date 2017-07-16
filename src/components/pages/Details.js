@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 
+// Components
+import Title from './Shared/Title';
+
+// Images
 import bengal_logo from '../../assets/brighton-logo.png';
 
+// CSS
 import './Details.css';
 
 class Details extends Component {
     render() {
         return (
             <div className="details-wrapper">
-                 <div className="details-top">
-                     <div className="details-top-title">
-                        Event Details
-                     </div>
-                </div> 
+                <Title title="Event Details"/>
 
                 <div className="details-date-bar">
                     <div className="details-date-bar-title">
