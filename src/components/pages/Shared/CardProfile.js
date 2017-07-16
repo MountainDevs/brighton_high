@@ -1,9 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+// Images
+import prof_pic from '../../../assets/profile_pic.png';
 // CSS
-import './Card.css';
+import './CardProfile.css';
 
-const Card = props => {
+const CardProfile = props => {
     return (
         <div className="table-card">
             <div className="card-left">
@@ -21,11 +23,18 @@ const Card = props => {
     );
 };
 
-Card.propTypes = {
-    name: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired
-};
+CardProfile.defaultProps = {
+    name: 'John Doe',
+    imageUrl: prof_pic,
+    attending: 'N/A'
+}
 
-export default Card;
+// CardProfile.propTypes = {
+//     name: PropTypes.string.isRequired,
+//     imageUrl: PropTypes.string.isRequired,
+//     attending: PropTypes.string.isRequired
+// };
+
+export default CardProfile;
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // Components
-import Card from './Shared/Card';
+import CardProfile from './Shared/CardProfile';
 import Title from './Shared/Title';
 // Images
 import prof_pic from '../../assets/profile_pic.png'
@@ -19,10 +19,11 @@ class Profiles extends Component {
                         <div>Attending?</div>
                     </div>
                     {/* Placeholders until mapping over data and outputting Cards  */}
-                    <Card name="Gustav Nordstrom" imageUrl={prof_pic} attending="Yes"/>
-                    <Card name="Jon Myrick" imageUrl={prof_pic} attending="Yes"/>
-                    <Card name="Steven Nagie" imageUrl={prof_pic} attending="Yes"/>
-                    <Card name="Abraham Lincoln" imageUrl={prof_pic} attending="Yes"/>
+                    <CardProfile name="Gustav Nordstrom" imageUrl={prof_pic} attending="Yes"/>
+                    <CardProfile name="Jon Myrick" imageUrl={prof_pic} attending="Yes"/>
+                    <CardProfile name="Steven Nagie" imageUrl={prof_pic} attending="Yes"/>
+                    <CardProfile name="Abraham Lincoln" imageUrl={prof_pic} attending="Yes"/>
+                    <CardProfile />
                 </div>
             </div>
         );
