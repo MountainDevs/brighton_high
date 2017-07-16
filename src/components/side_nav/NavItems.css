@@ -1,0 +1,33 @@
+/* 
+    Colors 
+
+    navheader-bg #12222D
+    navitems-bg #242D33
+    date-header bg #537187
+    light blue font color - #5EC1EB
+    off white - #ffffff
+*/
+
+.navitems-wrapper {
+    background-color: #242D33;
+    height: 100%;
+}
+
+.navitems-list {
+    /* border: 1px solid red;  */
+    width: 80%;
+    margin: 0 auto;
+}
+
+.navitems-list li {
+    padding: 15px;
+}
+
+.navitems-link {
+    color: #fff;
+
+}
+
+.navitems-link-selected {
+    color: #5ec1eb;
+}
