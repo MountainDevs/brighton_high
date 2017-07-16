@@ -8,7 +8,7 @@ import './NavHeader.css';
 const NavHeader = props => {
     return (
         <div className="navheader-wrapper">
-            <Link to="/my_profile">
+            <Link to="/user/1">
                 <div className="navheader-content">
                     <div className="navheader-image-wrapper">
                         <img className="navheader-image" src={props.imageUrl} alt="Profile"/>
