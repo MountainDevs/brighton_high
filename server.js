@@ -6,10 +6,12 @@ const app = module.exports = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const massive = require('massive');
-const config = require('./config');
+const config = require('./config.json');
 
-massive(config.databaseString).then(instance => {
+massive(config.databaseString)
+.then(instance => {
   const db = instance;
+  
   app.use(express.static('./build'))
   app.use(bodyParser.json());
   app.use(require('./services/amazon/s3-upload.controller'));
@@ -17,9 +19,6 @@ massive(config.databaseString).then(instance => {
 
   const controller = require('./controller');
   const auth = require('./services/auth/auth.controller');
-  const userProfile = require('./services/profile/user-profile.controller');
-
-  
 
   var port = process.env.PORT || 8080;
   app.listen(port, function () {
