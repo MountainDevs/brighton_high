@@ -4,20 +4,20 @@
     display: flex;
     border-bottom: 1px solid #e5e5e5;
 }
-
+/*===========
+    Left
+===========*/
 .card-left {
     width: 380px;
     height: 100%;
     display: flex;
     align-items: center;
 }
-
 .card-left-photo {
     width: 60px;
     margin-left: 38px;
     margin-right: 40px;
 }
-
 .card-left-photo img {
     width: 100%;
 }
@@ -25,14 +25,13 @@
     font-size: 19px;
 }
 
-
-
-
+/*===========
+    Right
+===========*/
 .card-right {
     display: flex;
     align-items: center;
 }
-
 .card-right-text {
     font-size: 19px;
     margin-left: 110px;

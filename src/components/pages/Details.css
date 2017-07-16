@@ -3,16 +3,6 @@
     width: calc(100% - 300px);
 }
 
-.details-top {
-    height: 34px;
-    display: flex;
-    align-items: center;
-}
-.details-top-title {
-    font-size: 25px;
-    color: #444;
-    margin-left: 50px;
-}
 
 .details-date-bar {
     background-color: #537187;
