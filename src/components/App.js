@@ -5,6 +5,7 @@ import Profiles from './pages/Profiles';
 import Classmates from './pages/Classmates';
 import Contact from './pages/Contact';
 import MyProfile from './pages/MyProfile';
+import UserProfile from './pages/UserProfile';
 import Admin from './pages/Admin';
 import Login from './login/Login';
 import Register from './register/Register';
@@ -65,6 +66,15 @@ class App extends Component {
                         <div style={{display: 'flex'}}>
                           <SideNav />
                           <MyProfile />
+                        </div>
+                      </div>
+              }/>
+              <Route exact path="/user/:id" render={
+                () => <div>
+                        <Header />
+                        <div style={{display: 'flex'}}>
+                          <SideNav />
+                          <UserProfile />
                         </div>
                       </div>
               }/>
