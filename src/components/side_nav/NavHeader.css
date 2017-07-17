@@ -1,0 +1,30 @@
+.navheader-wrapper {
+    height: 100px;
+    background-color: #12222D;
+}
+
+.navheader-content {
+    width: 90%;
+    height: 100%;
+    margin: auto; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+}
+
+.navheader-image-wrapper {
+    width: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.navheader-image {
+    width: 65px;
+    height: 65px;
+}
+
+.navheader-name {
+    color: white;
+    font-size: 20px;
+     margin-right: 60px; 
+}

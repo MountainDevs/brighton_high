@@ -1,0 +1,25 @@
+.header-wrapper {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+     border-bottom: 1px solid #fbfbfb; 
+}
+
+.header-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 20px;
+}
+
+.header-login {
+    /* border: 1px solid black; */
+    font-size: 15px;
+    margin-right: 20px;
+}
+
+.login-button {
+    text-decoration: none;
+    color: #555;
+}

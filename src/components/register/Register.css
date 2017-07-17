@@ -1,0 +1,74 @@
+.register-bg {
+  font-weight: 100;
+  width: 100vw;
+  height: 100vh;
+  background: #333;
+}
+
+.register-wrapper {
+  border-radius: 3px;
+  background: #FFFFFF;
+  width: 500px;
+  height: 550px;
+  position: absolute;
+  left: calc((100% - 500px) / 2);
+  top: calc((100% - 600px) / 2)
+}
+
+.register-header {
+  border-radius: 3px 3px 0 0;
+  font-size: 15px;
+  text-align: center;
+  background: #537187;
+  color: #ffffff;
+  padding: 20px
+}
+
+.register-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-text {
+  font-size: 14px;
+  width: 400px;
+  margin: 50px 20px;
+}
+
+.register-input {
+  padding-left: 10px;
+  font-size: 15px;
+  display: block;
+  margin: 20px 0;
+  height: 50px;
+  width: 350px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #999;
+}
+
+.register-icon {
+  margin: 20px 0;
+  height: 52px;
+  width: 50px;
+  border-bottom: 1px solid #999;
+}
+
+.register-password {
+  margin: 20px;
+}
+
+.register-register {
+  border-radius: 3px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 13px;
+  margin: 30px;
+  width: 75px;
+  padding: 15px;
+  background: #72B9D7;
+}
+
+

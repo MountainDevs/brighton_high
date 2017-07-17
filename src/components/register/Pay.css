@@ -1,0 +1,46 @@
+.pay-bg {
+  font-weight: 100;
+  width: 100vw;
+  height: 100vh;
+  background: #333;
+}
+
+.pay-wrapper {
+  background: #FFFFFF;
+  width: 700px;
+  height: 600px;
+  position: absolute;
+  left: calc((100% - 700px) / 2);
+  top: calc((100% - 600px) / 2)
+}
+
+.pay-header {
+  font-size: 15px;
+  background: #537187;
+  color: #ffffff;
+  padding: 20px
+}
+
+.pay-body p {
+  margin: 30px 20px;
+}
+
+.stripe-code {
+  margin: 20px;
+  height: 350px;
+  width: 660px;
+  border: 1px solid #EAEAEA;
+}
+
+.pay-buttons {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.pay-buttons :nth-child(1){
+  font-size: 12px;
+  color: #72B9D7;
+  margin: 20px;
+  padding: 13px;
+}
