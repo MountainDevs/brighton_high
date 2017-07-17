@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const BASEURL = 'http://localhost:5000';
 let permissions = {
-  payed: false
+  payed: false,
 }
 let userData = {
   email: '',

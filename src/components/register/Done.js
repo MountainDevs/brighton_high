@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { postUser, permissions } from '../../dataService'
 import './Done.css';
 
 class Done extends Component {
   componentDidMount(){
-    postUser();
+    postUser().then(res => {
+      console.log(res)
+      permissions.payed = false;
+    });
   }
   render() {
-    return (
+    return !permissions.payed ? <Redirect to='/' />:
       <div className='done-bg'>
         <div className='done-wrapper'>
           <div className='done-header'>Ready to go!</div>
@@ -20,7 +23,6 @@ class Done extends Component {
           </div>
         </div>
       </div>
-    );
   }
 }
 
