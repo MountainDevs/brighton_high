@@ -6,7 +6,7 @@ import './Pay.css';
 class Pay extends Component {
 
     componentWillUnmount(){
-        permissions = true;
+        permissions.payed = true;
     }
 
     render() {
