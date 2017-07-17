@@ -12,7 +12,7 @@ class ClassMates extends Component {
         super();
 
         this.state = {
-
+            classmates: []
         }
     }
 
