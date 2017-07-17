@@ -70,14 +70,16 @@ class App extends Component {
                       </div>
               }/>
               <Route exact path="/user/:id" render={
-                () => <div>
-                        <Header />
-                        <div style={{display: 'flex'}}>
-                          <SideNav />
-                          <UserProfile />
-                        </div>
-                      </div>
-              }/>
+                (props) => { 
+                    {/* console.log(props) */}
+                    return (<div>
+                            <Header />
+                            <div style={{display: 'flex'}}>
+                              <SideNav />
+                              <UserProfile match={props.match}/>
+                            </div>
+                    </div>)
+              }}/>
               <Route exact path="/admin" render={
                 () => <div>
                         <Header />

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// Components
+ // Components
 import TopInfo from './MyProfile/TopInfo';
 import ContactForm from './MyProfile/ContactForm';
 import AboutForm from './MyProfile/AboutForm';
-
 // CSS
 import './MyProfile.css';
 
