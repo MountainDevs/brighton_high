@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Title from './Shared/Title';
 import CardClassmates from './Shared/CardClassmates';
 // Data
-import { getAllUsers } from '../../dataService.js';
+import { getClassmates } from '../../dataService.js';
 // CSS
 import './Classmates.css';
 
@@ -16,8 +16,10 @@ class ClassMates extends Component {
         }
     }
 
-    ComponentDidMount() {
-        // getAllUsers();
+    componentDidMount() {
+        getClassmates().then( response => {
+            console.log(response)
+        })
     }
 
     render() {
