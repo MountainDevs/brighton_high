@@ -17,12 +17,22 @@ class ClassMates extends Component {
     }
 
     componentDidMount() {
-        getClassmates().then( response => {
-            console.log(response)
+        getClassmates().then( classmates => {
+            this.setState({classmates})
         })
     }
 
     render() {
+        let classmateList = this.state.classmates.map( classmate => {
+            return (
+                <CardClassmates 
+                    name={`${classmate.first_name} ${classmate.last_name}`}
+                    found={(classmate.found) ? "Yes" : "No" }
+                    key={classmate.id}
+                />
+            )
+        })
+
         return (
             <div className="component-wrapper">
                 <Title title="Help us find our classmates!"/>
@@ -32,10 +42,7 @@ class ClassMates extends Component {
                         <div>Name</div>
                         <div className="table-header-right">Found?</div>
                     </div>
-
-                    <CardClassmates />
-                    <CardClassmates />
-                
+                    {classmateList}                
                 </div>
             </div>
         );

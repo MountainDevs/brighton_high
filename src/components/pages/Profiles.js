@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 // Components
 import CardProfile from './Shared/CardProfile';
 import Title from './Shared/Title';
@@ -25,13 +26,14 @@ class Profiles extends Component {
     }
 
     render() {
-        let classmateList = this.state.users.map( user => {
+        let profileList = this.state.users.map( user => {
             return (
-                <CardProfile 
-                    name={user.first_name}
-                    attending={ (user.attending == null) ? "N/A" : "Yes" }
-                    key={user.id}
-                />
+                <Link to={`/user/${user.id}`} key={user.id}>
+                    <CardProfile 
+                        name={user.first_name}
+                        attending={ (user.attending == null) ? "N/A" : "Yes" }
+                    />
+                </Link>
             )
         })
 
@@ -45,7 +47,7 @@ class Profiles extends Component {
                         <div>Attending?</div>
                     </div>
      
-                    {classmateList}
+                    {profileList}
                 </div>
             </div>
         );

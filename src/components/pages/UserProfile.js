@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
 // Components
 import Title from './Shared/Title';
+// Data
+import { getUser } from '../../dataService.js';
 // Images
 import prof_pic from '../../assets/profile_pic.png';
 // CSS
 import './UserProfile.css';
 
 class UserProfile extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            user: {}
+        }
+    }
+
+    componentWillMount() {
+        getUser(this.props.match.params.id).then( user => this.setState({user}))
+    }
     render() {
+        console.log(this.state.user)
+        const {user} = this.state;
         return (
             <div className="component-wrapper">
                 <Title title="Profile Page"/>
@@ -18,16 +33,16 @@ class UserProfile extends Component {
                         <div className="pcard-top">
                             <div className="pcard-top-left">
                                 <div className="pcard-top-left-imgwrap">
-                                    <img src={prof_pic}/>
+                                    <img src={user.photo}/>
                                 </div>
                             </div>
                             <div className="pcard-top-right">
-                                <div className="pcard-top-right-name">John Smith</div>
+                                <div className="pcard-top-right-name">{`${user.first_name || ''} ${user.last_name || ''}`}</div>
                                 <hr />
                                 <div className="pcard-top-right-content">
                                     <h3>Contact info goes here</h3>
-                                    <p>Email: test@gmail.com</p>
-                                    <p>Phone: 111-111-1111</p>
+                                    <p>Email: {user.email}</p>
+                                    <p>Phone: {user.phone || 'N/A'}</p>
                                 </div>
                             </div>
                         </div>
