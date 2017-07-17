@@ -15,7 +15,7 @@ class SideNav extends Component {
         return (
             <div className="sidenav-wrapper">
                 <NavHeader 
-                    name="Gustav Nordstrom"
+                    name="Gustav"
                     imageUrl={profile_pic}
                 />
                 

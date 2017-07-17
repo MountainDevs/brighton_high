@@ -45,6 +45,15 @@ const NavItems = () => {
                                 Contact
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink 
+                            to="/my_profile" 
+                            className="navitems-link" 
+                            activeClassName="navitems-link-selected" 
+                            exact>
+                                My Profile
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
         </div>

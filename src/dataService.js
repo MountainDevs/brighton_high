@@ -44,7 +44,7 @@ function postStripeRecord() {
   axios.post(`${BASEURL}/api/stripe_record`)
 }
 
-function getUser(email) {
+function getUser(id) {
   axios.get(`${BASEURL}/api/user`)
   .then(res => {
     
