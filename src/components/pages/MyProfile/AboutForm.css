@@ -1,9 +1,17 @@
-.aboutForm-wrapper {
+.additional-bg {
+  font-weight: 100;
+  width: 100vw;
+  height: 100vh;
+  background: #333;
+}
+
+.additional-wrapper {
   background: #FFFFFF;
   width: 500px;
   height: 600px;
-  margin: 0 auto;
-  border: 1px solid black;
+  position: absolute;
+  left: calc((100% - 500px) / 2);
+  top: calc((100% - 600px) / 2)
 }
 
 .additional-header {

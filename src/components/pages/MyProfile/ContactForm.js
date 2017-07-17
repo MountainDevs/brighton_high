@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// Data
-import { userData } from './../../dataService';
-// CSS
-import './ContactInfo.css';
+import { userData } from '../../../dataService';
 
-class ContactInfo extends Component {
+import './ContactForm.css';
+
+class ContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,9 +36,8 @@ class ContactInfo extends Component {
 
   render() {
     return (
-      <div className='contactInfo-bg'>
-        <div className='contactInfo-wrapper'>
-          <div className='contactInfo-header'>Contact Information</div>
+        <div className='contactForm-wrapper'>
+          <div className='contactInfo-header'>CONTACT</div>
           <div className='contactInfo-body'>
             <section>
               <div>
@@ -71,9 +69,8 @@ class ContactInfo extends Component {
             </div> 
           </div>
         </div>
-      </div>
     );
   }
 }
 
-export default ContactInfo;
+export default ContactForm;
