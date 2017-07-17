@@ -15,7 +15,8 @@ CREATE TABLE users (
     zipcode TEXT,
     bio VARCHAR(255),
     attending BOOLEAN,
-    photo TEXT
+    photo TEXT,
+    permissions VARCHAR(15)
 );
 
 DROP TABLE IF EXISTS stripe_records;

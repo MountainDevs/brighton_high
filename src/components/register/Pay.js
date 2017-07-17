@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { postUser, permissions } from '../../dataService'
 import './Pay.css';
 
 class Pay extends Component {
+
+    componentWillUnmount(){
+        permissions = true;
+    }
+
     render() {
         return (
             <div className='pay-bg'>
@@ -15,6 +21,7 @@ class Pay extends Component {
                         </section>
                         <div className='pay-buttons'>
                             <Link to='/register/additional'>Back</Link>
+                            <Link to='/register/done'>Continue</Link>
                         </div> 
                     </div>
                 </div>
