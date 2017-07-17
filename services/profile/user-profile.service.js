@@ -64,6 +64,19 @@ function updateUser(req, res, next) {
   });
 }
 
+function updateClassmates(req, res, next) {
+  db.classmates.update({
+    id: req.body.id,
+    email: req.body.email
+  })
+  .then(classmates => {
+    res.send(classmates)
+  })
+  .catch(err => {
+    console.log(err)
+  });
+}
+
 function getAllUsers(req, res, next) {
   db.get_all_users()
   .then(users => {
@@ -101,6 +114,7 @@ module.exports = {
   getUser,
   postUser,
   updateUser,
+  updateClassmates,
   getAllUsers, 
   getClassmates,
   postStripeRecord

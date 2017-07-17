@@ -1,7 +1,9 @@
 const axios = require('axios');
 
 const BASEURL = 'http://localhost:5000';
-
+let permissions = {
+  payed: false
+}
 let userData = {
   email: '',
   password: '',
@@ -28,45 +30,33 @@ function logout() {
 }
 
 function postUser() {
-  axios.post(`${BASEURL}/api/user`, userData)
-  .then(res => {
-    console.log(res.data)
-  })
+  return axios.post(`${BASEURL}/api/user`, userData)
+  .then(res => res.data)
 }
 
 function updateUser() {
-  axios.post(`${BASEURL}/api/user`, userData)
-  .then(res => {
-    console.log(res.data)
-  })
+  return axios.post(`${BASEURL}/api/user`, userData)
+  .then(res => res.data)
 }
 
 function postStripeRecord(record) {
-  axios.post(`${BASEURL}/api/stripe_record`, {record})
-  .then(res => {
-    console.log(res.data)
-  })
+  return axios.post(`${BASEURL}/api/stripe_record`, {record})
+  .then(res => res.data)
 }
 
 function getUser(id) {
-  axios.get(`${BASEURL}/api/user/${id}`)
-  .then(res => {
-    console.log(res.data)
-  })
+  return axios.get(`${BASEURL}/api/user/${id}`)
+  .then(res => res.data)
 }
 
 function getAllUsers() {
-  axios.get(`${BASEURL}/api/all_users`)
-  .then(res => {
-    console.log(res.data)
-  })
+  return axios.get(`${BASEURL}/api/all_users`)
+  .then(res => res.data)
 }
 
 function getClassmates() {
-  axios.get(`${BASEURL}/api/classmates`)
-  .then(res => {
-    console.log(res.data)
-  })
+  return axios.get(`${BASEURL}/api/classmates`)
+  .then(res =>  res.data)
 } 
 
 module.exports = {
@@ -78,16 +68,7 @@ module.exports = {
   postStripeRecord,
   getUser,
   getAllUsers,
-  getClassmates
+  getClassmates,
+  permissions
 }
 
-
-//TESTING
-
-
-  postUser()
-  updateUser()
-  postStripeRecord('7362495876439')
-  getUser(1)
-  getAllUsers()
-  getClassmates()
