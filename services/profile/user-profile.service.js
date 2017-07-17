@@ -5,96 +5,95 @@ const app = require('../../server');
 const db = app.get('db');
 
 
-
-
 //=================================================//
 db.tables_seed()
 .then(data => {
-  console.log('User table successfully reset');
+  console.log('All tables successfully reset');
 })
 .catch(err => {
   console.log(err)
 });
-
-db.users.save({
-    first_name: 'Sean',
-    last_name: 'White',
-    middle_name: 'Fucking',
-    email: 'itsMe@gmail.com',
-    password: 'passw0rd',
-    phone: '9999999',
-    address: '123 East St',
-    city: 'Salt Lake City',
-    state: 'UT',
-    zipcode: '84675',
-    bio: 'THIS IS A TEST BIO',
-    attending: true,
-    photo: "no photo"
-  })
-  .then(user => {
-    console.log(user)
-  })
-  .catch(err => {
-    console.log(err)
-});
-
-// db.read_users()
-// .then(res => {
-//   console.log(res)
-// })
-// .catch(err => {
-//   console.log(err)
-// });
-
 //=================================================//
 
 
+
 function getUser(req, res, next) {
-  db.read_users()
+
+  db.users.findOne(Number(req.params.id))
   .then(data => {
     res.json(data);
   }).catch(err => {
-    res.status(500).json(err);
+    console.log(err)
   });
 }
 
 function postUser(req, res, next) {
-  var user = req.body;
-  db.users.save({
-    first_name: user.first_name,
-    last_name: user.last_name,
-    email: user.email,
-    password: user.password,
-    phone: user.phone,
-    address: user.address,
-    city: user.city,
-    state: user.state,
-    zipcode: user.zipcode,
-    bio: user.bio,
-    attending: user.attending,
-    photo: "no photo"
-  }).then(user => {
-    res.json(user);
-  }).catch(err => {
-    res.status(500).json(err);
+  db.users.insert({
+    first_name: req.body.firstName,
+    last_name: req.body.lastName,
+    middle_name: req.body.middleName,
+    email: req.body.email,
+    password: req.body.password,
+    phone: req.body.phone,
+    address: req.body.address,
+    city: req.body.city,
+    state: req.body.state,
+    zipcode: req.body.zipcode,
+    bio: req.body.bio,
+    attending: req.body.attending,
+    photo: req.body.photo
+  })
+  .then(user => {
+    res.send(user)
+  })
+  .catch(err => {
+    console.log(err)
   });
 }
 
 function updateUser(req, res, next) {
-  //is this the same DB action as a post? 
+  db.users.update({
+    id: req.body.id,
+    email: req.body.email
+  })
+  .then(user => {
+    res.send(user)
+  })
+  .catch(err => {
+    console.log(err)
+  });
 }
 
-
 function getAllUsers(req, res, next) {
-  //return all the registered user (picture, firstName, lastName, attending)
+  db.get_all_users()
+  .then(users => {
+    res.send(users)
+  })
+  .catch(err => {
+    console.log(err)
+  });
 }
 
 function getClassmates(req, res, next) {
-  //return all classmates whos found field is false
+  db.get_classmates()
+  .then(classmates => {
+    res.send(classmates)
+  })
+  .catch(err => {
+    console.log(err)
+  });
 }
 
 function postStripeRecord(req, res, next) {
-  //post stripe records to a stripe table for Sterling
+  db.stripe_records.insert({
+    record: req.body.record
+  })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    console.log(err)
+  });
 }
 
 

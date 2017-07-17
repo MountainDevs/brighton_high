@@ -15,6 +15,7 @@ massive(config.databaseString)
   app.use(express.static('./build'))
   app.use(bodyParser.json());
   app.use(require('./services/amazon/s3-upload.controller'));
+  app.use(cors())
   app.set('db', db);
 
   const controller = require('./controller');
