@@ -2,13 +2,14 @@ const app = require('../../server'),
       db = app.get('db'),
       _ = require('lodash'),
       jwt = require('jsonwebtoken'),
+      expressJwt = require('express-jwt'),
       config = require('../../config.json');
 
 createToken = (user) => {
   return jwt.sign(_.omit(user, 'password'), config.secret, { expiresIn: 60*60*5 });
 }  
 
-app.post('/sessions/create', (req, res, next) => {
+app.post('/api/sessions/create', (req, res, next) => {
   db.log_in([req.body.username, req.body.password]).then(user => {
     if (user[0]) {
       res.json({
@@ -25,3 +26,7 @@ app.post('/sessions/create', (req, res, next) => {
   });
 });
 
+app.get('/api/admin', expressJwt({ secret: config.secret }), (req, res) => {
+  if (!req.user.admin) return res.sendStatus(401);
+  res.sendStatus(200);
+})

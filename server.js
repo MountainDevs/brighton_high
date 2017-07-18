@@ -14,12 +14,17 @@ massive(config.databaseString)
   
   app.use(express.static('./build'))
   app.use(bodyParser.json());
+  app.use(cors());
   app.use(require('./services/amazon/s3-upload.controller'));
   app.use(cors())
   app.set('db', db);
 
   const controller = require('./controller');
   const auth = require('./services/auth/auth.controller');
+  const userProfile = require('./services/profile/user-profile.controller');
+  const alumni = require('./services/alumni/alumni.controller');
+
+  
 
   var port = process.env.PORT || 8080;
   app.listen(port, function () {

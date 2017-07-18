@@ -5,12 +5,12 @@ let permissions = {
   payed: false,
 }
 let userData = {
+  id: '',
   email: '',
   password: '',
   firstName: '',
   lastName: '',
   middleName: '',
-  email: '',
   phone: '',
   address: '',
   city: '',
@@ -35,6 +35,7 @@ function postUser() {
 }
 
 function updateUser() {
+  console.log(userData);
   return axios.post(`${BASEURL}/api/user`, userData)
   .then(res => res.data)
 }

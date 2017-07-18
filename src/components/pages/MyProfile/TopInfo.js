@@ -6,6 +6,7 @@ import { userData } from '../../../dataService';
 import prof_pic from '../../../assets/profile_pic.png';
 // CSS
 import './TopInfo.css';
+import FileUpload from '../../../old_code/ProfilePage/FileUpload';
 
 class TopInfo extends Component {
     constructor(props) {
@@ -15,7 +16,8 @@ class TopInfo extends Component {
             lastName: '',
             middleName: '',
             email: userData.email || '',
-            phone: ''
+            phone: '',
+            photoSrc: userData.photo || '../../../assets/profile_pic.png'
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -44,6 +46,7 @@ class TopInfo extends Component {
                 <div className='personal-photo'>
                     <img src={prof_pic} alt=""/>
                     <div>Upload Photo</div>
+                    <FileUpload />
                 </div> 
                 <div className='personal-info'>
                 <section style={{display: 'flex'}}>
