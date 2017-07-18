@@ -1,2 +1,2 @@
-SELECT username, admin FROM users
-WHERE username = $1 AND password = $2;
+SELECT * FROM users
+WHERE email = $1 AND password = $2;
