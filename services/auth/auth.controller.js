@@ -34,7 +34,7 @@ app.get('/api/sessions/current', expressJwt({secret: config.secret}), (req, res,
   }
 });
 
-app.get('/api/admin', expressJwt({ secret: config.secret }), (req, res) => {
-  if (!req.user.admin) return res.sendStatus(401);
-  res.sendStatus(200);
-})
+// app.get('/api/admin', expressJwt({ secret: config.secret }), (req, res) => {
+//   if (!req.user.admin) return res.sendStatus(401);
+//   res.sendStatus(200);
+// });
