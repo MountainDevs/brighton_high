@@ -112,7 +112,7 @@ function getAllUsers() {
 }
 
 function getClassmates() {
-  return axios.get(`/api/classmates`)
+  return axios.get(`/api/alumni`)
   .then(res =>  res.data)
 } 
 
