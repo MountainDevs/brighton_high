@@ -62,3 +62,7 @@
   position: relative;
   left: 40px;
 }
+
+.tall {
+  height: 500px !important;
+}

@@ -9,6 +9,8 @@ const dataService = require('../../dataService');
  class FileUpload extends React.Component{
    constructor(props) {
      super(props)
+
+     
    }
 
   onDrop (files) {
@@ -25,7 +27,7 @@ const dataService = require('../../dataService');
 
   render(){
     return (
-        <div className={ 'margin-top-20 ' +  (this.props.hideUpload ? 'hidden' : '') }>
+        <div className={ 'margin-top-20 pointer ' +  (this.props.hideUpload ? 'hidden' : '') }>
           <Dropzone onDrop={this.onDrop} multiple={false}>
             <div>Try dropping a file here, or click to select a file to upload.</div>
           </Dropzone>
