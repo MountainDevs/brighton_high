@@ -7,7 +7,7 @@ import prof_pic from '../../../assets/profile_pic.png';
 // CSS
 import './TopInfo.css';
 import '../../../styles/common.css';
-import FileUpload from '../../../old_code/ProfilePage/FileUpload';
+import FileUpload from '../../FileUpload/FileUpload';
 
 class TopInfo extends Component {
     constructor(props) {

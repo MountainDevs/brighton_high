@@ -4,7 +4,7 @@ import { userData } from './../../dataService';
 import './Personal.css';
 import '../../styles/common.css';
 import prof_pic from '../../assets/profile_pic.png'
-import FileUpload from '../../old_code/ProfilePage/FileUpload';
+import FileUpload from '../FileUpload/FileUpload';
 
 class Personal extends Component {
   constructor(props) {
