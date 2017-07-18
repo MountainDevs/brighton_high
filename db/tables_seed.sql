@@ -26,22 +26,9 @@ CREATE TABLE stripe_records (
     record VARCHAR(255)
 );
 
-DROP TABLE IF EXISTS classmates;
-
-CREATE TABLE classmates (
-    id SERIAL PRIMARY KEY,
-    first_name VARCHAR(255),
-    last_name VARCHAR(255),
-    found BOOLEAN
-);
-
-
 INSERT INTO users (first_name, last_name, email, password) VALUES
 ('Jon', 'Myrick', 'jon@gmail.com', '123'),
 ('Sara', 'Johnson', 'sara@gmail.com', '123');
 
 INSERT INTO stripe_records (record) VALUES
 ('this is a stripe record');
-
-INSERT INTO classmates (first_name, last_name, found) VALUES
-('Travis', 'Pastrana', false);
