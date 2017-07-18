@@ -66,3 +66,14 @@
 .tall {
   height: 500px !important;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-height-width {
+  height: 100%;
+  width: 100%;
+}
