@@ -6,7 +6,6 @@ const express = require('express'),
     config = require('../../config.json'),
     cors = require('cors');
 
-//TODO: Have total services file, which imports everything from services then exports an app that uses everything so that the server only has to import the one file.
 
 //It's worth noting that this will use up server ram, so we have to be careful not to get overloaded.
 const upload = multer({
@@ -16,5 +15,7 @@ const upload = multer({
 
 
 app.post('/api/s3/upload', upload.single('file'), amazon.upload);
+
+app.put('/api/s3/delete', amazon.delete);
 
 module.exports = app;

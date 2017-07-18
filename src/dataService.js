@@ -60,6 +60,22 @@ function getClassmates() {
   .then(res =>  res.data)
 } 
 
+function changePhoto(photoString) {
+  var oldPhoto = userData.photo;
+  if (oldPhoto) {
+    return axios.put(`${BASEURL}/api/s3/delete`, {photoKey: oldPhoto})
+      .then(res => {
+        userData.photo = photoString;
+        return updateUser();
+      })
+      .catch(err => {
+        return err;
+      })
+  } else {
+    userData.photo = photoString;
+  }
+}
+
 module.exports = {
   userData,
   login,
@@ -70,6 +86,7 @@ module.exports = {
   getUser,
   getAllUsers,
   getClassmates,
-  permissions
+  permissions,
+  changePhoto
 }
 

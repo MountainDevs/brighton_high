@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // Data
 import { userData } from '../../../dataService';
-// Images
-import prof_pic from '../../../assets/profile_pic.png';
 // CSS
 import './TopInfo.css';
 import FileUpload from '../../../old_code/ProfilePage/FileUpload';
@@ -44,7 +42,7 @@ class TopInfo extends Component {
                 <div className='personal-header'>PROFILE</div>
                 <div className='personal-body'>
                 <div className='personal-photo'>
-                    <img src={prof_pic} alt=""/>
+                    <img src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photoSrc} alt={this.state.firstName || "No picture"}/>
                     <div>Upload Photo</div>
                     <FileUpload />
                 </div> 

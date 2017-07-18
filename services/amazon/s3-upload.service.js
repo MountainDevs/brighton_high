@@ -29,5 +29,16 @@ module.exports = {
         };
         res.send(toReturn);
     })
+  },
+  delete: (req, res, next) => {
+    s3.deleteObject({
+      Bucket: 'brighton-high-1987',
+      Key: req.body.photoKey
+    }, (err, data) => {
+      if (err) {
+        return res.status(400).send(err);
+      }
+      res.sendStatus(200);
+    })
   }
 }

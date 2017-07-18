@@ -11,9 +11,7 @@ const dataService = require('../../dataService');
         if (err) {
           console.log(err);
         } else {
-          //Save the file name to the user: JSON.parse(res.text).fileName;
-          dataService.userData.photo = JSON.parse(res.text).fileName;
-          dataService.userData.updateUser();
+          dataService.changePhoto(JSON.parse(res.text).fileName);
         }
       })
     }
