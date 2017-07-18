@@ -21,7 +21,7 @@ massive(config.databaseString)
 
   const controller = require('./controller');
   const auth = require('./services/auth/auth.controller');
-  // const alumni = require('./services/alumni/alumni.controller');
+  const alumni = require('./services/alumni/alumni.controller');
 
   
 
