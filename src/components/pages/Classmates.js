@@ -35,7 +35,7 @@ class ClassMates extends Component {
 
         return (
             <div className="component-wrapper">
-                <Title title="Help us find our classmates!"/>
+                <Title title="Help us find our classmates!" message="If you have any information about someone on the list, please email Jessica@brightonhigh1987.com."/>
 
                 <div className="classmates-table">
                     <div className="table-header">
