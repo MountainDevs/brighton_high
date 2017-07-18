@@ -9,8 +9,6 @@ const dataService = require('../../dataService');
  class FileUpload extends React.Component{
    constructor(props) {
      super(props)
-
-     console.log(this.props.hideUpload);
    }
 
   onDrop (files) {
