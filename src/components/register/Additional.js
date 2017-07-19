@@ -31,7 +31,10 @@ class Additional extends Component {
         <div className='additional-wrapper'>
           <div className='additional-header'>Additional Information</div>
           <div className='additional-body'>
-            <p>Here will be some sort of Bio. Tell us where you have been and what you have been up to</p>
+            <p>Please provide any additional information you feel could be interesting to your classmates. 
+              <br />
+              <br />
+              For example, where you’ve been and what you’ve been up to, family, career, etc.</p>
             <textarea id="bio" name='bio' cols="30" rows="10" value={this.state.bio} onChange={this.handleInputChange}></textarea>
             <div className='additional-buttons'>
               <Link to='/register/contact_info'>Back</Link>
