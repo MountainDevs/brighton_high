@@ -11,11 +11,11 @@ class Login extends Component {
                     <div className='login-body'>
                         <div className='login-text'>We are excited to have you here! Login to view your classmate profiles</div>
                         <div style={{display: 'flex'}}>
-                            <div className='login-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
+                            <div className='login-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
                             <input type="email" placeholder='example@gmail.com' className='login-input'/>
                             </div> 
                         <div style={{display: 'flex'}}>
-                            <div className='login-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
+                            <div className='login-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
                             <input type="password" className='login-input'/>
                             </div> 
                         <Link to='/'><div className='login-login'>Login</div></Link>
