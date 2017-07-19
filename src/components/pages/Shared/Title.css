@@ -1,0 +1,10 @@
+.title-top {
+    height: 34px;
+    display: flex;
+    align-items: center;
+} 
+.title-top-title {
+    font-size: 25px;
+    color: #444;
+    margin-left: 50px;
+}

@@ -1,0 +1,75 @@
+.topInfo-wrapper {
+    border-radius: 3px;
+    border: 1px solid black;
+    background: #FFFFFF;
+    width: 700px;
+    height: 350px;
+    margin: 1px auto 40px auto;
+}
+
+.personal-header {
+  border-radius: 3px 3px 0 0;
+  font-size: 15px;
+  background: #537187;
+  color: #ffffff;
+  padding: 15px
+}
+
+.personal-body {
+   display: flex;
+}
+
+.personal-photo {
+  padding: 40px 0 40px 40px;
+  color: #72B9D7;
+  text-decoration: underline;
+  font-size: 13px;
+  text-align: center;
+}
+.personal-photo img{
+  margin: 10px 0 20px 0;
+  width: 100px;
+}
+
+.personal-info {
+  padding: 40px;
+}
+
+.personal-info label {
+  display: block;
+  font-size: 13px;
+  margin: 5px 0;
+}
+.personal-info div {
+  margin: 10px;
+}
+.personal-info input {
+  outline: none;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding-left: 5px;
+  width: 200px;
+  height: 25px;
+}
+
+.personal-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.personal-buttons :nth-child(1){
+  font-size: 12px;
+  color: #72B9D7;
+  margin: 20px;
+  padding: 13px;
+}
+.personal-buttons :nth-child(2){
+  margin: 20px;
+  color: #ffffff;
+  font-size: 13px;
+  background: #FF8200;
+  text-align: center;
+  border-radius: 3px;
+  width: 75px;
+  padding: 13px;
+}

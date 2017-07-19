@@ -5,6 +5,7 @@ import Profiles from './pages/Profiles';
 import Classmates from './pages/Classmates';
 import Contact from './pages/Contact';
 import MyProfile from './pages/MyProfile';
+import UserProfile from './pages/UserProfile';
 import Admin from './pages/Admin';
 import Login from './login/Login';
 import Register from './register/Register';
@@ -68,6 +69,17 @@ class App extends Component {
                         </div>
                       </div>
               }/>
+              <Route exact path="/user/:id" render={
+                (props) => { 
+                    {/* console.log(props) */}
+                    return (<div>
+                            <Header />
+                            <div style={{display: 'flex'}}>
+                              <SideNav />
+                              <UserProfile match={props.match}/>
+                            </div>
+                    </div>)
+              }}/>
               <Route exact path="/admin" render={
                 () => <div>
                         <Header />

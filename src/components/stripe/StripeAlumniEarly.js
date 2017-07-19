@@ -3,15 +3,14 @@ import StripeCheckout from 'react-stripe-checkout';
 
 class StripeAlumniPre extends Component {
   onToken = (token) => {
-    console.log(token)
-    // fetch('/save-stripe-token', {
-    //   method: 'POST',
-    //   body: JSON.stringify(token),
-    // }).then(response => {
-    //   response.json().then(data => {
-    //     alert(`Payment Successful, ${data.name}`);
-    //   });
-    // });
+    fetch('/save-stripe-token', {
+      method: 'POST',
+      body: JSON.stringify(token),
+    }).then(response => {
+      response.json().then(data => {
+        alert(`Payment Successful, ${data.name}`);
+      });
+    });
   }
 
   render() {

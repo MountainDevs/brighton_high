@@ -1,1 +1,4 @@
-
+.component-wrapper {
+    width: calc(100% - 300px);
+    background-color: #fff;
+}

@@ -6,6 +6,7 @@ import StripeAlumni from '../stripe/StripeAlumni';
 import StripeAlumniSpouse from '../stripe/StripeAlumniSpouse';
 import StripeAlumniSpouseDayOf from '../stripe/StripeAlumniSpouseDayOf';
 import StripeAlumniDayOf from '../stripe/StripeAlumniDayOf';
+import { postUser, permissions } from '../../dataService'
 import './Pay.css';
 
 class Pay extends Component {
@@ -17,6 +18,10 @@ class Pay extends Component {
             day_of_registration: false,
             event_over: false
         }
+    }
+
+    componentWillUnmount(){
+        permissions.payed = true;
     }
 
     componentDidMount () {
@@ -155,6 +160,7 @@ class Pay extends Component {
                         </section>
                         <div className='pay-buttons'>
                             <Link to='/register/additional'>Back</Link>
+                            <Link to='/register/done'>Continue</Link>
                         </div> 
                     </div>
                 </div>

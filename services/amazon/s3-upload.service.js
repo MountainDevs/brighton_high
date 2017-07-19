@@ -10,22 +10,35 @@ AWS.config.update({
 
 module.exports = {
   upload: (req, res, next) => {
-// app.post('/upload', (req, res) => {
-  // req.file is the 'theseNamesMustMatch' file
-  
-    console.log(req.file);
+
+    var fileName = `${req.file.originalname}.${req.file.mimetype.substring(req.file.mimetype.indexOf('/') + 1)}`;
+    
     s3.putObject({
         Bucket: 'brighton-high-1987',
-        Key: req.file.fieldname, 
+        Key: `${req.file.originalname}.${req.file.mimetype.substring(req.file.mimetype.indexOf('/') + 1)}`, 
         Body: req.file.buffer,
-        ACL: 'public-read', // your permisions  
+        ACL: 'public-read',
       }, (err, data) => { 
         if (err) {
           console.log("error: ", err);
           return res.status(400).send(err);
         }
-        console.log("success: ", data);
-        res.send('File uploaded to S3');
+        var toReturn = {
+          data: data,
+          fileName: fileName
+        };
+        res.send(toReturn);
+    })
+  },
+  delete: (req, res, next) => {
+    s3.deleteObject({
+      Bucket: 'brighton-high-1987',
+      Key: req.body.photoKey
+    }, (err, data) => {
+      if (err) {
+        return res.status(400).send(err);
+      }
+      res.sendStatus(200);
     })
   }
 }
