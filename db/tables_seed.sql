@@ -26,8 +26,8 @@ CREATE TABLE stripe_records (
     record VARCHAR(255)
 );
 
-INSERT INTO users (first_name, last_name, email, password) VALUES
-('Jon', 'Myrick', 'jon@gmail.com', '123'),
+INSERT INTO users (first_name, last_name, email, password, permissions) VALUES
+('Jon', 'Myrick', 'jon@gmail.com', '123', 'member'),
 ('Sara', 'Johnson', 'sara@gmail.com', '123');
 
 INSERT INTO stripe_records (record) VALUES

@@ -20,9 +20,18 @@ class Profiles extends Component {
     }
 
     componentWillMount() {
-        getAllUsers().then( users => {
-            this.setState({users})
-        })
+        if(this.props.loggedIn) {
+            getAllUsers().then( users => {
+                this.setState({users})
+            })
+        }
+    }
+    componentWillUpdate() {
+        if(this.props.loggedIn && this.state.users.length === 0) {
+            getAllUsers().then( users => {
+                this.setState({users})
+            })
+        }
     }
 
     render() {
@@ -30,14 +39,16 @@ class Profiles extends Component {
             return (
                 <Link to={`/user/${user.id}`} key={user.id}>
                     <CardProfile 
-                        name={user.first_name}
+                        name={`${user.first_name} ${user.last_name}`}
                         attending={ (user.attending == null) ? "N/A" : "Yes" }
                     />
                 </Link>
             )
         })
 
-        return (
+        return !this.props.loggedIn ? <Link to='/login'>Please Login</Link> :
+            this.state.users.length === 0 ? <img src="https://media.giphy.com/media/11fxhMPSRtnbTa/giphy.gif" alt=""/> :
+            (
             <div className="component-wrapper">
                 <Title title="Classmate Profiles"/>
 

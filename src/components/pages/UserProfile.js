@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 // Components
 import Title from './Shared/Title';
 // Data
-import { getUser } from '../../dataService.js';
+import { getUser, userData } from '../../dataService.js';
 // Images
 import prof_pic from '../../assets/profile_pic.png';
 // CSS
@@ -18,11 +19,13 @@ class UserProfile extends Component {
     }
 
     componentWillMount() {
-        getUser(this.props.match.params.id).then( user => this.setState({user}))
-    }
+        if(this.props.loggedIn) {
+            getUser(this.props.match.params.id).then( user => this.setState({user}))
+        }
+     }
+
     render() {
-        console.log(this.state.user)
-        const {user} = this.state;
+        const user = userData;
         return (
             <div className="component-wrapper">
                 <Title title="Profile Page"/>
