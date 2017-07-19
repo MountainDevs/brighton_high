@@ -13,7 +13,7 @@ CREATE TABLE users (
     city TEXT,
     state TEXT,
     zipcode TEXT,
-    bio VARCHAR(255),
+    bio TEXT,
     attending BOOLEAN,
     photo TEXT,
     permissions VARCHAR(15)
