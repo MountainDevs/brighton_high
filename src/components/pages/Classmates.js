@@ -26,7 +26,7 @@ class ClassMates extends Component {
         let classmateList = this.state.classmates.map( classmate => {
             return (
                 <CardClassmates 
-                    name={`${classmate.first_name} ${classmate.last_name}`}
+                    name={`${classmate.name}`}
                     found={(classmate.found) ? "Yes" : "No" }
                     key={classmate.id}
                 />

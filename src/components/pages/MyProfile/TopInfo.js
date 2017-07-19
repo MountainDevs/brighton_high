@@ -6,6 +6,8 @@ import { userData } from '../../../dataService';
 import prof_pic from '../../../assets/profile_pic.png';
 // CSS
 import './TopInfo.css';
+import '../../../styles/common.css';
+import FileUpload from '../../FileUpload/FileUpload';
 
 class TopInfo extends Component {
     constructor(props) {
@@ -15,11 +17,21 @@ class TopInfo extends Component {
             lastName: '',
             middleName: '',
             email: userData.email || '',
-            phone: ''
+            phone: '',
+            photoSrc: userData.photo,
+            hideUpload: true
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }    
+        this.hideUpload = this.hideUpload.bind(this);
+    }   
+      
+    hideUpload() {
+      var newValue = !this.state.hideUpload;
+      this.setState({
+        hideUpload: newValue
+      })
+    }
 
     handleInputChange(e) {
         const value = e.target.value
@@ -38,14 +50,19 @@ class TopInfo extends Component {
     
     render() {
         return (
-            <div className='topInfo-wrapper'>
+            <div className={ 'topInfo-wrapper ' + (this.state.hideUpload ? '' : 'tall') }>
                 <div className='personal-header'>PROFILE</div>
                 <div className='personal-body'>
                 <div className='personal-photo'>
-                    <img src={prof_pic} alt=""/>
-                    <div>Upload Photo</div>
+                    {
+                      this.state.photoSrc
+                      ? <img src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photoSrc} alt={this.state.firstName || "No picture"}/>
+                      : <img src={prof_pic} alt="There should be an image here!" />
+                    }
+                    <div onClick={this.hideUpload} className="pointer">Upload Photo</div>
+                    <FileUpload hideUpload={ this.state.hideUpload } />
                 </div> 
-                <div className='personal-info'>
+                 <div className={'personal-info ' + (this.state.hideUpload ? '' : 'padding-left-0')}> 
                 <section style={{display: 'flex'}}>
                     <div>
                     <label htmlFor="firstName">First Name</label>

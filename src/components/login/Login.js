@@ -23,7 +23,7 @@ class Login extends Component {
   }
 
   handleSubmit() {
-   //login
+   service.login(this.state.email, this.state.password);
   }
 
   render() {
