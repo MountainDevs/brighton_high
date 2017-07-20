@@ -35,12 +35,12 @@ class Register extends Component {
           <div className='register-body'>
             <div className='register-text'>Enter a valid email address and create a password to get started!</div>
             <div style={{display: 'flex'}}>
-              <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
+              <div className='register-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
               <input type="email" placeholder='example@gmail.com' name='email' value={this.state.email} onChange={this.handleInputChange} className='register-input'/>
               </div> 
             <div style={{display: 'flex'}}>
-              <div className='register-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
-              <input type="password" name='password' value={this.state.password} onChange={this.handleInputChange} className='register-input'/>
+              <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
+              <input type="password" placeholder="password" name='password' value={this.state.password} onChange={this.handleInputChange} className='register-input'/>
               </div> 
             <Link to='/register/pay' onClick={this.handleSubmit} className='register-register' >Continue</Link>
             <Link to='/'><div className='login-register'>Exit</div></Link>
