@@ -95,7 +95,8 @@ function serializeUser(data) {
 }
 
 function login(email, password) {
-  var data = { email: email, password: password }
+  var data = { email: email, password: password };
+  console.log("Data for login: ", login);
   return axios.post(`/api/sessions/create`, data)
     .then(res => {
       var token = res.data.id_token;
@@ -137,6 +138,7 @@ function checkToken() {
 }
 
 function postUser() {
+  console.log("User to create: ", userData);
   return axios.post(`/api/user`, userData)
   .then(res => res.data)
 }

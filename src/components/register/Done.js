@@ -5,10 +5,8 @@ import './Done.css';
 
 class Done extends Component {
   componentDidMount(){
-    postUser().then(res => {
-      console.log(res)
-      permissions.payed = false;
-    });
+    //TODO: Shouldn't this be true?
+    permissions.payed = false;
   }
   render() {
     return !permissions.payed ? <Redirect to='/' />:
