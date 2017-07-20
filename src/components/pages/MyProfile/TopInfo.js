@@ -96,8 +96,8 @@ class TopInfo extends Component {
                     <input type="text" id='email' name='email' value={this.state.email} onChange={this.handleInputChange}/> 
                     </div>  
                 </section>
-                <div className='personal-buttons'>
-                    <button type="button" onClick={this.handleSubmit}>Continue</button>
+                <div className='button-container'>
+                    <button type="button" className="blue-button" onClick={this.handleSubmit}>Save</button>
                 </div> 
                 </div> 
                 </div>

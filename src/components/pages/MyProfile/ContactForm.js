@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { userData, updateUser } from '../../../dataService';
 
 import './ContactForm.css';
+import '../../../styles/common.css';
 
 class ContactForm extends Component {
   constructor(props) {
@@ -69,8 +70,8 @@ class ContactForm extends Component {
                 </div>
               </section>
             </section>
-            <div className='contactInfo-buttons'>
-                <button type="button" onClick={this.handleSubmit}>Continue</button>
+            <div className='button-container'>
+                <button type="button" className="blue-button" onClick={this.handleSubmit}>Save</button>
             </div> 
           </div>
         </div>

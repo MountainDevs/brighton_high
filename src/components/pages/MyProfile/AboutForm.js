@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { userData, updateUser } from '../../../dataService';
 // CSS
 import './AboutForm.css';
+import '../../../styles/common.css';
 
 class AboutForm extends Component {
     constructor(props) {
@@ -40,8 +41,8 @@ class AboutForm extends Component {
                 <div className='additional-body'>
                     <p>Please provide any additional information you feel could be interesting to your classmates. Fore example, where you've been and what you've been up to. Family news, your career, etc</p>
                     <textarea id="bio" name='bio' cols="30" rows="10" value={this.state.bio} onChange={this.handleInputChange}></textarea>
-                    <div className='additional-buttons'>
-                      <button type="button" onClick={this.handleSubmit}>Continue</button>
+                    <div className='button-container'>
+                      <button type="button" className="blue-button" onClick={this.handleSubmit}>Save</button>
                     </div> 
                 </div>
             </div>
