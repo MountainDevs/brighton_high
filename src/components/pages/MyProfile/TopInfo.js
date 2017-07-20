@@ -33,6 +33,12 @@ class TopInfo extends Component {
       })
     }
 
+    onCompleteUpload(value) {
+      this.setState({
+        hideUpload: value
+      })
+    }
+
     handleInputChange(e) {
         const value = e.target.value
         const name = e.target.name;
@@ -49,6 +55,7 @@ class TopInfo extends Component {
     }
     
     render() {
+      var self = this;
         return (
             <div className={ 'topInfo-wrapper ' + (this.state.hideUpload ? '' : 'tall') }>
                 <div className='personal-header'>PROFILE</div>
@@ -60,7 +67,7 @@ class TopInfo extends Component {
                       : <img src={prof_pic} alt="There should be an image here!" />
                     }
                     <div onClick={this.hideUpload} className="pointer">Upload Photo</div>
-                    <FileUpload hideUpload={ this.state.hideUpload } />
+                    <FileUpload hideUpload={ this.state.hideUpload } onCompleteUpload={ self.onCompleteUpload.bind(self) }/>
                 </div> 
                  <div className={'personal-info ' + (this.state.hideUpload ? '' : 'padding-left-0')}> 
                 <section style={{display: 'flex'}}>
