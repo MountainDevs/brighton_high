@@ -178,7 +178,6 @@ function changePhoto(photoString) {
     return axios.put(`/api/s3/delete`, {photoKey: oldPhoto})
       .then(res => {
         userData.photo = photoString;
-        console.log("New photo: ", photoString);
         return updateUser();
       })
       .catch(err => {
