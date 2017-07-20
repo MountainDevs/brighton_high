@@ -25,8 +25,8 @@ class Pay extends Component {
                             </ul>
                         </section>
                         <div className='pay-buttons'>
-                            <Link to='/register/additional'>Back</Link>
-                            <Link to='/register/done'>Continue</Link>
+                            <Link to='/register'>Back</Link>
+                            <Link to='/register/personal'>Continue</Link>
                         </div> 
                     </div>
                 </div>

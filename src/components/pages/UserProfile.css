@@ -3,6 +3,7 @@
     height: calc(100vh - 108px);
     background-color: #f9f9f9;
     padding-top: 20px;
+    padding-bottom: 20px;
     overflow: auto;
 }
 
@@ -10,7 +11,10 @@
     height: 300px; 
     width: 80%;
     background-color: white;
-     border: 1px solid black; 
+     border: 1px solid black;
+    margin: 0 auto; 
+}
+.pcard:not(:last-child) {
     margin: 0 auto 40px auto;
 }
 .pflex {

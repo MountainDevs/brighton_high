@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { login } from './../../dataService';
 import './Login.css';
+import '../../styles/common.css';
 
 class Login extends Component {
   constructor(props) {
@@ -55,8 +56,9 @@ class Login extends Component {
               <div className='login-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
                 <input type="password" name='password' value={this.state.password} onChange={this.handleInputChange} className='login-input'/>
               </div> 
-            <div className='login-login' onClick={this.handleSubmit}>Login</div>
+            <div className='blue-button' onClick={this.handleSubmit}>Login</div>
             <Link to='/register'><div className='login-register'>Register</div></Link>
+            <Link to='/'><div className='login-register margin-top-20'>Exit</div></Link>
           </div>
         </div>
       </div>

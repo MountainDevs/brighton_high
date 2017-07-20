@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 // Components
 import Title from './Shared/Title';
 import CardClassmates from './Shared/CardClassmates';
+import LoginRequest from '../login/LoginRequest';
 // Data
 import { getClassmates } from '../../dataService.js';
 // CSS
@@ -38,10 +39,10 @@ class ClassMates extends Component {
             )
         })
 
-        return !this.props.loggedIn ? <Link to='/login'>Please Login</Link> :
+        return !this.props.loggedIn ? <LoginRequest></LoginRequest> :
             (
             <div className="component-wrapper">
-                <Title title="Help us find our classmates!"/>
+                <Title title="Help us find our classmates!" subtitle="If you have any information you'd like to share, please email Jessica@BrightonHigh1987.com"/>
 
                 <div className="classmates-table">
                     <div className="table-header">

@@ -8,6 +8,9 @@ const Title = props => {
                 <div className="title-top-title">
                     {props.title}
                 </div>
+                <div className="title-top-subtitle">
+                      {props.subtitle}
+                </div>
         </div> 
     );
 };

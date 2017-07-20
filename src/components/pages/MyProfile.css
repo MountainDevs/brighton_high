@@ -1,5 +1,7 @@
 .myProfile-wrapper {
+  margin-left: 300px;
+  margin-top: 50px;
      width: 100%;
-     height: calc(100vh - 52px);
+     height: calc(100vh - 50px);
      overflow: auto;
 }
