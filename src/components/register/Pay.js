@@ -246,15 +246,6 @@ class Pay extends Component {
                                     </div>
                                 </div>
                             )}
-
-                        <p>Here is a breakdown of what you're paying for:</p>
-                        <section className='stripe-code'>
-                            <ul>
-                                <li>Early registration = $94 for alumni and $63 for spouses</li>
-                                <li>Early registration is available until August 1, 2017</li>
-                                <li>Registration will be $104 per person after August 1</li>
-                                <li>Registration will be $120 per person when registering the day of the event</li>
-                            </ul>
                         </section>
                             <div style={styles.corp_sponsor}>
                                 Interested in becoming a corporate sponsor?
