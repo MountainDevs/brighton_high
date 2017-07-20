@@ -23,7 +23,6 @@
 
 .pay-body p {
   margin: 30px 20px;
-  font-weight: bold;
 }
 
 .stripe-code {
@@ -32,10 +31,6 @@
   width: 660px;
   border: 1px solid #EAEAEA;
   overflow: scroll
-  /* border: 1px solid #EAEAEA; */
-}
-.stripe-code li {
-  list-style-type: circle;
 }
 
 .pay-buttons {
