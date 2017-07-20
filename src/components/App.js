@@ -17,8 +17,42 @@ import Done from './register/Done';
 import Header from './Header';
 import SideNav from './SideNav';
 import './App.css';
+import { verifyUser, setUserFromLocal, clearData, logout } from '../dataService';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false
+    }
+    this.switchLogin = this.switchLogin.bind(this);
+  }
+
+  switchLogin(bool) {
+    if(!bool){
+      clearData();
+      logout()
+      this.setState({loggedIn: bool})
+    }
+  }
+
+  componentWillMount() {
+    let userVerified = verifyUser();
+    if (userVerified && userVerified !== this.state.loggedIn) {
+      setUserFromLocal().then(data => {
+        this.setState({loggedIn: true});
+      })
+    }
+  }
+  componentWillUpdate() {
+    let userVerified = verifyUser();
+    if (userVerified && userVerified !== this.state.loggedIn) {
+      setUserFromLocal().then(data => {
+        this.setState({loggedIn: true});
+      })
+    }
+  }
+
   render() {
     return (
       <div>
@@ -26,46 +60,46 @@ class App extends Component {
           <Switch>
               <Route exact path="/" render={
                 () => <div>
-                        <Header />
+                        <Header loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                         <div style={{display: 'flex'}}>
-                          <SideNav />
-                          <Details />
+                          <SideNav loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
+                          <Details loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                         </div>
                       </div>
               }/>
               <Route exact path="/profiles" render={
                 () => <div>
-                        <Header />
+                        <Header loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                         <div style={{display: 'flex'}}>
-                          <SideNav />
-                          <Profiles />
+                          <SideNav loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
+                          <Profiles loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                         </div>
                       </div>
               }/>
               <Route exact path="/classmates" render={
                 () => <div>
-                        <Header />
+                        <Header loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                         <div style={{display: 'flex'}}>
-                          <SideNav />
-                          <Classmates />
+                          <SideNav loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
+                          <Classmates loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                         </div>
                       </div>
               }/>
               <Route exact path="/contact" render={
                 () => <div>
-                        <Header />
+                        <Header loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                         <div style={{display: 'flex'}}>
-                          <SideNav />
-                          <Contact />
+                          <SideNav loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
+                          <Contact loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                         </div>
                       </div>
               }/>
               <Route exact path="/my_profile" render={
                 () => <div>
-                        <Header />
+                        <Header loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                         <div style={{display: 'flex'}}>
-                          <SideNav />
-                          <MyProfile />
+                          <SideNav loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
+                          <MyProfile loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                         </div>
                       </div>
               }/>
@@ -73,18 +107,18 @@ class App extends Component {
                 (props) => { 
                     {/* console.log(props) */}
                     return (<div>
-                            <Header />
+                            <Header loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                             <div style={{display: 'flex'}}>
-                              <SideNav />
-                              <UserProfile match={props.match}/>
+                              <SideNav loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
+                              <UserProfile match={props.match} loggedIn={this.state.loggedIn}/>
                             </div>
                     </div>)
               }}/>
               <Route exact path="/admin" render={
                 () => <div>
-                        <Header />
+                        <Header loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                         <div style={{display: 'flex'}}>
-                          <SideNav />
+                          <SideNav loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                           <Admin />
                         </div>
                       </div>

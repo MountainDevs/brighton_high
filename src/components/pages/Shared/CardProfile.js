@@ -9,7 +9,7 @@ const CardProfile = props => {
         <div className="table-card">
             <div className="card-left">
                 <div className="card-left-photo">
-                    <img src={props.imageUrl}/>
+                    <img src={props.photo ? "https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + props.photo : prof_pic}/>
                 </div>
                 <div className="card-left-text">
                     {props.name}
@@ -24,7 +24,6 @@ const CardProfile = props => {
 
 CardProfile.defaultProps = {
     name: 'John Smith',
-    imageUrl: prof_pic,
     attending: 'N/A'
 }
 

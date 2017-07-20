@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // Components
 import CardProfile from './Shared/CardProfile';
 import Title from './Shared/Title';
+import LoginRequest from '../login/LoginRequest';
 // Data
 import { getAllUsers } from '../../dataService.js';
 // Images
@@ -20,9 +21,18 @@ class Profiles extends Component {
     }
 
     componentWillMount() {
-        getAllUsers().then( users => {
-            this.setState({users})
-        })
+        if(this.props.loggedIn) {
+            getAllUsers().then( users => {
+                this.setState({users})
+            })
+        }
+    }
+    componentWillUpdate() {
+        if(this.props.loggedIn && this.state.users.length === 0) {
+            getAllUsers().then( users => {
+                this.setState({users})
+            })
+        }
     }
 
     render() {
@@ -30,14 +40,17 @@ class Profiles extends Component {
             return (
                 <Link to={`/user/${user.id}`} key={user.id}>
                     <CardProfile 
-                        name={user.first_name}
+                        name={`${user.first_name} ${user.last_name}`}
                         attending={ (user.attending == null) ? "N/A" : "Yes" }
+                        photo = { user.photo ? user.photo : null }
                     />
                 </Link>
             )
         })
 
-        return (
+        return !this.props.loggedIn ? <LoginRequest></LoginRequest> :
+            this.state.users.length === 0 ? <img src="https://media.giphy.com/media/11fxhMPSRtnbTa/giphy.gif" alt=""/> :
+            (
             <div className="component-wrapper">
                 <Title title="Classmate Profiles"/>
 

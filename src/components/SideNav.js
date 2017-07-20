@@ -12,25 +12,32 @@ import profile_pic from '../assets/profile_pic.png';
 import './SideNav.css';
 
 class SideNav extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      name: userData.firstName,
-      photoSrc: userData.photo
-    }
-  }
     render() {
-        return (
+        if(this.props.loggedIn){
+          return (
             <div className="sidenav-wrapper">
-                <NavHeader 
-                    name={this.state.name || "Welcome!"}
-                    imageUrl={this.state.photoSrc ? "https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photoSrc : profile_pic}
-                />
-                
-                <NavItems />
+              <NavHeader 
+                  name={userData.firstName}
+                  imageUrl={userData.photo ? "https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + userData.photo : profile_pic}
+              />
+              
+              <NavItems />
             </div>
-        );
+            )
+        }
+        else {
+          return(
+          <div className="sidenav-wrapper">
+              <NavHeader 
+                  name={"Welcome!"}
+                  imageUrl={profile_pic}
+              />
+              
+              <NavItems />
+            </div>
+          )
+        }
+        
     }
 }
 

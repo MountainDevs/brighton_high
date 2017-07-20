@@ -40,9 +40,10 @@ class Register extends Component {
               </div> 
             <div style={{display: 'flex'}}>
               <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
-              <input type="password" name='password' value={this.state.password} onChange={this.handleInputChange} className='register-input'/>
+              <input type="password" placeholder="password" name='password' value={this.state.password} onChange={this.handleInputChange} className='register-input'/>
               </div> 
-            <Link to='/register/personal' onClick={this.handleSubmit} className='register-register' >Continue</Link>
+            <Link to='/register/pay' onClick={this.handleSubmit} className='register-register' >Continue</Link>
+            <Link to='/'><div className='login-register'>Exit</div></Link>
           </div>
         </div>
     </div>

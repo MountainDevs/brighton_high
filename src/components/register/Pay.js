@@ -247,14 +247,22 @@ class Pay extends Component {
                                 </div>
                             )}
 
+                        <p>Here is a breakdown of what you're paying for:</p>
+                        <section className='stripe-code'>
+                            <ul>
+                                <li>Early registration = $94 for alumni and $63 for spouses</li>
+                                <li>Early registration is available until August 1, 2017</li>
+                                <li>Registration will be $104 per person after August 1</li>
+                                <li>Registration will be $120 per person when registering the day of the event</li>
+                            </ul>
                         </section>
                             <div style={styles.corp_sponsor}>
                                 Interested in becoming a corporate sponsor?
                                 <span onClick={this._handleCorpSponsor} style={styles.corp_button}> Click Here</span>
                             </div>
                         <div className='pay-buttons'>
-                            <Link to='/register/additional'>Back</Link>
-                            <Link to='/register/done'>Continue</Link>
+                            <Link to='/register'>Back</Link>
+                            <Link to='/register/personal'>Continue</Link>
                         </div> 
                     </div>
                 </div>

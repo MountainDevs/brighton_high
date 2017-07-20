@@ -1,4 +1,6 @@
 .component-wrapper {
+    margin-top: 50px;
     width: calc(100% - 300px);
+    margin-left: 300px;
     background-color: #fff;
 }

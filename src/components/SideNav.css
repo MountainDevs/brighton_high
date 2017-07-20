@@ -1,4 +1,7 @@
 .sidenav-wrapper {
-    width: 300px;
-    height: calc(100vh - 151px)
+  position: fixed;
+  left: 0;
+  top: 50px;  
+  width: 300px;
+  height: calc(100vh - 151px)
 }

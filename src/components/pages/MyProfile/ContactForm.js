@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { userData } from '../../../dataService';
+import { userData, updateUser } from '../../../dataService';
 
 import './ContactForm.css';
+import '../../../styles/common.css';
 
 class ContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phone: '',
-      address: '',
-      city: '',
-      state: '',
-      zipcode: ''
+      phone: userData.phone,
+      address: userData.address,
+      city: userData.city,
+      state: userData.state,
+      zipcode: userData.zipcode
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,6 +33,12 @@ class ContactForm extends Component {
     userData.city = this.state.city;
     userData.state = this.state.state;
     userData.zipcode = this.state.zipcode;
+    updateUser().then(res => {
+          alert("Saved successfully");
+        })
+        .catch(err => {
+          alert("There's been a problem, please try again");
+        });
   }
 
   render() {
@@ -63,9 +70,8 @@ class ContactForm extends Component {
                 </div>
               </section>
             </section>
-            <div className='contactInfo-buttons'>
-                <Link to='/register/personal'>Back</Link>
-                <Link to='/register/additional' onClick={this.handleSubmit}>Continue</Link>
+            <div className='button-container'>
+                <button type="button" className="blue-button" onClick={this.handleSubmit}>Save</button>
             </div> 
           </div>
         </div>

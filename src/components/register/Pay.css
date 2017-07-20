@@ -23,6 +23,7 @@
 
 .pay-body p {
   margin: 30px 20px;
+  font-weight: bold;
 }
 
 .stripe-code {
@@ -31,6 +32,10 @@
   width: 660px;
   border: 1px solid #EAEAEA;
   overflow: scroll
+  /* border: 1px solid #EAEAEA; */
+}
+.stripe-code li {
+  list-style-type: circle;
 }
 
 .pay-buttons {
@@ -43,5 +48,15 @@
   font-size: 12px;
   color: #72B9D7;
   margin: 20px;
+  padding: 13px;
+}
+.pay-buttons :nth-child(2){
+  margin: 20px;
+  color: #ffffff;
+  font-size: 13px;
+  background: #FF8200;
+  text-align: center;
+  border-radius: 3px;
+  width: 75px;
   padding: 13px;
 }

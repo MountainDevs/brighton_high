@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // Data
-import { userData } from '../../../dataService';
+import { userData, updateUser } from '../../../dataService';
 // Images
 import prof_pic from '../../../assets/profile_pic.png';
 // CSS
@@ -13,11 +13,11 @@ class TopInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            middleName: '',
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            middleName: userData.middleName,
             email: userData.email || '',
-            phone: '',
+            phone: userData.phone,
             photoSrc: userData.photo,
             hideUpload: true
         }
@@ -30,6 +30,13 @@ class TopInfo extends Component {
       var newValue = !this.state.hideUpload;
       this.setState({
         hideUpload: newValue
+      })
+    }
+
+    onCompleteUpload(value) {
+      this.setState({
+        hideUpload: value,
+        photoSrc: userData.photo
       })
     }
 
@@ -46,9 +53,16 @@ class TopInfo extends Component {
         userData.lastName = this.state.lastName;
         userData.middleName = this.state.middleName;
         userData.email = this.state.email;
+        updateUser().then(res => {
+          alert("Saved successfully");
+        })
+        .catch(err => {
+          alert("There's been a problem, please try again");
+        });
     }
     
     render() {
+      var self = this;
         return (
             <div className={ 'topInfo-wrapper ' + (this.state.hideUpload ? '' : 'tall') }>
                 <div className='personal-header'>PROFILE</div>
@@ -60,7 +74,7 @@ class TopInfo extends Component {
                       : <img src={prof_pic} alt="There should be an image here!" />
                     }
                     <div onClick={this.hideUpload} className="pointer">Upload Photo</div>
-                    <FileUpload hideUpload={ this.state.hideUpload } />
+                    <FileUpload hideUpload={ this.state.hideUpload } onCompleteUpload={ self.onCompleteUpload.bind(self) }/>
                 </div> 
                  <div className={'personal-info ' + (this.state.hideUpload ? '' : 'padding-left-0')}> 
                 <section style={{display: 'flex'}}>
@@ -83,9 +97,8 @@ class TopInfo extends Component {
                     <input type="text" id='email' name='email' value={this.state.email} onChange={this.handleInputChange}/> 
                     </div>  
                 </section>
-                <div className='personal-buttons'>
-                    <Link to='/register'>Back</Link>
-                    <Link to='/register/contact_info' onClick={this.handleSubmit}>Continue</Link>
+                <div className='button-container'>
+                    <button type="button" className="blue-button" onClick={this.handleSubmit}>Save</button>
                 </div> 
                 </div> 
                 </div>

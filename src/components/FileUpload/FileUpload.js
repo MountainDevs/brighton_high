@@ -5,7 +5,6 @@ const Dropzone = require('react-dropzone');
 const superagent = require('superagent');
 const dataService = require('../../dataService');
 
-
  class FileUpload extends React.Component{
    constructor(props) {
      super(props)
@@ -26,14 +25,18 @@ const dataService = require('../../dataService');
       if (err) {
         console.log(err);
         this.setState({step:4});
-        setTimeout(() => {this.setState({step:1})}, 3000);
+        setTimeout(() => {this.setState({step:1})}, 1500);
       } else {
         dataService.changePhoto(JSON.parse(res.text).fileName);
         this.setState({step:3});
-        setTimeout(() => {this.setState({step:1})}, 3000);
+        setTimeout(() => {
+          this.setState({step:1})
+          this.props.onCompleteUpload(true);
+        }, 1500);
       }
     })
   }
+
 
   render(){
     return (

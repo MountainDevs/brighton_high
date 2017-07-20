@@ -23,6 +23,59 @@ let userData = {
   permissions: ''
 }
 
+function clearData(){
+  userData = {
+    id: '',
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    middleName: '',
+    phone: '',
+    address: '',
+    city: '',
+    state: '',
+    zipcode: '',
+    bio: '',
+    attending: false,
+    photo: '',
+    permissions: ''
+  }
+}
+
+function parseJwt (token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace('-', '+').replace('_', '/');
+  return JSON.parse(window.atob(base64));
+};
+
+function verifyUser() {
+  if(localStorage.getItem('jwt')) return true;
+  else return false
+}
+
+function getIdFromLocal() {
+  let jwt = localStorage.getItem('jwt');
+  if(jwt) {
+    checkUser();
+    return parseJwt(jwt)['0'].id;
+  } 
+  else return false;
+}
+
+function setUserFromLocal(){
+  return new Promise((resolve, reject) => {
+    let id = getIdFromLocal()
+    if(!id) return false;
+    else {
+      getUser(id).then(res => {
+        resolve()
+      })
+    }
+  })
+}
+
+
 function serializeUser(data) {
   if (data.id) userData.id = data.id;
   if (data.email) userData.email = data.email;
@@ -42,20 +95,19 @@ function serializeUser(data) {
 }
 
 function login(email, password) {
-  if (email && password) {
-    var data = { email: email, password: password }
-    return axios.post(`/api/sessions/create`, data)
-      .then(res => {
-        var token = res.data.id_token;
-        localStorage.setItem('jwt', JSON.stringify(token));
-        axios.defaults.headers.common['Authorization'] = "Bearer " + token;
-        serializeUser(res.data.user);
-        return;
-      })
-      .catch(err => err);
-  } else {
-    return "Please input an email and password";
-  }
+  var data = { email: email, password: password };
+  console.log("Data for login: ", login);
+  return axios.post(`/api/sessions/create`, data)
+    .then(res => {
+      var token = res.data.id_token;
+      localStorage.setItem('jwt', JSON.stringify(token));
+      axios.defaults.headers.common['Authorization'] = "Bearer " + token;
+      serializeUser(res.data.user);
+      return true
+    })
+    .catch(err => {
+      return false
+    });
 }
 
 function logout() {
@@ -72,8 +124,6 @@ function checkUser() {
   if (token !== null) {
     axios.defaults.headers.common['Authorization'] = "Bearer " + token;
     return checkToken();
-  } else if (userData.email && userData.password) {
-    return login(userData.email, userData.password);
   } else {
     return "No information";
   }
@@ -83,17 +133,23 @@ function checkToken() {
   return axios.get('/api/sessions/current')
       .then(res => {
         serializeUser(res.data.user);
+        return;
       }).catch(err => err);
 }
 
 function postUser() {
+  console.log("User to create: ", userData);
   return axios.post(`/api/user`, userData)
   .then(res => res.data)
 }
 
 function updateUser() {
-  return axios.post(`/api/user`, userData)
-  .then(res => res.data)
+  return axios.put(`/api/user`, userData)
+  .then(res => {
+    serializeUser(res.data);
+    return res.data;
+  })
+  .catch(err => err);
 }
 
 function postStripeRecord(record) {
@@ -103,7 +159,10 @@ function postStripeRecord(record) {
 
 function getUser(id) {
   return axios.get(`/api/user/${id}`)
-  .then(res => res.data)
+  .then(res => {
+    serializeUser(res.data);
+    return res.data;
+  })
 }
 
 function getAllUsers() {
@@ -132,7 +191,7 @@ function changePhoto(photoString) {
   }
 }
 
-checkUser();
+// checkUser();
 
 module.exports = {
   userData,
@@ -147,6 +206,9 @@ module.exports = {
   permissions,
   changePhoto,
   checkUser, 
-  checkToken
+  checkToken,
+  verifyUser,
+  setUserFromLocal,
+  clearData
 }
 

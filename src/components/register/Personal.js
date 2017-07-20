@@ -38,6 +38,13 @@ class Personal extends Component {
     })
   }
 
+  onCompleteUpload(value) {
+      this.setState({
+        hideUpload: value,
+        photoSrc: userData.photo
+      })
+    }
+
   handleSubmit() {
     userData.firstName = this.state.firstName;
     userData.lastName = this.state.lastName;
@@ -46,6 +53,7 @@ class Personal extends Component {
   }
     
   render() {
+    var self = this;
     return (
       <div className='personal-bg'>
         <div className={ 'personal-wrapper ' + (this.state.hideUpload ? '' : 'tall') }>
@@ -58,7 +66,7 @@ class Personal extends Component {
                 : <img src={prof_pic} alt="There should be an image here!" />
               }              
               <div onClick={this.hideUpload} className="pointer">Upload Photo</div>
-              <FileUpload hideUpload={ this.state.hideUpload } />
+              <FileUpload hideUpload={ this.state.hideUpload } onCompleteUpload={ self.onCompleteUpload.bind(self) } />
             </div> 
             <div className={'personal-info ' + (this.state.hideUpload ? '' : 'padding-left-0')}>
             <section style={{display: 'flex'}}>
@@ -82,7 +90,7 @@ class Personal extends Component {
               </div>  
             </section>
             <div className='personal-buttons'>
-              <Link to='/register'>Back</Link>
+              <Link to='/register/pay'>Back</Link>
               <Link to='/register/contact_info' onClick={this.handleSubmit}>Continue</Link>
             </div> 
             </div> 

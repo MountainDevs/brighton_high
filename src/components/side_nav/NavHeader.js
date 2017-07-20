@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// Data
+import { userData } from '../../dataService.js';
 // Images
 import prof_pic from '../../assets/profile_pic.png';
 // CSS
@@ -8,7 +10,7 @@ import './NavHeader.css';
 const NavHeader = props => {
     return (
         <div className="navheader-wrapper">
-            <Link to="/user/1">
+            <Link to={`/user/${userData.id}`}>
                 <div className="navheader-content">
                     <div className="navheader-image-wrapper">
                         <img className="navheader-image" src={props.imageUrl} alt="Profile"/>
