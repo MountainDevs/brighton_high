@@ -35,7 +35,8 @@ class TopInfo extends Component {
 
     onCompleteUpload(value) {
       this.setState({
-        hideUpload: value
+        hideUpload: value,
+        photoSrc: userData.photo
       })
     }
 
