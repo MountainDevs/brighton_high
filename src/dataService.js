@@ -149,6 +149,7 @@ function updateUser() {
     serializeUser(res.data);
     return res.data;
   })
+  .catch(err => err);
 }
 
 function postStripeRecord(record) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // Data
-import { userData } from '../../../dataService';
+import { userData, updateUser } from '../../../dataService';
 // Images
 import prof_pic from '../../../assets/profile_pic.png';
 // CSS
@@ -52,6 +52,12 @@ class TopInfo extends Component {
         userData.lastName = this.state.lastName;
         userData.middleName = this.state.middleName;
         userData.email = this.state.email;
+        updateUser().then(res => {
+          alert("Saved successfully");
+        })
+        .catch(err => {
+          alert("There's been a problem, please try again");
+        });
     }
     
     render() {
@@ -91,8 +97,7 @@ class TopInfo extends Component {
                     </div>  
                 </section>
                 <div className='personal-buttons'>
-                    <Link to='/register'>Back</Link>
-                    <Link to='/register/contact_info' onClick={this.handleSubmit}>Continue</Link>
+                    <button type="button" onClick={this.handleSubmit}>Continue</button>
                 </div> 
                 </div> 
                 </div>
