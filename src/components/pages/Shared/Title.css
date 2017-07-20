@@ -8,3 +8,9 @@
     color: #444;
     margin-left: 50px;
 }
+  .title-top-subtitle {
+    line-height: 100%;
+    font-size: 14px;
+    margin-left: 10px;
+      margin-top: 6px;  
+  }

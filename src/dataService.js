@@ -56,7 +56,10 @@ function verifyUser() {
 
 function getIdFromLocal() {
   let jwt = localStorage.getItem('jwt');
-  if(jwt) return parseJwt(jwt)['0'].id;
+  if(jwt) {
+    checkUser();
+    return parseJwt(jwt)['0'].id;
+  } 
   else return false;
 }
 
@@ -66,7 +69,6 @@ function setUserFromLocal(){
     if(!id) return false;
     else {
       getUser(id).then(res => {
-        serializeUser(res)
         resolve()
       })
     }
@@ -121,8 +123,6 @@ function checkUser() {
   if (token !== null) {
     axios.defaults.headers.common['Authorization'] = "Bearer " + token;
     return checkToken();
-  } else if (userData.email && userData.password) {
-    return login(userData.email, userData.password);
   } else {
     return "No information";
   }
@@ -132,6 +132,7 @@ function checkToken() {
   return axios.get('/api/sessions/current')
       .then(res => {
         serializeUser(res.data.user);
+        return;
       }).catch(err => err);
 }
 
@@ -141,7 +142,7 @@ function postUser() {
 }
 
 function updateUser() {
-  return axios.post(`/api/user`, userData)
+  return axios.put(`/api/user`, userData)
   .then(res => {
     serializeUser(res.data);
     return res.data;

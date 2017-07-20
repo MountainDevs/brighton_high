@@ -8,11 +8,11 @@ class ContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phone: '',
-      address: '',
-      city: '',
-      state: '',
-      zipcode: ''
+      phone: userData.phone,
+      address: userData.address,
+      city: userData.city,
+      state: userData.state,
+      zipcode: userData.zipcode
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

@@ -1,0 +1,19 @@
+.login-request {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 50px);
+  width: calc(100% - 300px);
+  margin-left: 300px;
+}
+
+.login-request-container {
+  width: 350px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #537187;
+  border-radius: 4px;
+  background: #F2F2F2;
+}

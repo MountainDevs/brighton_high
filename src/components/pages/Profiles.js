@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // Components
 import CardProfile from './Shared/CardProfile';
 import Title from './Shared/Title';
+import LoginRequest from '../login/LoginRequest';
 // Data
 import { getAllUsers } from '../../dataService.js';
 // Images
@@ -41,12 +42,13 @@ class Profiles extends Component {
                     <CardProfile 
                         name={`${user.first_name} ${user.last_name}`}
                         attending={ (user.attending == null) ? "N/A" : "Yes" }
+                        photo = { user.photo ? user.photo : null }
                     />
                 </Link>
             )
         })
 
-        return !this.props.loggedIn ? <Link to='/login'>Please Login</Link> :
+        return !this.props.loggedIn ? <LoginRequest></LoginRequest> :
             this.state.users.length === 0 ? <img src="https://media.giphy.com/media/11fxhMPSRtnbTa/giphy.gif" alt=""/> :
             (
             <div className="component-wrapper">

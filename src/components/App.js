@@ -110,7 +110,7 @@ class App extends Component {
                             <Header loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                             <div style={{display: 'flex'}}>
                               <SideNav loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
-                              <UserProfile match={props.match}/>
+                              <UserProfile match={props.match} loggedIn={this.state.loggedIn}/>
                             </div>
                     </div>)
               }}/>
