@@ -5,7 +5,6 @@ const Dropzone = require('react-dropzone');
 const superagent = require('superagent');
 const dataService = require('../../dataService');
 
-var that = null;
  class FileUpload extends React.Component{
    constructor(props) {
      super(props)
@@ -13,7 +12,6 @@ var that = null;
      this.state = {
        step: 1
      }
-    that = this;
     this.onDrop = this.onDrop.bind(this);
    }
 
