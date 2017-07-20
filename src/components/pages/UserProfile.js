@@ -19,13 +19,17 @@ class UserProfile extends Component {
     }
 
     componentWillMount() {
-        if(this.props.loggedIn) {
-            getUser(this.props.match.params.id).then( user => this.setState({user}))
-        }
+      //TODO: Where is this supposed to get loggedIn from? Right now it doesn't exist even if we are logged in
+        // if(this.props.loggedIn) {
+            getUser(this.props.match.params.id).then( user => {
+              this.setState({user})
+              console.log(this.state.user.photo);
+            }
+            )
+        // }
      }
 
     render() {
-        const user = userData;
         return (
             <div className="component-wrapper">
                 <Title title="Profile Page"/>
@@ -36,16 +40,16 @@ class UserProfile extends Component {
                         <div className="pcard-top">
                             <div className="pcard-top-left">
                                 <div className="pcard-top-left-imgwrap">
-                                    <img src={user.photo}/>
+                                    <img src={this.state.user.photo ? "https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.user.photo : prof_pic}/>
                                 </div>
                             </div>
                             <div className="pcard-top-right">
-                                <div className="pcard-top-right-name">{`${user.first_name || ''} ${user.last_name || ''}`}</div>
+                                <div className="pcard-top-right-name">{`${this.state.user.first_name|| ''} ${this.state.user.last_name || ''}`}</div>
                                 <hr />
                                 <div className="pcard-top-right-content">
-                                    <h3>Contact info goes here</h3>
-                                    <p>Email: {user.email}</p>
-                                    <p>Phone: {user.phone || 'N/A'}</p>
+                                    <h3>Contact info</h3>
+                                    <p>Email: {this.state.user.email || "N/A"}</p>
+                                    <p>Phone: {this.state.user.phone || 'N/A'}</p>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +59,7 @@ class UserProfile extends Component {
                         <div className="pcard-about">
                             <div className="pcard-about-title">About</div>
                             <div className="pcard-about-content">
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                              {this.state.user.bio ? this.state.user.bio : "This person hasn't filled out any information yet."}
                             </div>
                         </div>
                     </div>

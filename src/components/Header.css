@@ -1,4 +1,7 @@
 .header-wrapper {
+  position: fixed;
+  width: 100%;
+    box-sizing: border-box;
     height: 50px;
     display: flex;
     justify-content: space-between;

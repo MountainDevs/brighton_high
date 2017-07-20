@@ -54,7 +54,19 @@ function postUser(req, res, next) {
 function updateUser(req, res, next) {
   db.users.update({
     id: req.body.id,
-    email: req.body.email
+    first_name: req.body.firstName,
+    last_name: req.body.lastName,
+    middle_name: req.body.middleName,
+    email: req.body.email,
+    password: req.body.password,
+    phone: req.body.phone,
+    address: req.body.address,
+    city: req.body.city,
+    state: req.body.state,
+    zipcode: req.body.zipcode,
+    bio: req.body.bio,
+    attending: req.body.attending,
+    photo: req.body.photo
   })
   .then(user => {
     res.send(user)

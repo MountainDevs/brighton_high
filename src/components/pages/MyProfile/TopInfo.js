@@ -13,11 +13,11 @@ class TopInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            middleName: '',
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            middleName: userData.middleName,
             email: userData.email || '',
-            phone: '',
+            phone: userData.phone,
             photoSrc: userData.photo,
             hideUpload: true
         }
