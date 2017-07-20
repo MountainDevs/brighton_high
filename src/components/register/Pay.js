@@ -17,11 +17,11 @@ class Pay extends Component {
                     <div className='pay-body'>
                         <p>Here we will explain a little about the fees and what they are paying for.</p>
                         <section className='stripe-code'>
-                            
+                            TWO buttons, one if they want to build a profile, one if they're done
                         </section>
                         <div className='pay-buttons'>
-                            <Link to='/register/additional'>Back</Link>
-                            <Link to='/register/done'>Continue</Link>
+                            <Link to='/register'>Back</Link>
+                            <Link to='/register/personal'>Continue</Link>
                         </div> 
                     </div>
                 </div>

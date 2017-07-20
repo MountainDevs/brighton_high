@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { userData } from './../../dataService';
+import { userData, login, postUser } from './../../dataService';
 import './Additional.css';
 
 class Additional extends Component {
@@ -23,6 +23,7 @@ class Additional extends Component {
 
   handleSubmit() {
     userData.bio = this.state.bio;
+    postUser().then(res => login(userData.email, userData.password).then(res => res));
   }
     
   render() {
@@ -35,7 +36,7 @@ class Additional extends Component {
             <textarea id="bio" name='bio' cols="30" rows="10" value={this.state.bio} onChange={this.handleInputChange}></textarea>
             <div className='additional-buttons'>
               <Link to='/register/contact_info'>Back</Link>
-              <Link to='/register/pay' onClick={this.handleSubmit}>Continue</Link>
+              <Link to='/register/done' onClick={this.handleSubmit}>Continue</Link>
             </div> 
           </div>
         </div>
