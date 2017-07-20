@@ -90,7 +90,7 @@ class Personal extends Component {
               </div>  
             </section>
             <div className='personal-buttons'>
-              <Link to='/register/pay'>Back</Link>
+              <Link to='/'>Back</Link>
               <Link to='/register/contact_info' onClick={this.handleSubmit}>Continue</Link>
             </div> 
             </div> 

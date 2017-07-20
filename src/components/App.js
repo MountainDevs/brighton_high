@@ -16,6 +16,7 @@ import Pay from './register/Pay';
 import Done from './register/Done';
 import Header from './Header';
 import SideNav from './SideNav';
+import Continue from './register/Continue';
 import './App.css';
 import { verifyUser, setUserFromLocal, clearData, logout } from '../dataService';
 
@@ -130,6 +131,7 @@ class App extends Component {
               <Route exact path="/register/contact_info" component={ContactInfo}/>
               <Route exact path="/register/pay" component={Pay}/>
               <Route exact path="/register/done" component={Done}/>
+              <Route exact path="/register/continue" component={Continue}/>
           </Switch>
         </section>
       </div>
