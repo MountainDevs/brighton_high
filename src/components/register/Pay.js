@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import StripeAlumniEarly from '../stripe/StripeAlumniEarly';
-import StripeAlumniSpouseEarly from '../stripe/StripeAlumniSpouseEarly';
-import StripeAlumni from '../stripe/StripeAlumni';
-import StripeAlumniSpouse from '../stripe/StripeAlumniSpouse';
-import StripeAlumniSpouseDayOf from '../stripe/StripeAlumniSpouseDayOf';
-import StripeAlumniDayOf from '../stripe/StripeAlumniDayOf';
-import StripeAlumniNonAttending from '../stripe/StripeAlumniNonAttending';
+import StripeAlumniEarly from '../Stripe/StripeAlumniEarly';
+import StripeAlumniSpouseEarly from '../Stripe/StripeAlumniSpouseEarly';
+import StripeAlumni from '../Stripe/StripeAlumni';
+import StripeAlumniSpouse from '../Stripe/StripeAlumniSpouse';
+import StripeAlumniSpouseDayOf from '../Stripe/StripeAlumniSpouseDayOf';
+import StripeAlumniDayOf from '../Stripe/StripeAlumniDayOf';
+import StripeAlumniNonAttending from '../Stripe/StripeAlumniNonAttending';
 import { postUser, permissions } from '../../dataService'
 import './Pay.css';
 
@@ -246,6 +246,7 @@ class Pay extends Component {
                                     </div>
                                 </div>
                             )}
+                        </section>
 
                         <p>Here is a breakdown of what you're paying for:</p>
                         <section className='stripe-code'>
