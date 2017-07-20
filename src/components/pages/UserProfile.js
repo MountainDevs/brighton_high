@@ -19,7 +19,6 @@ class UserProfile extends Component {
     }
 
     componentWillMount() {
-      //TODO: Where is this supposed to get loggedIn from? Right now it doesn't exist even if we are logged in
         if(this.props.loggedIn) {
             getUser(this.props.match.params.id).then( user => this.setState({user}))
         }
