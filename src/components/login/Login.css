@@ -66,6 +66,7 @@
   width: 75px;
   padding: 15px;
   background: #72B9D7;
+  cursor: pointer;
 }
 
 .login-register {
