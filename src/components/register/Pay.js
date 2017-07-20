@@ -6,6 +6,7 @@ import StripeAlumni from '../stripe/StripeAlumni';
 import StripeAlumniSpouse from '../stripe/StripeAlumniSpouse';
 import StripeAlumniSpouseDayOf from '../stripe/StripeAlumniSpouseDayOf';
 import StripeAlumniDayOf from '../stripe/StripeAlumniDayOf';
+import StripeAlumniNonAttending from '../stripe/StripeAlumniNonAttending';
 import { postUser, permissions } from '../../dataService'
 import './Pay.css';
 
@@ -16,7 +17,9 @@ class Pay extends Component {
             early_registration: false,
             registration: false,
             day_of_registration: false,
-            event_over: false
+            event_over: false,
+            corp_sponsor: false,
+            more_info: false
         }
     }
 
@@ -59,6 +62,30 @@ class Pay extends Component {
         }
     }
 
+    _handleCorpSponsor = () => {
+        if (this.state.corp_sponsor) {
+            this.setState({
+                corp_sponsor: false
+            })
+        } else {
+            this.setState({
+                corp_sponsor: true
+            })
+        }
+    }
+
+    _handleShowMoreInfo = () => {
+        if (this.state.more_info) {
+            this.setState({
+                more_info: false
+            })
+        } else {
+            this.setState({
+                more_info: true
+            })
+        }
+    }
+
     render() {
         const styles=this.styles()
         return (
@@ -92,10 +119,16 @@ class Pay extends Component {
                                             <td style={styles.table_cost}>$94</td>
                                             <td style={styles.table_button}><StripeAlumniEarly /></td>
                                         </tr>
-                                        <tr style={styles.table_row_no_border}>
+                                        <tr style={styles.table_row_border}>
                                             <td style={styles.table_description}>Alumni + Spouse </td>
                                             <td style={styles.table_cost}>$157</td>
                                             <td style={styles.table_button}><StripeAlumniSpouseEarly /></td>
+                                        </tr>
+                                        <tr style={styles.table_row_no_border}>
+                                            <td style={styles.table_description}>Non-Attending Alumni </td>
+                                            <td style={styles.table_cost}>$30</td>
+                                            <td style={styles.table_button}><StripeAlumniNonAttending /></td>
+                                            <td style={styles.more_info} onClick={this._handleShowMoreInfo}>More Info</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -112,10 +145,15 @@ class Pay extends Component {
                                             <td style={styles.table_cost}>$104</td>
                                             <td style={styles.table_button}><StripeAlumni /></td>
                                         </tr>
-                                        <tr style={styles.table_row_no_border}>
+                                        <tr style={styles.table_row_border}>
                                             <td style={styles.table_description}>Alumni + Spouse </td>
                                             <td style={styles.table_cost}>$167</td>
                                             <td style={styles.table_button}><StripeAlumniSpouse /></td>
+                                        </tr>
+                                        <tr style={styles.table_row_no_border}>
+                                            <td style={styles.table_description}>Non-Attending Alumni </td>
+                                            <td style={styles.table_cost}>$30</td>
+                                            <td style={styles.table_button}><StripeAlumniNonAttending /></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -132,32 +170,88 @@ class Pay extends Component {
                                             <td style={styles.table_cost}>$120</td>
                                             <td style={styles.table_button}><StripeAlumniDayOf /></td>
                                         </tr>
-                                        <tr style={styles.table_row_no_border}>
+                                        <tr style={styles.table_row_border}>
                                             <td style={styles.table_description}>Day Of - Alumni + Spouse </td>
                                             <td style={styles.table_cost}>$183</td>
                                             <td style={styles.table_button}><StripeAlumniSpouseDayOf /></td>
                                         </tr>
+                                        <tr style={styles.table_row_no_border}>
+                                            <td style={styles.table_description}>Non-Attending Alumni </td>
+                                            <td style={styles.table_cost}>$30</td>
+                                            <td style={styles.table_button}><StripeAlumniNonAttending /></td>
+                                        </tr>
                                     </table>
                                 </div>) : null}
+
+                            {this.state.corp_sponsor ? (
+                                <div style={styles.registration_desc}>
+                                    <h3>
+                                        Become a Corporate Sponsor!
+                                    </h3>
+                                    <p>
+                                        Would your corporation or business benefit from having its name advertised to your classmates?
+                                    </p>
+                                    <div style={styles.sponsor_list}>
+                                        <ul>
+                                            What you get:
+                                            <li>
+                                                - 60" x 30" banner displayed at registration
+                                            </li>
+                                            <li>
+                                                - Recognition on the video display
+                                            </li>
+                                            <li>
+                                                - Recognition from the microphone during the reunion
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p>
+                                        Corporate sponsorship will reduce the cost for attending alumni.
+                                    </p>
+                                    <p>
+                                        If you're interested in becoming a corporate sponsor please contact Jessica at 
+                                        <br/>
+                                        (801) 673-4462 or email at jessica@brightonhigh1987.com
+                                    </p>
+                                </div>
+                            ) : null}
                             
+                            {this.state.more_info ? (
+                                <div style={styles.registration_desc}>
+                                    <h3>
+                                        Non-Attending Alumni
+                                    </h3>
+                                    <p>
+                                        We so sorry if you are unable to attend! If you would like to access your classmates profiles, sign up for the Non-Attending Alumni. The price is necessary to help cover the cost of locating all alumni.  You'll have complete access to the profiles!
+                                    </p>
+                                </div>
+                            ) : null}
+
                             {this.state.event_over ? (
                                 <div style={styles.event_over}>
                                     We're sorry we missed you!  We'll see you next time!
                                 </div>
                             ) : (
-                                <div style={styles.registration_desc}>
-                                    <h3>
-                                        Registration Fee Breakdown
-                                    </h3>
-                                    <p>
-                                        The venue charges $47.65 for a meal, plus a 22% service charge + 9.45% sales tax. Thus, the meal alone is $63.63. It'll be delicious, we promise.</p>
-                                    <p>
-                                        The company that we hire to find our classmates charges $30 per student for their services, including the website. There are also fees at the venue like the AV, signage, name badges, etc. that are paid for out of that budget.
-                                    </p>
+                                <div>
+                                    <div style={styles.registration_desc}>
+                                        <h3>
+                                            Registration Fee Breakdown
+                                        </h3>
+                                        <p>
+                                            The venue charges $47.65 for a meal, plus a 22% service charge + 9.45% sales tax. Thus, the meal alone is $63.63. It'll be delicious, we promise.
+                                        </p>
+                                        <p>
+                                            The company that we hire to find our classmates charges $30 per student for their services, including the website. There are also fees at the venue like the AV, signage, name badges, etc. that are paid for out of that budget.
+                                        </p>
+                                    </div>
                                 </div>
                             )}
 
                         </section>
+                            <div style={styles.corp_sponsor}>
+                                Interested in becoming a corporate sponsor?
+                                <span onClick={this._handleCorpSponsor} style={styles.corp_button}> Click Here</span>
+                            </div>
                         <div className='pay-buttons'>
                             <Link to='/register/additional'>Back</Link>
                             <Link to='/register/done'>Continue</Link>
@@ -206,6 +300,20 @@ class Pay extends Component {
             event_over: {
                 margin: 5,
                 paddingTop: 15,
+            },
+            sponsor_list: {
+                margin: 20
+            },
+            corp_sponsor: {
+                margin: 25
+            },
+            corp_button: {
+                cursor: 'pointer',
+                textDecoration: 'underline'
+            },
+            more_info: {
+                cursor: 'pointer',
+                textDecoration: 'underline'
             }
 
         }

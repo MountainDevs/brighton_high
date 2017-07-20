@@ -23,8 +23,6 @@ class StripeAlumniPre extends Component {
           amount={9400}
           currency="USD"
           stripeKey="pk_test_mjnzkL9ebrh2Zbb5vy8hzniN"
-          shippingAddress={false}
-          billingAddress={true}
           zipCode={false}
           allowRememberMe
           token={this.onToken}
