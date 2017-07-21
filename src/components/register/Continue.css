@@ -1,0 +1,84 @@
+.Continue-bg {
+  font-weight: 100;
+  width: 100vw;
+  height: 100vh;
+  background: #333;
+}
+
+.Continue-wrapper {
+  border-radius: 3px;
+  background: #FFFFFF;
+  width: 700px;
+  height: 350px;
+  position: absolute;
+  left: calc((100% - 700px) / 2);
+  top: calc((100% - 400px) / 2)
+}
+
+.Continue-header {
+  border-radius: 3px 3px 0 0;
+  font-size: 15px;
+  background: #537187;
+  color: #ffffff;
+  padding: 15px
+}
+
+.Continue-body h1 {
+  margin: 75px 30px;
+}
+
+.Continue-photo {
+  padding: 40px 0 40px 40px;
+  color: #72B9D7;
+  text-decoration: underline;
+  font-size: 13px;
+  text-align: center;
+}
+.Continue-photo img{
+  margin: 10px 0 20px 0;
+  width: 100px;
+}
+
+.Continue-info {
+  padding: 40px;
+}
+
+.Continue-info label {
+  display: block;
+  font-size: 13px;
+  margin: 5px 0;
+}
+.Continue-info div {
+  margin: 10px;
+}
+.Continue-info input {
+  outline: none;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding-left: 5px;
+  width: 200px;
+  height: 25px;
+}
+
+.Continue-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.Continue-buttons :nth-child(1){
+  font-size: 12px;
+  color: #72B9D7;
+  margin: 20px;
+  padding: 13px;
+}
+.Continue-buttons :nth-child(2){
+  margin: 20px;
+  color: #ffffff;
+  font-size: 13px;
+  background: #FF8200;
+  text-align: center;
+  border-radius: 3px;
+  width: 75px;
+  padding: 13px;
+}
+

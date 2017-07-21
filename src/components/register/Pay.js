@@ -253,7 +253,7 @@ class Pay extends Component {
                             </div>
                         <div className='pay-buttons'>
                             <Link to='/register'>Back</Link>
-                            <Link to='/register/personal'>Continue</Link>
+                            <Link to='/register/continue'>Continue</Link>
                         </div> 
                     </div>
                 </div>
