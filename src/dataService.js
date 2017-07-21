@@ -157,6 +157,11 @@ function postStripeRecord(record) {
   .then(res => res.data)
 }
 
+function sendToStripe(data) {
+  return axios.post('/api/stripe/create_charge', data)
+    .then(res => res.data);
+}
+
 function getUser(id) {
   return axios.get(`/api/user/${id}`)
   .then(res => {
@@ -209,6 +214,7 @@ module.exports = {
   checkToken,
   verifyUser,
   setUserFromLocal,
-  clearData
+  clearData,
+  sendToStripe
 }
 
