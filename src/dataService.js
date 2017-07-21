@@ -212,6 +212,11 @@ function getAllUsers() {
   .then(res => res.data)
 }
 
+function getDisplayingUsers() {
+  return axios.get('/api/displaying_users')
+    .then(res => res.data);
+}
+
 function getClassmates() {
   return axios.get(`/api/alumni`)
   .then(res =>  res.data)
@@ -266,6 +271,7 @@ module.exports = {
   setUserFromLocal,
   clearData,
   sendToStripe,
-  updateShowProfile
+  updateShowProfile,
+  getDisplayingUsers
 }
 

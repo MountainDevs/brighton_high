@@ -90,6 +90,17 @@ function getAllUsers(req, res, next) {
   });
 }
 
+function getDisplayingUsers(req, res, next) {
+  db.users.find({
+    show_profile: true
+  }).then(users => {
+    res.json(users);
+  })
+  .catch(err => {
+    res.status(500).json(err);
+  })
+}
+
 function getClassmates(req, res, next) {
   db.get_classmates()
   .then(classmates => {
@@ -121,5 +132,6 @@ module.exports = {
   getAllUsers, 
   getClassmates,
   postStripeRecord,
-  updateShowProfile
+  updateShowProfile,
+  getDisplayingUsers
 }
