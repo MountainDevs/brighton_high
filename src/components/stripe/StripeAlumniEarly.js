@@ -17,8 +17,7 @@ class StripeAlumniEarly extends Component {
 
   onToken = (token) => {
     token.amount = 9400;
-    token.chargeDescription = "Brighton alumni early";
-    token.name = `${this.state.firstName} ${this.state.middleName} ${this.state.lastName}`;
+    token.chargeDescription = `Early: ${this.state.firstName} ${this.state.middleName} ${this.state.lastName}`;
     token.receipt_email = this.state.email;
     sendToStripe(token)
       .then(response => {
