@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { userData } from './../../dataService';
+import { userData, postUser } from './../../dataService';
 import './Register.css';
 
 class Register extends Component {
@@ -31,6 +31,7 @@ class Register extends Component {
     userData.firstName = this.state.firstName;
     userData.lastName = this.state.lastName;
     userData.middleName = this.state.middleName;
+    postUser().then(res => res);
   }
 
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import { sendToStripe, userData, postUser } from '../../dataService.js';
+import { sendToStripe, userData, checkUser, userHasPaid } from '../../dataService.js';
 
 class StripeAlumniEarly extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class StripeAlumniEarly extends Component {
       lastName: userData.lastName,
       middleName: userData.middleName
     }
+    this.userPaid = this.userPaid.bind(this);
   }
 
   onToken = (token) => {
@@ -22,11 +23,22 @@ class StripeAlumniEarly extends Component {
     sendToStripe(token)
       .then(response => {
         alert("Payment successful");
+        this.userPaid();
             //Catch throwing even when successful
             // .catch(alert("Payment was successful, but there was a problem registering your account. Please contact Jessica@brightonhigh1987.com"));
       });
       //Somehow both the then and catch are being thrown. Don't know what to do about that. 
       // .catch(alert("There was a problem processing your payment, please verify you have the correct information and try again"))
+  }
+
+  userPaid() {
+    if (!userData.id) {
+      checkUser().then(res => {
+        userHasPaid().then(res => res);
+      })
+    } else {
+      userHasPaid().then(res => res);
+    }
   }
 
   render() {

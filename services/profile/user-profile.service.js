@@ -122,6 +122,19 @@ function postStripeRecord(req, res, next) {
   });
 }
 
+function confirmUserPaid(req, res, next) {
+  db.users.update({
+    id: req.body.id,
+    paid: true
+  })
+  .then(data => {
+    res.json(data);
+  })
+  .catch(err => {
+    res.status(500).json(err);
+  });
+}
+
 
 module.exports = {
   getUser,
@@ -132,5 +145,6 @@ module.exports = {
   getClassmates,
   postStripeRecord,
   updateShowProfile,
-  getDisplayingUsers
+  getDisplayingUsers,
+  confirmUserPaid
 }

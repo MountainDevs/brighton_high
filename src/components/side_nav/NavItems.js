@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { NavLink } from 'react-router-dom';
+import { userData } from '../../dataService.js';
+import '../../styles/common.css';
 
 import './NavItems.css';
 
@@ -18,7 +20,7 @@ const NavItems = () => {
                                 Event Details
                         </NavLink>
                     </li>
-                    <li>
+                    <li className={ userData.paid ? '' : 'hidden' }>
                         <NavLink 
                             to="/profiles" 
                             className="navitems-link" 
@@ -45,7 +47,7 @@ const NavItems = () => {
                                 Contact
                         </NavLink>
                     </li>
-                    <li>
+                    <li className={ userData.paid ? '' : 'hidden' }>
                         <NavLink 
                             to="/my_profile" 
                             className="navitems-link" 

@@ -21,7 +21,8 @@ let userData = {
   attending: false,
   photo: '',
   permissions: '',
-  showProfile: false
+  showProfile: false,
+  paid: false
 }
 
 function clearData(){
@@ -41,7 +42,8 @@ function clearData(){
     attending: false,
     photo: '',
     permissions: '',
-    showProfile: false
+    showProfile: false,
+    paid: false,
   }
 }
 
@@ -94,27 +96,30 @@ function serializeUser(data) {
   if (data.photo) userData.photo = data.photo;
   if (data.permissions) userData.permissions = data.permissions;
   if (data.password) userData.password = data.password;
-  if (data.show_profile) userData.showProfile = data.show_profile;
+  if (data.show_profile !== null && data.show_profile !== undefined) userData.showProfile = data.show_profile;
+  if (data.paid !== null && data.paid !== undefined) userData.paid = data.paid;
 }
 
 function deserializeUser(data) {
   var returnData = {};
-  if (data.id) userData.id = data.id;
-  if (data.email) userData.email = data.email;
-  if (data.firstName) userData.first_name_profile = data.firstName;
-  if (data.lastName) userData.last_name_profile = data.lastName;
-  if (data.middleName) userData.middle_name_profile = data.middleName;
-  if (data.phone) userData.phone = data.phone;
-  if (data.address) userData.address = data.address;
-  if (data.city) userData.city = data.city;
-  if (data.state) userData.state = data.state;
-  if (data.zipcode) userData.zipcode = data.zipcode;
-  if (data.bio) userData.bio = data.bio;
-  if (data.attending) userData.attending = data.attending;
-  if (data.photo) userData.photo = data.photo;
-  if (data.permissions) userData.permissions = data.permissions;
-  if (data.password) userData.password = data.password;
-  if (data.showProfile) userData.show_profile = data.showProfile;
+  if (data.id) returnData.id = data.id;
+  if (data.email) returnData.email = data.email;
+  if (data.firstName) returnData.first_name_profile = data.firstName;
+  if (data.lastName) returnData.last_name_profile = data.lastName;
+  if (data.middleName) returnData.middle_name_profile = data.middleName;
+  if (data.phone) returnData.phone = data.phone;
+  if (data.address) returnData.address = data.address;
+  if (data.city) returnData.city = data.city;
+  if (data.state) returnData.state = data.state;
+  if (data.zipcode) returnData.zipcode = data.zipcode;
+  if (data.bio) returnData.bio = data.bio;
+  if (data.attending) returnData.attending = data.attending;
+  if (data.photo) returnData.photo = data.photo;
+  if (data.permissions) returnData.permissions = data.permissions;
+  if (data.password) returnData.password = data.password;
+  if (data.showProfile !== null && data.showProfile !== undefined) returnData.show_profile = data.showProfile;
+  if (data.paid !== null && data.showProfile !== undefined) returnData.paid = data.paid;
+  return returnData;
 }
 
 function login(email, password) {
@@ -248,6 +253,13 @@ function updateShowProfile(value) {
     });
 }
 
+function userHasPaid() {
+  return axios.put('/api/user/payment_confirmed', userData)
+    .then(res => {
+      return res.data;
+    });
+}
+
 // checkUser();
 
 module.exports = {
@@ -269,6 +281,7 @@ module.exports = {
   clearData,
   sendToStripe,
   updateShowProfile,
-  getDisplayingUsers
+  getDisplayingUsers,
+  userHasPaid
 }
 
