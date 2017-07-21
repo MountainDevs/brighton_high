@@ -162,7 +162,6 @@ function checkToken() {
 
 function postUser() {
   console.log(userData);
-  console.log(data);
   var data = {
     firstName: userData.firstName,
     middleName: userData.middleName,
@@ -170,7 +169,6 @@ function postUser() {
     email: userData.email,
     password: userData.password
   }
-  console.log(userData);
   console.log(data);
   return axios.post(`/api/user`, data)
   .then(res => {
@@ -245,7 +243,6 @@ function updateShowProfile(value) {
   };
   return axios.put('/api/user/show_profile', data)
     .then(res => {
-      console.log(res);
       serializeUser(res.data);
       return res.data;
     });

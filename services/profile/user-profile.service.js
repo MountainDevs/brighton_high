@@ -28,7 +28,6 @@ function getUser(req, res, next) {
 }
 
 function postUser(req, res, next) {
-  console.log(req.body);
   db.users.insert({
     first_name: req.body.firstName,
     last_name: req.body.lastName,
