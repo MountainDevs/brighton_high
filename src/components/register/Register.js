@@ -8,7 +8,10 @@ class Register extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      firstName: '',
+      lastName: '',
+      middleName: ''
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,6 +28,9 @@ class Register extends Component {
   handleSubmit() {
     userData.email = this.state.email;
     userData.password = this.state.password;
+    userData.firstName = this.state.firstName;
+    userData.lastName = this.state.lastName;
+    userData.middleName = this.state.middleName;
   }
 
   render() {
@@ -37,11 +43,23 @@ class Register extends Component {
             <div style={{display: 'flex'}}>
               <div className='register-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
               <input type="email" placeholder='example@gmail.com' name='email' value={this.state.email} onChange={this.handleInputChange} className='register-input'/>
-              </div> 
+            </div> 
             <div style={{display: 'flex'}}>
               <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
               <input type="password" placeholder="password" name='password' value={this.state.password} onChange={this.handleInputChange} className='register-input'/>
-              </div> 
+            </div> 
+            <div style={{display: 'flex'}}>
+              <div className='register-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
+              <input type="firstName" placeholder='Your First Name' name='firstName' value={this.state.firstName} onChange={this.handleInputChange} className='register-input'/>
+            </div> 
+            <div style={{display: 'flex'}}>
+              <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
+              <input type="middleName" placeholder="Your Middle Name" name='middleName' value={this.state.middleName} onChange={this.handleInputChange} className='register-input'/>
+            </div>
+            <div style={{display: 'flex'}}>
+              <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
+              <input type="lastName" placeholder="Your Last Name" name='lastName' value={this.state.lastName} onChange={this.handleInputChange} className='register-input'/>
+            </div> 
             <Link to='/register/pay' onClick={this.handleSubmit} className='register-register' >Continue</Link>
             <Link to='/'><div className='login-register'>Exit</div></Link>
           </div>

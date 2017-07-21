@@ -96,7 +96,6 @@ function serializeUser(data) {
 
 function login(email, password) {
   var data = { email: email, password: password };
-  console.log("Data for login: ", login);
   return axios.post(`/api/sessions/create`, data)
     .then(res => {
       var token = res.data.id_token;
@@ -113,6 +112,7 @@ function login(email, password) {
 function logout() {
   localStorage.removeItem('jwt');
 }
+
 
 function checkUser() {
   var token = '';
@@ -138,9 +138,19 @@ function checkToken() {
 }
 
 function postUser() {
-  console.log("User to create: ", userData);
-  return axios.post(`/api/user`, userData)
-  .then(res => res.data)
+  var data = {
+    firstName: userData.firstName,
+    middleName: userData.middleName,
+    lastName: userData.middleName,
+    email: userData.email,
+    password: userData.password
+  }
+  return axios.post(`/api/user`, data)
+  .then(res => {
+    login(data.email, data.password);
+    return res.data
+  })
+  .catch(err => err);
 }
 
 function updateUser() {
@@ -158,8 +168,7 @@ function postStripeRecord(record) {
 }
 
 function sendToStripe(data) {
-  return axios.post('/api/stripe/create_charge', data)
-    .then(res => res.data);
+  return axios.post('/api/stripe/create_charge', data);
 }
 
 function getUser(id) {
@@ -215,6 +224,6 @@ module.exports = {
   verifyUser,
   setUserFromLocal,
   clearData,
-  sendToStripe
+  sendToStripe,
 }
 

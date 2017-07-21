@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import { sendToStripe } from '../../dataService.js';
+import { sendToStripe, userData, postUser } from '../../dataService.js';
 
 class StripeAlumniEarly extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: userData.email,
+      password: userData.password,
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      middleName: userData.middleName
+    }
+  }
   onToken = (token) => {
-    console.log(token);
     token.amount = 9400;
-    token.chargeDescription = "Brighton high alumni early_" + token.card.name;
+    token.chargeDescription = "Brighton alumni early";
+    token.name = `${this.state.firstName} ${this.state.middleName} ${this.state.lastName}`;
+    token.receipt_email = this.state.email;
     sendToStripe(token)
       .then(response => {
-        response.then(data => {
-          console.log(data);
+        console.log(userData);
           alert(`Payment Successful`);
-        }).catch(alert("There was a problem processing your payment"));
-      })
-
-    // fetch('/save-stripe-token', {
-    //   method: 'POST',
-    //   body: JSON.stringify(token),
-    // }).then(response => {
-    //   response.json().then(data => {
-    //     alert(`Payment Successful, ${data.name}`);
-    //   })
-    //   .catch(alert("There was a problem processing your payment"));
-    // });
+          postUser()
+            .then(console.log("login successful"));
+            //Catch throwing even when successful
+            // .catch(alert("Payment was successful, but there was a problem registering your account. Please contact Jessica@brightonhigh1987.com"));
+      });
+      //Somehow both the then and catch are being thrown. Don't know what to do about that. 
+      // .catch(alert("There was a problem processing your payment, please verify you have the correct information and try again"))
   }
 
   render() {
@@ -34,6 +40,7 @@ class StripeAlumniEarly extends Component {
           description="Alumni Only"
           panelLabel="Register"
           amount={9400}
+          email={this.state.email}
           currency="USD"
           stripeKey="pk_test_mjnzkL9ebrh2Zbb5vy8hzniN"
           zipCode={false}

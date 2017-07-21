@@ -33,15 +33,7 @@ function postUser(req, res, next) {
     last_name: req.body.lastName,
     middle_name: req.body.middleName,
     email: req.body.email,
-    password: req.body.password,
-    phone: req.body.phone,
-    address: req.body.address,
-    city: req.body.city,
-    state: req.body.state,
-    zipcode: req.body.zipcode,
-    bio: req.body.bio,
-    attending: req.body.attending,
-    photo: req.body.photo
+    password: req.body.password
   })
   .then(user => {
     res.send(user)

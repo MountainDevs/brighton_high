@@ -8,9 +8,9 @@ const config = require('./config.json');
 
 // app.use('/api/user', jwt({secret: config.secret}));
 
-app.get('/api/user', userService.getUser);
 app.post('/api/user', userService.postUser);
 app.put('/api/user', userService.updateUser);
+app.get('/api/user', userService.getUser);
 app.put('/api/classmates', userService.updateClassmates);
 app.get('/api/user/:id', userService.getUser);
 app.get('/api/all_users', userService.getAllUsers);
