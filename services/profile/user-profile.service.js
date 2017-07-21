@@ -28,6 +28,7 @@ function getUser(req, res, next) {
 }
 
 function postUser(req, res, next) {
+  console.log(req.body);
   db.users.insert({
     first_name: req.body.firstName,
     last_name: req.body.lastName,
@@ -44,28 +45,26 @@ function postUser(req, res, next) {
 }
 
 function updateUser(req, res, next) {
-  db.users.update({
-    id: req.body.id,
-    first_name: req.body.firstName,
-    last_name: req.body.lastName,
-    middle_name: req.body.middleName,
-    email: req.body.email,
-    password: req.body.password,
-    phone: req.body.phone,
-    address: req.body.address,
-    city: req.body.city,
-    state: req.body.state,
-    zipcode: req.body.zipcode,
-    bio: req.body.bio,
-    attending: req.body.attending,
-    photo: req.body.photo
-  })
+  db.users.update(req.body)
   .then(user => {
     res.send(user)
   })
   .catch(err => {
     console.log(err)
   });
+}
+
+function updateShowProfile(req, res, next) {
+  db.users.update({
+    id: req.body.id,
+    show_profile: req.body.value
+  })
+  .then(user => {
+    res.send(user);
+  })
+  .catch(err => {
+    console.log(err);
+  })
 }
 
 function updateClassmates(req, res, next) {
@@ -121,5 +120,6 @@ module.exports = {
   updateClassmates,
   getAllUsers, 
   getClassmates,
-  postStripeRecord
+  postStripeRecord,
+  updateShowProfile
 }

@@ -10,9 +10,9 @@ class Personal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      middleName: '',
+      firstName: userData.firstName || '',
+      lastName: userData.lastName || '',
+      middleName: userData.middleName || '',
       email: userData.email || '',
       phone: '',
       photoSrc: userData.photo,

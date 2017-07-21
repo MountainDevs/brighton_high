@@ -14,6 +14,7 @@ class StripeAlumniEarly extends Component {
       middleName: userData.middleName
     }
   }
+
   onToken = (token) => {
     token.amount = 9400;
     token.chargeDescription = "Brighton alumni early";
@@ -21,10 +22,6 @@ class StripeAlumniEarly extends Component {
     token.receipt_email = this.state.email;
     sendToStripe(token)
       .then(response => {
-        console.log(userData);
-          alert(`Payment Successful`);
-          postUser()
-            .then(console.log("login successful"));
             //Catch throwing even when successful
             // .catch(alert("Payment was successful, but there was a problem registering your account. Please contact Jessica@brightonhigh1987.com"));
       });

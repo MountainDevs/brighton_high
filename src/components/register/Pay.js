@@ -7,7 +7,7 @@ import StripeAlumniSpouse from '../Stripe/StripeAlumniSpouse';
 import StripeAlumniSpouseDayOf from '../Stripe/StripeAlumniSpouseDayOf';
 import StripeAlumniDayOf from '../Stripe/StripeAlumniDayOf';
 import StripeAlumniNonAttending from '../Stripe/StripeAlumniNonAttending';
-import { postUser, permissions } from '../../dataService'
+import { postUser, permissions, userData } from '../../dataService'
 import './Pay.css';
 
 class Pay extends Component {
@@ -25,7 +25,22 @@ class Pay extends Component {
 
     componentWillUnmount(){
         permissions.payed = true;
+        // this.registerUser();
     }
+
+  registerUser() {
+    userData.email = this.state.email;
+    userData.password = this.state.password;
+    userData.firstName = this.state.firstName;
+    userData.lastName = this.state.lastName;
+    userData.middleName = this.state.middleName;
+    
+    postUser()
+            .then(res => {
+              
+              alert(`Payment Successful`);
+            });
+  }
 
     componentDidMount () {
         const time = new Date()

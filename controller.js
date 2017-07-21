@@ -9,7 +9,8 @@ const config = require('./config.json');
 // app.use('/api/user', jwt({secret: config.secret}));
 
 app.post('/api/user', userService.postUser);
-app.put('/api/user', userService.updateUser);
+app.put('/api/user', jwt({secret: config.secret}), userService.updateUser);
+app.put('/api/user/show_profile', userService.updateShowProfile);
 app.get('/api/user', userService.getUser);
 app.put('/api/classmates', userService.updateClassmates);
 app.get('/api/user/:id', userService.getUser);

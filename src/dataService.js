@@ -20,7 +20,8 @@ let userData = {
   bio: '',
   attending: false,
   photo: '',
-  permissions: ''
+  permissions: '',
+  showProfile: false
 }
 
 function clearData(){
@@ -39,7 +40,8 @@ function clearData(){
     bio: '',
     attending: false,
     photo: '',
-    permissions: ''
+    permissions: '',
+    showProfile: false
   }
 }
 
@@ -92,6 +94,27 @@ function serializeUser(data) {
   if (data.photo) userData.photo = data.photo;
   if (data.permissions) userData.permissions = data.permissions;
   if (data.password) userData.password = data.password;
+  if (data.show_profile) userData.showProfile = data.show_profile;
+}
+
+function deserializeUser(data) {
+  var returnData = {};
+  if (data.id) userData.id = data.id;
+  if (data.email) userData.email = data.email;
+  if (data.firstName) userData.first_name_profile = data.firstName;
+  if (data.lastName) userData.last_name_profile = data.lastName;
+  if (data.middleName) userData.middle_name_profile = data.middleName;
+  if (data.phone) userData.phone = data.phone;
+  if (data.address) userData.address = data.address;
+  if (data.city) userData.city = data.city;
+  if (data.state) userData.state = data.state;
+  if (data.zipcode) userData.zipcode = data.zipcode;
+  if (data.bio) userData.bio = data.bio;
+  if (data.attending) userData.attending = data.attending;
+  if (data.photo) userData.photo = data.photo;
+  if (data.permissions) userData.permissions = data.permissions;
+  if (data.password) userData.password = data.password;
+  if (data.showProfile) userData.show_profile = data.showProfile;
 }
 
 function login(email, password) {
@@ -138,13 +161,17 @@ function checkToken() {
 }
 
 function postUser() {
+  console.log(userData);
+  console.log(data);
   var data = {
     firstName: userData.firstName,
     middleName: userData.middleName,
-    lastName: userData.middleName,
+    lastName: userData.lastName,
     email: userData.email,
     password: userData.password
   }
+  console.log(userData);
+  console.log(data);
   return axios.post(`/api/user`, data)
   .then(res => {
     login(data.email, data.password);
@@ -154,7 +181,8 @@ function postUser() {
 }
 
 function updateUser() {
-  return axios.put(`/api/user`, userData)
+  var data = deserializeUser(userData);
+  return axios.put(`/api/user`, data)
   .then(res => {
     serializeUser(res.data);
     return res.data;
@@ -205,6 +233,19 @@ function changePhoto(photoString) {
   }
 }
 
+function updateShowProfile(value) {
+  var data = {
+    id: userData.id,
+    value: value
+  };
+  return axios.put('/api/user/show_profile', data)
+    .then(res => {
+      console.log(res);
+      serializeUser(res.data);
+      return res.data;
+    });
+}
+
 // checkUser();
 
 module.exports = {
@@ -225,5 +266,6 @@ module.exports = {
   setUserFromLocal,
   clearData,
   sendToStripe,
+  updateShowProfile
 }
 

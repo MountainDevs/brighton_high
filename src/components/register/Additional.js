@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { userData, login, postUser } from './../../dataService';
+import { userData, updateUser } from './../../dataService';
 import './Additional.css';
 
 class Additional extends Component {
@@ -23,7 +23,7 @@ class Additional extends Component {
 
   handleSubmit() {
     userData.bio = this.state.bio;
-    postUser().then(res => login(userData.email, userData.password).then(res => res));
+    updateUser().then(res => res);
   }
     
   render() {

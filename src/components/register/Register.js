@@ -48,7 +48,7 @@ class Register extends Component {
               <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
               <input type="password" placeholder="password" name='password' value={this.state.password} onChange={this.handleInputChange} className='register-input'/>
             </div> 
-            <div style={{display: 'flex'}}>
+            {/* <div style={{display: 'flex'}}>
               <div className='register-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
               <input type="firstName" placeholder='Your First Name' name='firstName' value={this.state.firstName} onChange={this.handleInputChange} className='register-input'/>
             </div> 
@@ -59,7 +59,7 @@ class Register extends Component {
             <div style={{display: 'flex'}}>
               <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
               <input type="lastName" placeholder="Your Last Name" name='lastName' value={this.state.lastName} onChange={this.handleInputChange} className='register-input'/>
-            </div> 
+            </div>  */}
             <Link to='/register/pay' onClick={this.handleSubmit} className='register-register' >Continue</Link>
             <Link to='/'><div className='login-register'>Exit</div></Link>
           </div>
