@@ -7,20 +7,22 @@ class StripeAlumniEarly extends Component {
     super(props);
 
     this.state = {
+      amount: 9400,
       email: userData.email,
       password: userData.password,
       firstName: userData.firstName,
       lastName: userData.lastName,
       middleName: userData.middleName
     }
+    console.log(userData);
   }
 
   onToken = (token) => {
-    token.amount = 9400;
+    token.amount = this.state.amount;
     token.chargeDescription = `Early: ${this.state.firstName} ${this.state.middleName} ${this.state.lastName}`;
-    token.receipt_email = this.state.email;
     sendToStripe(token)
       .then(response => {
+        console.log(userData);
             //Catch throwing even when successful
             // .catch(alert("Payment was successful, but there was a problem registering your account. Please contact Jessica@brightonhigh1987.com"));
       });
@@ -35,7 +37,7 @@ class StripeAlumniEarly extends Component {
           name="Early Registration"
           description="Alumni Only"
           panelLabel="Register"
-          amount={9400}
+          amount={this.state.amount}
           email={this.state.email}
           currency="USD"
           stripeKey="pk_test_mjnzkL9ebrh2Zbb5vy8hzniN"
