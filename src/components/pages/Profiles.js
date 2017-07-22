@@ -5,7 +5,7 @@ import CardProfile from './Shared/CardProfile';
 import Title from './Shared/Title';
 import LoginRequest from '../login/LoginRequest';
 // Data
-import { getAllUsers } from '../../dataService.js';
+import { getDisplayingUsers } from '../../dataService.js';
 // Images
 import prof_pic from '../../assets/profile_pic.png'
 // CSS
@@ -22,14 +22,14 @@ class Profiles extends Component {
 
     componentWillMount() {
         if(this.props.loggedIn) {
-            getAllUsers().then( users => {
+            getDisplayingUsers().then( users => {
                 this.setState({users})
             })
         }
     }
     componentWillUpdate() {
         if(this.props.loggedIn && this.state.users.length === 0) {
-            getAllUsers().then( users => {
+            getDisplayingUsers().then( users => {
                 this.setState({users})
             })
         }

@@ -1,18 +1,25 @@
 .register-bg {
+  box-sizing: border-box;
   font-weight: 100;
-  width: 100vw;
-  height: 100vh;
   background: #333;
+   display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+
 }
 
 .register-wrapper {
+  box-sizing: border-box;
   border-radius: 3px;
   background: #FFFFFF;
   width: 500px;
-  height: 550px;
-  position: absolute;
+  min-height: 550px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+   /* position: absolute;
   left: calc((100% - 500px) / 2);
-  top: calc((100% - 600px) / 2)
+  top: calc((100% - 600px) / 2)  */
 }
 
 .register-header {
@@ -29,6 +36,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 30px;
 }
 
 .register-text {

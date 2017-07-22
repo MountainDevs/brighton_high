@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 
-class StripeAlumniSpousePre extends Component {
+class StripeAlumniSpouseEarly extends Component {
   onToken = (token) => {
     fetch('/save-stripe-token', {
       method: 'POST',
@@ -22,9 +22,7 @@ class StripeAlumniSpousePre extends Component {
           panelLabel="Register"
           amount={15700}
           currency="USD"
-          stripeKey="pk_test_yFliojp5k9U6cxv0NRVL3W9U"
-          shippingAddress
-          billingAddress={false}
+          stripeKey="pk_test_mjnzkL9ebrh2Zbb5vy8hzniN"
           zipCode={false}
           allowRememberMe
           token={this.onToken}
@@ -37,4 +35,4 @@ class StripeAlumniSpousePre extends Component {
   }
 }
 
-export default StripeAlumniSpousePre;
+export default StripeAlumniSpouseEarly;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // Data
-import { userData } from './../../dataService';
+import { userData, updateUser } from './../../dataService';
 // CSS
 import './ContactInfo.css';
 
@@ -33,6 +33,7 @@ class ContactInfo extends Component {
     userData.city = this.state.city;
     userData.state = this.state.state;
     userData.zipcode = this.state.zipcode;
+    updateUser().then(res => res);
   }
 
   render() {

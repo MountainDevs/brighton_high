@@ -5,3 +5,18 @@
      height: calc(100vh - 50px);
      overflow: auto;
 }
+
+.showProfile-wrapper {
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 700px;
+  height: 150px;
+}
