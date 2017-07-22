@@ -8,6 +8,7 @@ class StripeAlumniEarly extends Component {
 
     this.state = {
       amount: 9400,
+      id: userData.id,
       email: userData.email,
       password: userData.password,
       firstName: userData.firstName,
@@ -19,7 +20,7 @@ class StripeAlumniEarly extends Component {
 
   onToken = (token) => {
     token.amount = this.state.amount;
-    token.chargeDescription = `Early: ${this.state.firstName} ${this.state.middleName} ${this.state.lastName}`;
+    token.chargeDescription = `Early: ${this.state.firstName} ${this.state.middleName} ${this.state.lastName} --${this.state.id}--`;
     sendToStripe(token)
       .then(response => {
         alert("Payment successful");
@@ -32,6 +33,7 @@ class StripeAlumniEarly extends Component {
   }
 
   userPaid() {
+    console.log(userData);
     if (!userData.id) {
       checkUser().then(res => {
         userHasPaid().then(res => res);
