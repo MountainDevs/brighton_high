@@ -22,7 +22,7 @@ let userData = {
   photo: '',
   permissions: '',
   showProfile: false,
-  paid: false
+  stripe_token: false
 }
 
 function clearData(){
@@ -43,7 +43,7 @@ function clearData(){
     photo: '',
     permissions: '',
     showProfile: false,
-    paid: false,
+    stripe_token: false
   }
 }
 
@@ -97,7 +97,7 @@ function serializeUser(data) {
   if (data.permissions) userData.permissions = data.permissions;
   if (data.password) userData.password = data.password;
   if (data.show_profile !== null && data.show_profile !== undefined) userData.showProfile = data.show_profile;
-  if (data.paid !== null && data.paid !== undefined) userData.paid = data.paid;
+  if (data.stripe_token !== null && data.stripe_token !== undefined) userData.stripe_token = data.stripe_token;
 }
 
 function deserializeUser(data) {
@@ -118,7 +118,7 @@ function deserializeUser(data) {
   if (data.permissions) returnData.permissions = data.permissions;
   if (data.password) returnData.password = data.password;
   if (data.showProfile !== null && data.showProfile !== undefined) returnData.show_profile = data.showProfile;
-  if (data.paid !== null && data.showProfile !== undefined) returnData.paid = data.paid;
+  if (data.stripe_token !== null && data.stripe_token !== undefined) returnData.stripe_token = data.stripe_token;
   return returnData;
 }
 
@@ -130,6 +130,8 @@ function login(email, password) {
       localStorage.setItem('jwt', JSON.stringify(token));
       axios.defaults.headers.common['Authorization'] = "Bearer " + token;
       serializeUser(res.data.user);
+      console.log("user: ", res.data.user);
+      console.log("userData: ", res.data.user);
       return true
     })
     .catch(err => {
@@ -253,11 +255,11 @@ function updateShowProfile(value) {
     });
 }
 
-function userHasPaid() {
-  return axios.put('/api/user/payment_confirmed', userData)
+function loginWithStripeToken(value) {
+  return axios.put('/api/user/log_in_stripe_token', value)
     .then(res => {
-      return res.data;
-    });
+      serializeUser(res.data);
+    })
 }
 
 // checkUser();
@@ -281,7 +283,6 @@ module.exports = {
   clearData,
   sendToStripe,
   updateShowProfile,
-  getDisplayingUsers,
-  userHasPaid
+  getDisplayingUsers
 }
 

@@ -7,9 +7,9 @@ class Header extends Component {
     render() {
 
         let button = null;
-        if (this.props.loggedIn && userData.paid) {
+        if (this.props.loggedIn && userData.stripe_token) {
           button = <Link to="/" className="login-button" onClick={this.props.switchLogin.bind(null, false)}>Logout</Link>
-        } else if (this.props.loggedIn && !userData.paid) {
+        } else if (this.props.loggedIn && !userData.stripe_token) {
           button = <Link to="/register/pay" className="login-button" onClick={this.props.switchLogin.bind(null, false)}>Pay</Link>
         } else {
           button =  <Link to="/login" className="login-button">Login</Link>;

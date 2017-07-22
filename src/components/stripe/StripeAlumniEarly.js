@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import { sendToStripe, userData, checkUser, userHasPaid } from '../../dataService.js';
+import { sendToStripe, userData, checkUser, loginWithStripeToken } from '../../dataService.js';
 
 class StripeAlumniEarly extends Component {
   constructor(props) {
@@ -15,32 +15,34 @@ class StripeAlumniEarly extends Component {
       lastName: userData.lastName,
       middleName: userData.middleName
     }
+    console.log(this.state);
     this.userPaid = this.userPaid.bind(this);
   }
 
   onToken = (token) => {
     token.amount = this.state.amount;
-    token.chargeDescription = `Early: ${this.state.firstName} ${this.state.middleName} ${this.state.lastName} --${this.state.id}--`;
+    console.log(this.state.id);
+    token.chargeDescription = `-4-${this.state.firstName} ${this.state.lastName}`;
     sendToStripe(token)
       .then(response => {
         alert("Payment successful");
-        this.userPaid();
+        this.userPaid(response.data.dbData.stripe_token);
             //Catch throwing even when successful
             // .catch(alert("Payment was successful, but there was a problem registering your account. Please contact Jessica@brightonhigh1987.com"));
-      });
+      })
+      .catch(err => {console.log(err)});
       //Somehow both the then and catch are being thrown. Don't know what to do about that. 
       // .catch(alert("There was a problem processing your payment, please verify you have the correct information and try again"))
   }
 
-  userPaid() {
-    console.log(userData);
-    if (!userData.id) {
-      checkUser().then(res => {
-        userHasPaid().then(res => res);
+  userPaid(value) {
+    loginWithStripeToken(value)
+      .then(res => {
+        console.log(res);
       })
-    } else {
-      userHasPaid().then(res => res);
-    }
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   render() {

@@ -13,6 +13,15 @@ const stripe = require('stripe')(
 //   api_key: "sk_test_MiQTqPAvBkeVnQt4Y7H8VIf6"
 // });
 
+function getId(description) {
+  if ( parseInt(description.substring(description.indexOf("-") + 1, description.lastIndexOf("-"))) && typeof parseInt(description.substring(description.indexOf("-") + 1, description.lastIndexOf("-"))) === 'number' ) {
+    return parseInt(description.substring(description.indexOf("-") + 1, description.lastIndexOf("-")));
+  } else {
+    throw new Error("Something obviously went wrong");
+  }
+    
+}
+
 module.exports = {
   createCharge: (req, res, next) => {
     var token = req.body.id;
@@ -25,11 +34,19 @@ module.exports = {
       source: token
     }, function(err, response) {
       if (err) return res.status(500).json(err);
-      return db.stripe_records.insert({
-        record: response.id
-      })
-      .then(data => res.json(data))
-      .catch(err => err);
-    });
+      try {
+        var id = getId(response.description);
+        return db.users.update({
+          id: id,
+          stripe_token: response.id
+        })
+        .then(data => {
+          return res.json({dbData: data, stripeData: response});
+        })
+        .catch(err => err);
+      } catch (e) {
+        return res.status(500).json("There was an error parsing Stripe information");
+      }
+    })
   }
 }

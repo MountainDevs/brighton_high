@@ -20,7 +20,7 @@ const NavItems = () => {
                                 Event Details
                         </NavLink>
                     </li>
-                    <li className={ userData.paid ? '' : 'hidden' }>
+                    <li className={ userData.stripe_token ? '' : 'hidden' }>
                         <NavLink 
                             to="/profiles" 
                             className="navitems-link" 
@@ -47,7 +47,7 @@ const NavItems = () => {
                                 Contact
                         </NavLink>
                     </li>
-                    <li className={ userData.paid ? '' : 'hidden' }>
+                    <li className={ userData.stripe_token ? '' : 'hidden' }>
                         <NavLink 
                             to="/my_profile" 
                             className="navitems-link" 
