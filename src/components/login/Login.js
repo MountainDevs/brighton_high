@@ -49,11 +49,11 @@ class Login extends Component {
           <div className='login-body'>
             <div className='login-text'>We are excited to have you here! Login to view your classmate profiles</div>
             <div style={{display: 'flex'}}>
-              <div className='login-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
+              <div className='login-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
                 <input type="email" placeholder='example@gmail.com' name='email' value={this.state.email} onChange={this.handleInputChange} className='login-input'/>
               </div> 
             <div style={{display: 'flex'}}>
-              <div className='login-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
+              <div className='login-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
                 <input type="password" name='password' value={this.state.password} onChange={this.handleInputChange} className='login-input'/>
               </div> 
             <div className='blue-button' onClick={this.handleSubmit}>Login</div>
