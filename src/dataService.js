@@ -256,9 +256,16 @@ function updateShowProfile(value) {
 }
 
 function loginWithStripeToken(value) {
-  return axios.put('/api/user/log_in_stripe_token', value)
+  var data = {
+    stripe_token: value
+  }
+  return axios.put('/api/sessions/stripe_token', data)
     .then(res => {
       serializeUser(res.data);
+      return res.data;
+    })
+    .catch(err => {
+      return err;
     })
 }
 
@@ -283,6 +290,7 @@ module.exports = {
   clearData,
   sendToStripe,
   updateShowProfile,
-  getDisplayingUsers
+  getDisplayingUsers,
+  loginWithStripeToken
 }
 

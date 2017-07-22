@@ -26,6 +26,24 @@ app.post('/api/sessions/create', (req, res, next) => {
   });
 });
 
+app.post('/api/sessions/stripe_token', (req, res, next) => {
+  console.log(req.body);
+  db.log_in_stripe_token([req.body.stripe_token]).then(user => {
+    if (user[0]) {
+      res.json({
+        id_token: createToken(user),
+        user: user[0]
+      });
+    } else {
+      res.status(400).json({
+        message: "Email or password incorrect."
+      });
+    }
+  }).catch(err => {
+    res.status(500).json(err);
+  });
+});
+
 app.get('/api/sessions/current', expressJwt({secret: config.secret}), (req, res, next) => {
   if (req.user) {
     res.json({user: req.user});
