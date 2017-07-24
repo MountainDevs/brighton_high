@@ -319,7 +319,9 @@ class Pay extends Component {
                 margin: 20
             },
             corp_sponsor: {
-                margin: 25
+                marginTop: 25,
+                marginBottom: -20,
+                marginLeft: 20
             },
             corp_button: {
                 cursor: 'pointer',
