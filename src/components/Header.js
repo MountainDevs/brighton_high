@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { verifyUser, logout, userData} from '../dataService';
+import { userData} from '../dataService';
 import './Header.css';
 
 class Header extends Component {

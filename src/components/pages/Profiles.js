@@ -7,7 +7,7 @@ import LoginRequest from '../login/LoginRequest';
 // Data
 import { getDisplayingUsers } from '../../dataService.js';
 // Images
-import prof_pic from '../../assets/profile_pic.png'
+
 // CSS
 import './Profiles.css';
 

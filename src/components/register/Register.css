@@ -63,6 +63,15 @@
   width: 50px;
   border-bottom: 1px solid #999;
 }
+.register-icon-personal {
+  margin: 20px 0;
+  height: 52px;
+  width: 50px;
+  border-bottom: 1px solid #999;
+}
+.register-icon-personal img{
+  height: 50px;
+}
 
 .register-password {
   margin: 20px;

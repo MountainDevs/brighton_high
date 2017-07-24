@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { login } from './../../dataService';
+import { Link } from 'react-router-dom';
 import './Login.css';
 import './LoginRequest.css';
 
 class LoginRequest extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

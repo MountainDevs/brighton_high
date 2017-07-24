@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { userData, updateShowProfile } from './../../dataService';
+import { updateShowProfile } from './../../dataService';
 import './Continue.css';
 import '../../styles/common.css';
-import prof_pic from '../../assets/profile_pic.png'
-import FileUpload from '../FileUpload/FileUpload';
 
 class Continue extends Component {
   constructor(props) {
@@ -20,7 +18,6 @@ class Continue extends Component {
   }  
     
   render() {
-    var self = this;
     return (
       <div className='Continue-bg'>
         <div className='Continue-wrapper'>

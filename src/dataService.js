@@ -72,6 +72,7 @@ function setUserFromLocal(){
     let id = getIdFromLocal()
     if(!id) return false;
     else {
+      console.log('step 2')
       getUser(id).then(res => {
         resolve()
       })
@@ -143,15 +144,12 @@ function login(email, password) {
 function logout() {
   localStorage.removeItem('jwt');
   clearData();
-  console.log(userData);
 }
 
 
 function checkUser() {
-  console.log("check user");
   var token = '';
   try {
-    console.log(localStorage.getItem('jwt'));
     token = JSON.parse(localStorage.getItem('jwt'));
   } catch (e) {
     token = null;
@@ -168,7 +166,6 @@ function checkToken() {
   return axios.get('/api/sessions/current')
       .then(res => {
         serializeUser(res.data.user);
-        console.log("Userdata: ", userData);
         return;
       }).catch(err => err);
 }
@@ -181,7 +178,6 @@ function postUser() {
     email: userData.email,
     password: userData.password
   }
-  console.log("sent to /api/user: ", data);
   return axios.post(`/api/user`, data)
   .then(res => {
     login(data.email, data.password);
@@ -212,6 +208,8 @@ function sendToStripe(data) {
 function getUser(id) {
   return axios.get(`/api/user/${id}`)
   .then(res => {
+    console.log('step 3')
+    console.log(res)
     serializeUser(res.data);
     return res.data;
   })

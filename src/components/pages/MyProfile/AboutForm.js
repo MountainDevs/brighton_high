@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 // Data
 import { userData, updateUser } from '../../../dataService';
 // CSS

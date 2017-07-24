@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 // Components
 import Title from './Shared/Title';
 // Data
-import { getUser, userData } from '../../dataService.js';
+import { getUser } from '../../dataService.js';
 // Images
 import prof_pic from '../../assets/profile_pic.png';
 // CSS
@@ -35,7 +34,7 @@ class UserProfile extends Component {
                         <div className="pcard-top">
                             <div className="pcard-top-left">
                                 <div className="pcard-top-left-imgwrap">
-                                    <img src={this.state.user.photo ? "https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.user.photo : prof_pic}/>
+                                    <img alt='' src={this.state.user.photo ? "https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.user.photo : prof_pic}/>
                                 </div>
                             </div>
                             <div className="pcard-top-right">

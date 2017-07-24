@@ -40,7 +40,19 @@ class Register extends Component {
         <div className='register-wrapper'>
           <div className='register-header'>Register</div>
           <div className='register-body'>
-            <div className='register-text'>Enter a valid email address and create a password to get started!</div>
+            <div className='register-text'>Fill out the information below to get started. Enter a valid email and create a secure password</div>
+             <div style={{display: 'flex'}}>
+              <div className='register-icon-personal'><img src={require('./../../assets/pic.png')} alt="[ ]"/></div>
+              <input type="firstName" placeholder='Your First Name' name='firstName' value={this.state.firstName} onChange={this.handleInputChange} className='register-input'/>
+            </div> 
+            <div style={{display: 'flex'}}>
+              <div className='register-icon-personal'><img src={require('./../../assets/pic.png')} alt="[ ]"/></div>
+              <input type="middleName" placeholder="Your Middle Name" name='middleName' value={this.state.middleName} onChange={this.handleInputChange} className='register-input'/>
+            </div>
+            <div style={{display: 'flex'}}>
+              <div className='register-icon-personal'><img src={require('./../../assets/pic.png')} alt="[ ]"/></div>
+              <input type="lastName" placeholder="Your Last Name" name='lastName' value={this.state.lastName} onChange={this.handleInputChange} className='register-input'/>
+            </div>  
             <div style={{display: 'flex'}}>
               <div className='register-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
               <input type="email" placeholder='example@gmail.com' name='email' value={this.state.email} onChange={this.handleInputChange} className='register-input'/>
@@ -49,18 +61,6 @@ class Register extends Component {
               <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
               <input type="password" placeholder="password" name='password' value={this.state.password} onChange={this.handleInputChange} className='register-input'/>
             </div> 
-             <div style={{display: 'flex'}}>
-              <div className='register-icon'><img src={require('./../../assets/mail.png')} alt="[ ]"/></div>
-              <input type="firstName" placeholder='Your First Name' name='firstName' value={this.state.firstName} onChange={this.handleInputChange} className='register-input'/>
-            </div> 
-            <div style={{display: 'flex'}}>
-              <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
-              <input type="middleName" placeholder="Your Middle Name" name='middleName' value={this.state.middleName} onChange={this.handleInputChange} className='register-input'/>
-            </div>
-            <div style={{display: 'flex'}}>
-              <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
-              <input type="lastName" placeholder="Your Last Name" name='lastName' value={this.state.lastName} onChange={this.handleInputChange} className='register-input'/>
-            </div>  
             <Link to='/register/pay' onClick={this.handleSubmit} className='register-register' >Continue</Link>
             <Link to='/'><div className='login-register'>Exit</div></Link>
           </div>

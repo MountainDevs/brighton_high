@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 // Data
 import { userData, updateUser } from '../../../dataService';
 // Images
@@ -70,8 +69,8 @@ class TopInfo extends Component {
                 <div className='personal-photo'>
                     {
                       this.state.photoSrc
-                      ? <img src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photoSrc} alt={this.state.firstName || "No picture"}/>
-                      : <img src={prof_pic} alt="There should be an image here!" />
+                      ? <img src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photoSrc} alt={this.state.firstName || ""}/>
+                      : <img src={prof_pic} alt="" />
                     }
                     <div onClick={this.hideUpload} className="pointer">Upload Photo</div>
                     <FileUpload hideUpload={ this.state.hideUpload } onCompleteUpload={ self.onCompleteUpload.bind(self) }/>

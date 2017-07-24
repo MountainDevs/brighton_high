@@ -106,7 +106,6 @@ class App extends Component {
               }/>
               <Route exact path="/user/:id" render={
                 (props) => { 
-                    {/* console.log(props) */}
                     return (<div>
                             <Header loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                             <div style={{display: 'flex'}}>

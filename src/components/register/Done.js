@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { postUser, permissions } from '../../dataService'
+import { permissions } from '../../dataService'
 import './Done.css';
 
 class Done extends Component {

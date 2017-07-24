@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import { sendToStripe, userData, checkUser, login } from '../../dataService.js';
+import { sendToStripe, userData } from '../../dataService.js';
 
 class StripeAlumniEarly extends Component {
   constructor(props) {
