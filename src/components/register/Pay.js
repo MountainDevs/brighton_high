@@ -48,7 +48,7 @@ class Pay extends Component {
         const day = time.getDate()
         const year = time.getFullYear()
 
-        if (year > 2017 && day > 14 || month >= 10 ) {
+        if (year > 2017 || (month >= 10 && day > 14)) {
             this.setState({
                 early_registration: false,
                 registration: false,

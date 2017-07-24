@@ -40,6 +40,7 @@ class App extends Component {
   componentWillMount() {
     let userVerified = verifyUser();
     if (userVerified && userVerified !== this.state.loggedIn) {
+      console.log('step 1')
       setUserFromLocal().then(data => {
         this.setState({loggedIn: true});
       })

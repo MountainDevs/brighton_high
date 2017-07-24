@@ -18,10 +18,10 @@ db.tables_seed()
 
 
 function getUser(req, res, next) {
-
+  console.log('step 3')
   db.users.findOne(Number(req.params.id))
   .then(data => {
-    res.json(data);
+    res.json(data || {});
   }).catch(err => {
     console.log(err)
   });

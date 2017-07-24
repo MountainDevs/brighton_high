@@ -206,9 +206,10 @@ function sendToStripe(data) {
 }
 
 function getUser(id) {
+  console.log(id)
   return axios.get(`/api/user/${id}`)
   .then(res => {
-    console.log('step 3')
+    console.log('step ...')
     console.log(res)
     serializeUser(res.data);
     return res.data;
