@@ -80,7 +80,7 @@ class StripeAlumniEarly extends Component {
   render() {
     return (
       <div>
-        <StripeCheckout
+         <StripeCheckout
           name="Early Registration"
           description="Alumni Only"
           panelLabel="Register"
@@ -93,7 +93,7 @@ class StripeAlumniEarly extends Component {
           token={this.onToken}
           reconfigureOnUpdate={false}
           >
-        </StripeCheckout>
+        </StripeCheckout> 
       </div>
 
     )
