@@ -2,11 +2,12 @@
   box-sizing: border-box;
   font-weight: 100;
   background: #333;
-   display: flex;
+  display: flex;
   flex-direction: column; 
   align-items: center;
   justify-content: center;
-
+  height: 100vh;
+  width: 100vw;
 }
 
 .register-wrapper {

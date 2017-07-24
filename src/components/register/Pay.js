@@ -23,11 +23,6 @@ class Pay extends Component {
         }
     }
 
-    componentWillUnmount(){
-        permissions.payed = true;
-        // this.registerUser();
-    }
-
   registerUser() {
     userData.email = this.state.email;
     userData.password = this.state.password;
