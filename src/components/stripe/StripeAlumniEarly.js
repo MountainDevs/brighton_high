@@ -21,15 +21,15 @@ class StripeAlumniEarly extends Component {
   componentWillMount() {
     // login(this.state.email, this.state.password).then(data => {
     // });
-      this.setState({
-        id: userData.id,
-        email: userData.email,
-        password: userData.password,
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        middleName: userData.middleName
-      });
-      console.log("component will mount", this.state);
+    // this.setState({
+    //   id: userData.id,
+    //   email: userData.email,
+    //   password: userData.password,
+    //   firstName: userData.firstName,
+    //   lastName: userData.lastName,
+    //   middleName: userData.middleName
+    // });
+
     // checkUser().then(data => {
     //   this.setState({
     //     id: userData.id,
@@ -80,7 +80,7 @@ class StripeAlumniEarly extends Component {
   render() {
     return (
       <div>
-        <StripeCheckout
+         <StripeCheckout
           name="Early Registration"
           description="Alumni Only"
           panelLabel="Register"
@@ -93,7 +93,7 @@ class StripeAlumniEarly extends Component {
           token={this.onToken}
           reconfigureOnUpdate={false}
           >
-        </StripeCheckout>
+        </StripeCheckout> 
       </div>
 
     )
