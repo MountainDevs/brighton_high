@@ -35,13 +35,10 @@ module.exports = {
     }, function(err, response) {
       if (err) return res.status(500).json(err);
       try {
-        var id = getId(response.description);
-        return db.users.update({
-          id: id,
-          stripe_token: response.id
-        })
+        var email = response.description;
+        return db.email_token_update([response.id, email])
         .then(data => {
-          return res.json({dbData: data, stripeData: response});
+          return res.json({stripeData: response});
         })
         .catch(err => err);
       } catch (e) {
