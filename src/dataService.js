@@ -93,7 +93,7 @@ function verifyUser() {
 function getIdFromLocal() {
   let jwt = localStorage.getItem('jwt');
   if(jwt) {
-    checkUser();
+    // checkUser();
     return parseJwt(jwt)['0'].id;
   } 
   else return false;

@@ -40,7 +40,6 @@ class ClassMates extends Component {
     }
 
     render() {
-      console.log('reload');
       var self = this;
         let classmateList = this.state.classmates.map( classmate => {
             return !this.props.loggedIn ? <Link to='/login'>Please Login</Link> :
