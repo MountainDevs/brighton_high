@@ -24,7 +24,6 @@ class Header extends Component {
                         <div>
                             <Link 
                                 to="/register/pay"
-                                onClick={this.props.switchLogin.bind(null, false)}
                                 style={styles.button}
                             >
                                 Pay
