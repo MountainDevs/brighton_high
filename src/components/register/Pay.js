@@ -24,7 +24,7 @@ class Pay extends Component {
     componentWillMount(){
         let userVerified = verifyUser();
         if(userData.id) {
-]            this.setState({
+          this.setState({
                 loggedIn: true
             })
         } else if (userVerified){
