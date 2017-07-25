@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { postUser, userData, verifyUser, setUserFromLocal } from '../../dataService'
 import StripeComponent from '../Stripe/StripeComponent';
-import { postUser, permissions, userData } from '../../dataService'
 import './Pay.css';
 
 class Pay extends Component {
@@ -14,15 +14,26 @@ class Pay extends Component {
             event_over: false,
             corp_sponsor: false,
             more_info: false,
+            loggedIn: true,
             registration_complete: false,
             registration_error: true,
             user: {}
         }
     }
 
-    componentWillUnmount(){
-        permissions.payed = true;
-        // this.registerUser();
+    componentWillMount(){
+        let userVerified = verifyUser();
+        if(userData.id) {
+]            this.setState({
+                loggedIn: true
+            })
+        } else if (userVerified){
+            setUserFromLocal().then(data => {
+                this.setState({
+                    loggedIn: true
+                })
+            })
+        }
     }
 
   registerUser() {
@@ -117,8 +128,7 @@ class Pay extends Component {
 
     render() {
         const styles=this.styles()
-
-        return (
+        return !this.state.loggedIn ? <Redirect to='/' /> : (
             <div className='pay-bg'>
                 <div className='pay-wrapper'>
                     <div className='pay-header'>Registration Fee</div>

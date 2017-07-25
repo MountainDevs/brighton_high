@@ -72,7 +72,6 @@ function setUserFromLocal(){
     let id = getIdFromLocal()
     if(!id) return false;
     else {
-      console.log('step 2')
       getUser(id).then(res => {
         resolve()
       })
@@ -99,6 +98,7 @@ function serializeUser(data) {
   if (data.password) userData.password = data.password;
   if (data.show_profile !== null && data.show_profile !== undefined) userData.showProfile = data.show_profile;
   if (data.stripe_token !== null && data.stripe_token !== undefined) userData.stripe_token = data.stripe_token;
+  return userData;
 }
 
 function deserializeUser(data) {
@@ -123,17 +123,15 @@ function deserializeUser(data) {
   return returnData;
 }
 
-function login(email, password) {
-  console.log("login called");
-  var data = { email: email, password: password };
+function login(user) {
+  var data = { email: user.email, password: user.password };
   return axios.post(`/api/sessions/create`, data)
     .then(res => {
       console.log("login successful");
       var token = res.data.id_token;
       localStorage.setItem('jwt', JSON.stringify(token));
       axios.defaults.headers.common['Authorization'] = "Bearer " + token;
-      serializeUser(res.data.user);
-      console.log("user login return: ", res.data.user);
+      let response = serializeUser(res.data.user);
       return true
     })
     .catch(err => {
@@ -144,6 +142,7 @@ function login(email, password) {
 function logout() {
   localStorage.removeItem('jwt');
   clearData();
+  window.reload();
 }
 
 
@@ -170,18 +169,18 @@ function checkToken() {
       }).catch(err => err);
 }
 
-function postUser() {
-  var data = {
-    firstName: userData.firstName,
-    middleName: userData.middleName,
-    lastName: userData.lastName,
-    email: userData.email,
-    password: userData.password
+function postUser(value) {
+  let data = {
+    firstName: value.firstName,
+    middleName: value.middleName,
+    lastName: value.lastName,
+    email: value.email,
+    password: value.password
   }
+
   return axios.post(`/api/user`, data)
   .then(res => {
-    login(data.email, data.password);
-    return res.data
+    return login(res.data)
   })
   .catch(err => err);
 }
@@ -206,11 +205,8 @@ function sendToStripe(data) {
 }
 
 function getUser(id) {
-  console.log(id)
   return axios.get(`/api/user/${id}`)
   .then(res => {
-    console.log('step ...')
-    console.log(res)
     serializeUser(res.data);
     return res.data;
   })
@@ -295,6 +291,7 @@ module.exports = {
   sendToStripe,
   updateShowProfile,
   getDisplayingUsers,
+  serializeUser
   // loginWithStripeToken
 }
 

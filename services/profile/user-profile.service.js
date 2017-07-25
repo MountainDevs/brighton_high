@@ -5,20 +5,20 @@ const app = require('../../server');
 const db = app.get('db');
 
 
-//=================================================//
-db.tables_seed()
-.then(data => {
-  console.log('All tables successfully reset');
-})
-.catch(err => {
-  console.log(err)
-});
-//=================================================//
+// //=================================================//
+// db.tables_seed()
+// .then(data => {
+//   console.log('All tables successfully reset');
+// })
+// .catch(err => {
+//   console.log(err)
+// });
+// //=================================================//
 
 
 
 function getUser(req, res, next) {
-  console.log('step 3')
+
   db.users.findOne(Number(req.params.id))
   .then(data => {
     res.json(data || {});
@@ -28,6 +28,7 @@ function getUser(req, res, next) {
 }
 
 function postUser(req, res, next) {
+
   db.users.insert({
     first_name: req.body.firstName,
     last_name: req.body.lastName,
