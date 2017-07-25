@@ -9,7 +9,7 @@ class AboutForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        bio: userData.bio,
+            bio: userData.bio,
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);

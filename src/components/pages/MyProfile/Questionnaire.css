@@ -1,0 +1,14 @@
+.questionnaire-wrapper {
+  background: #FFFFFF;
+  width: 700px;
+  height: 400px;
+  margin: 0 auto 40px auto;
+  border: 1px solid black;
+}
+
+.questionnaire-header {
+  font-size: 13px;
+  background: #537187;
+  color: #ffffff;
+  padding: 20px
+}

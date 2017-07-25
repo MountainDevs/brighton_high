@@ -70,7 +70,7 @@ class TopInfo extends Component {
                     {
                       this.state.photoSrc
                       ? <img src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photoSrc} alt={this.state.firstName || ""}/>
-                      : <img src={prof_pic} alt="" />
+                     :"?"÷ : <img src={prof_pic} alt="" />
                     }
                     <div onClick={this.hideUpload} className="pointer">Upload Photo</div>
                     <FileUpload hideUpload={ this.state.hideUpload } onCompleteUpload={ self.onCompleteUpload.bind(self) }/>

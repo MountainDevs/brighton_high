@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "async": "^2.5.0",
     "aws-sdk": "2.82.0",
     "axios": "0.16.2",
     "body-parser": "1.17.2",
     "cors": "2.8.3",
     "express": "4.15.3",
     "express-jwt": "5.3.0",
+    "is-promise": "^2.1.0",
     "jsonwebtoken": "7.4.1",
     "lodash": "4.17.4",
     "massive": "3.0.0",
@@ -18,7 +20,7 @@
     "react-dropzone": "3.13.3",
     "react-router-dom": "4.1.1",
     "react-stripe-checkout": "2.4.0",
-    "stripe": "4.23.1",
+    "stripe": "^4.23.1",
     "superagent": "3.5.2"
   },
   "devDependencies": {
