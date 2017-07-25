@@ -39,7 +39,7 @@ class AboutForm extends Component {
                 <div className='additional-header'>Additional Information</div>
                 <div className='additional-body'>
                     <p>Please provide any additional information you feel could be interesting to your classmates. Fore example, where you've been and what you've been up to. Family news, your career, etc</p>
-                    <textarea id="bio" name='bio' cols="30" rows="10" value={this.state.bio} onChange={this.handleInputChange}></textarea>
+                    <textarea value={this.state.bio} onChange={this.handleInputChange}></textarea>
                     <div className='button-container'>
                       <button type="button" className="blue-button" onClick={this.handleSubmit}>Save</button>
                     </div> 

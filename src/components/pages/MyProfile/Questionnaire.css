@@ -1,7 +1,7 @@
 .questionnaire-wrapper {
   background: #FFFFFF;
   width: 700px;
-  height: 400px;
+  height: 2020px;
   margin: 0 auto 40px auto;
   border: 1px solid black;
 }
@@ -10,5 +10,26 @@
   font-size: 13px;
   background: #537187;
   color: #ffffff;
-  padding: 20px
+  padding: 20px;
+}
+
+.questionnaire-body {
+  padding: 20px 40px;
+}
+
+.questionnaire-body label {
+  display: block;
+  font-size: 13px;
+  margin: 5px 0;
+}
+
+.questionnaire-body textarea {
+  margin: 0 20px 20px 0;
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 60px;
+  min-height: 60px;
+  outline: none;
+  resize: none;
+  border: 1px solid #EAEAEA;
 }
