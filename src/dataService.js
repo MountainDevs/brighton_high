@@ -342,7 +342,7 @@ function updateShowProfile(value) {
 //     })
 // }
 
-// checkUser();
+checkUser();
 
 module.exports = {
   userData,
