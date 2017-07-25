@@ -70,6 +70,7 @@ function getIdFromLocal() {
 function setUserFromLocal(){
   return new Promise((resolve, reject) => {
     let id = getIdFromLocal()
+    console.log(id)
     if(!id) return false;
     else {
       getUser(id).then(res => {
@@ -98,6 +99,7 @@ function serializeUser(data) {
   if (data.password) userData.password = data.password;
   if (data.show_profile !== null && data.show_profile !== undefined) userData.showProfile = data.show_profile;
   if (data.stripe_token !== null && data.stripe_token !== undefined) userData.stripe_token = data.stripe_token;
+  return userData;
 }
 
 function deserializeUser(data) {
@@ -122,15 +124,17 @@ function deserializeUser(data) {
   return returnData;
 }
 
-function login(email, password) {
-  var data = { email: email, password: password };
+function login(user) {
+  var data = { email: user.email, password: user.password };
   return axios.post(`/api/sessions/create`, data)
     .then(res => {
       console.log("login successful");
       var token = res.data.id_token;
       localStorage.setItem('jwt', JSON.stringify(token));
       axios.defaults.headers.common['Authorization'] = "Bearer " + token;
-      serializeUser(res.data.user);
+      let response = serializeUser(res.data.user);
+      console.log(response)
+      console.log(userData)
       return true
     })
     .catch(err => {
@@ -141,6 +145,7 @@ function login(email, password) {
 function logout() {
   localStorage.removeItem('jwt');
   clearData();
+  window.reload();
 }
 
 
@@ -167,18 +172,18 @@ function checkToken() {
       }).catch(err => err);
 }
 
-function postUser() {
-  var data = {
-    firstName: userData.firstName,
-    middleName: userData.middleName,
-    lastName: userData.lastName,
-    email: userData.email,
-    password: userData.password
+function postUser(value) {
+  let data = {
+    firstName: value.firstName,
+    middleName: value.middleName,
+    lastName: value.lastName,
+    email: value.email,
+    password: value.password
   }
+  console.log(data);
   return axios.post(`/api/user`, data)
   .then(res => {
-    login(data.email, data.password);
-    return res.data
+    return login(res.data)
   })
   .catch(err => err);
 }

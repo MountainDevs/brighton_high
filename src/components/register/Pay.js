@@ -24,10 +24,12 @@ class Pay extends Component {
     componentWillMount(){
         let userVerified = verifyUser();
         if(userData.id) {
+            console.log('first')
             this.setState({
                 loggedIn: true
             })
         } else if (userVerified){
+            console.log('second')
             setUserFromLocal().then(data => {
                 this.setState({
                     loggedIn: true
@@ -127,7 +129,7 @@ class Pay extends Component {
     }
 
     render() {
-        console.log(userData)
+        console.log(userData);
         const styles=this.styles()
         return !this.state.loggedIn ? <Redirect to='/' /> : (
             <div className='pay-bg'>

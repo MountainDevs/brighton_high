@@ -27,7 +27,7 @@ class Register extends Component {
   }
 
   handleSubmit() {
-
+    console.log(this.state)
     if(!this.state.firstName) alert('please enter your first name')
     else if(!this.state.lastName) alert('please enter your last name')
     else if(!this.state.email) alert('please enter a valid email')
@@ -38,7 +38,7 @@ class Register extends Component {
       userData.firstName = this.state.firstName;
       userData.lastName = this.state.lastName;
       userData.middleName = this.state.middleName;
-      postUser().then(res => {
+      postUser(userData).then(res => {
         this.setState({
           enteredAllInfo: true
         })
@@ -48,6 +48,7 @@ class Register extends Component {
   }
 
   render() {
+    console.log(userData)
     return this.state.enteredAllInfo ? <Redirect to='/register/pay' /> : (
       <div className='register-bg'>
         <div className='register-wrapper'>
