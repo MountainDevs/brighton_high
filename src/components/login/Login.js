@@ -26,7 +26,11 @@ class Login extends Component {
 
   handleSubmit() {
     if (this.state.email && this.state.password) {
-      login(this.state.email, this.state.password)
+      var user = {
+        email: this.state.email,
+        password: this.state.password
+      }
+      login(user)
       .then(response => {
         if (response) {
           this.setState({
