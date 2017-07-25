@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { userData, postUser } from './../../dataService';
+import { Link, Redirect } from 'react-router-dom';
+import { userData, postUser, serializeUser } from './../../dataService';
 import './Register.css';
 
 class Register extends Component {
@@ -11,7 +11,8 @@ class Register extends Component {
       password: '',
       firstName: '',
       lastName: '',
-      middleName: ''
+      middleName: '',
+      enteredAllInfo: false
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,16 +27,29 @@ class Register extends Component {
   }
 
   handleSubmit() {
-    userData.email = this.state.email;
-    userData.password = this.state.password;
-    userData.firstName = this.state.firstName;
-    userData.lastName = this.state.lastName;
-    userData.middleName = this.state.middleName;
-    postUser().then(res => res);
+
+    if(!this.state.firstName) alert('please enter your first name')
+    else if(!this.state.lastName) alert('please enter your last name')
+    else if(!this.state.email) alert('please enter a valid email')
+    else if(!this.state.password) alert('please set your password')
+    else {
+      userData.email = this.state.email;
+      userData.password = this.state.password;
+      userData.firstName = this.state.firstName;
+      userData.lastName = this.state.lastName;
+      userData.middleName = this.state.middleName;
+      postUser(userData).then(res => {
+        this.setState({
+          enteredAllInfo: true
+        })
+      });
+      
+    }  
   }
 
   render() {
-    return (
+
+    return this.state.enteredAllInfo ? <Redirect to='/register/pay' /> : (
       <div className='register-bg'>
         <div className='register-wrapper'>
           <div className='register-header'>Register</div>
@@ -61,7 +75,7 @@ class Register extends Component {
               <div className='register-icon'><img src={require('./../../assets/key.png')} alt="[ ]"/></div>
               <input type="password" placeholder="password" name='password' value={this.state.password} onChange={this.handleInputChange} className='register-input'/>
             </div> 
-            <Link to='/register/pay' onClick={this.handleSubmit} className='register-register' >Continue</Link>
+            <div to='/register/pay' onClick={this.handleSubmit.bind(this)} className='register-register' >Continue</div>
             <Link to='/'><div className='login-register'>Exit</div></Link>
           </div>
         </div>
