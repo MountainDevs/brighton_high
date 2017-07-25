@@ -169,22 +169,23 @@ class Pay extends Component {
                                         <tr style={styles.table_row_border}>
                                             <td style={styles.table_description}>Alumni Only </td>
                                             <td style={styles.table_cost}>$94</td>
-                                            <td style={styles.table_button}><StripeAlumniEarly /></td>
+                                              <td style={styles.table_button}><StripeAlumniEarly /></td>  
                                         </tr>
                                         <tr style={styles.table_row_border}>
                                             <td style={styles.table_description}>Alumni + Spouse </td>
                                             <td style={styles.table_cost}>$157</td>
-                                            <td style={styles.table_button}><StripeAlumniSpouseEarly /></td>
+                                             <td style={styles.table_button}><StripeAlumniSpouseEarly /></td> 
                                         </tr>
                                         <tr style={styles.table_row_no_border}>
                                             <td style={styles.table_description}>Non-Attending Alumni </td>
                                             <td style={styles.table_cost}>$30</td>
-                                            <td style={styles.table_button}><StripeAlumniNonAttending /></td>
+                                             <td style={styles.table_button}><StripeAlumniNonAttending /></td> 
                                             <td style={styles.more_info} onClick={this._handleShowMoreInfo}>More Info</td>
                                         </tr>
                                     </table>
                                 </div>
                             ) : null}
+
 
                             {this.state.registration && !this.state.registration_complete && !this.state.registration_error ? (
                                 <div style={styles.table}>
@@ -233,7 +234,7 @@ class Pay extends Component {
                                             <td style={styles.table_button}><StripeAlumniNonAttending /></td>
                                         </tr>
                                     </table>
-                                </div>) : null}
+                                </div>) : null} 
 
                             {this.state.corp_sponsor ? (
                                 <div style={styles.registration_desc}>
