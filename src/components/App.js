@@ -33,7 +33,7 @@ class App extends Component {
     if(!bool){
       clearData();
       logout()
-      this.setState({loggedIn: bool})
+      this.setState({loggedIn: false})
     }
   }
 

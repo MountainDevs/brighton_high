@@ -144,6 +144,9 @@ function login(email, password) {
 function logout() {
   localStorage.removeItem('jwt');
   clearData();
+  window.reload()
+
+  return;
 }
 
 
