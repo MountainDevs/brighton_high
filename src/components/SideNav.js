@@ -18,7 +18,7 @@ class SideNav extends Component {
             <div className="sidenav-wrapper">
               <NavHeader 
                   name={userData.firstName}
-                  imageUrl={userData.photo ? "https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + userData.photo : profile_pic}
+                  imageUrl={userData.photoOne ? "https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + userData.photoOne : profile_pic}
               />
               
               <NavItems />
