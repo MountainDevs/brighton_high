@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import { Redirect } from 'react-router-dom';
 import { sendToStripe, userData } from '../../dataService.js';
 
 class StripeComponent extends Component {
@@ -12,7 +13,8 @@ class StripeComponent extends Component {
       password: userData.password,
       firstName: userData.firstName,
       lastName: userData.lastName,
-      middleName: userData.middleName
+      middleName: userData.middleName,
+      redirect: false
     }
   }
 
@@ -21,14 +23,16 @@ class StripeComponent extends Component {
     token.chargeDescription = `-${userData.id}- ${userData.firstName} ${userData.lastName} ${this.state.email}`;
     sendToStripe(token)
       .then(response => {
-        alert("Payment successful");
         userData.stripe_token = response.data.stripeData.id;
+        this.setState({
+          redirect: true
+        })
       })
       .catch(err => {console.log(err)});
   }
 
   render() {
-    return (
+    return this.state.redirect ? <Redirect to="/register/continue"/> : (
       <div>
          <StripeCheckout
           name={this.props.name}
