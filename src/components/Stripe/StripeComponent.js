@@ -41,7 +41,7 @@ class StripeComponent extends Component {
           amount={this.props.amount}
           email={this.state.email}
           currency="USD"
-          stripeKey="pk_live_WeJHviSeMcRIm5I7LIWIz2l3"
+          stripeKey="pk_test_mjnzkL9ebrh2Zbb5vy8hzniN"
           zipCode={false}
           allowRememberMe
           token={this.onToken}
