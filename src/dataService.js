@@ -27,7 +27,7 @@ let userData = {
 
 function clearData(){
   userData = {
-    id: null,
+    id: '',
     email: '',
     password: '',
     firstName: '',
@@ -145,7 +145,6 @@ function logout() {
   localStorage.removeItem('jwt');
   clearData();
   window.reload()
-  console.log('logout',userData)
 
   return;
 }
@@ -277,7 +276,7 @@ function updateShowProfile(value) {
 //     })
 // }
 
-// checkUser();
+checkUser();
 
 module.exports = {
   userData,

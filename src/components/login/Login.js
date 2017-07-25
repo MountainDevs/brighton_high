@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { login, userData } from './../../dataService';
+import { login } from './../../dataService';
 import './Login.css';
 import '../../styles/common.css';
 
@@ -14,10 +14,6 @@ class Login extends Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentWillMount () {
-    console.log('userData from login',userData)
   }
 
   handleInputChange(e) {

@@ -18,7 +18,7 @@ import Header from './Header';
 import SideNav from './SideNav';
 import Continue from './register/Continue';
 import './App.css';
-import { verifyUser, setUserFromLocal, clearData, logout, userData } from '../dataService';
+import { verifyUser, setUserFromLocal, clearData, logout } from '../dataService';
 
 class App extends Component {
   constructor(props) {
@@ -30,14 +30,9 @@ class App extends Component {
   }
 
   switchLogin(bool) {
-    console.log('this is my muthafuckin bool',bool)
     if(!bool){
-      console.log('first', bool)
       clearData();
-      console.log('second', bool)
       logout()
-      console.log('third', bool)
-      console.log('forth', userData)
       this.setState({loggedIn: false})
     }
   }
