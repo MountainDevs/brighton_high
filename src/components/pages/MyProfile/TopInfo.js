@@ -11,13 +11,13 @@ import FileUpload from '../../FileUpload/FileUpload';
 class TopInfo extends Component {
     constructor(props) {
         super(props);
+        console.log(userData);
         this.state = {
             firstName: userData.firstName,
             lastName: userData.lastName,
             middleName: userData.middleName,
-            email: userData.email || '',
-            phone: userData.phone,
-            photoSrc: userData.photo,
+            email: userData.email,
+            photoSrc: userData.photoOne,
             hideUpload: true
         }
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -35,7 +35,7 @@ class TopInfo extends Component {
     onCompleteUpload(value) {
       this.setState({
         hideUpload: value,
-        photoSrc: userData.photo
+        photoSrc: userData.photoOne
       })
     }
 

@@ -11,6 +11,9 @@ import { getDisplayingUsers } from '../../dataService.js';
 // CSS
 import './Profiles.css';
 
+import '../login/Login.css';
+import '../login/LoginRequest.css';
+
 class Profiles extends Component {
     constructor() {
         super();
@@ -42,7 +45,7 @@ class Profiles extends Component {
                     <CardProfile 
                         name={`${user.first_name} ${user.last_name}`}
                         attending={ (user.attending == null) ? "N/A" : "Yes" }
-                        photo = { user.photo ? user.photo : null }
+                        photo = { user.photo_one ? user.photo_one : null }
                     />
                 </Link>
             )
@@ -51,16 +54,21 @@ class Profiles extends Component {
         return !this.props.loggedIn ? <LoginRequest></LoginRequest> :
             this.state.users.length === 0 ? <img src="https://media.giphy.com/media/11fxhMPSRtnbTa/giphy.gif" alt=""/> :
             (
-            <div className="component-wrapper">
-                <Title title="Classmate Profiles"/>
+            // <div className="component-wrapper">
+            //     <Title title="Classmate Profiles"/>
 
-                <div className="profiles-table">
-                    <div className="table-header">
-                        <div>Name</div>
-                        <div>Attending?</div>
-                    </div>
+            //     <div className="profiles-table">
+            //         <div className="table-header">
+            //             <div>Name</div>
+            //             <div>Attending?</div>
+            //         </div>
      
-                    {profileList}
+            //         {profileList}
+            //     </div>
+            // </div>
+            <div className="login-request">
+                <div className="login-request-container">
+                <p>Coming by August 10!</p>
                 </div>
             </div>
         );
