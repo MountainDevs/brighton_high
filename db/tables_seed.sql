@@ -18,6 +18,7 @@ CREATE TABLE users (
     show_profile BOOLEAN DEFAULT false,
     stripe_token VARCHAR(255),
     facebook_page VARCHAR(255),
+    family TEXT,
     past_residence TEXT,
     millitary_service TEXT,
     occupation TEXT,
@@ -41,5 +42,5 @@ INSERT INTO users (first_name, last_name, email, password, permissions) VALUES
 ('Jon', 'Myrick', 'jon@gmail.com', '123', 'member'),
 ('Sara', 'Johnson', 'sara@gmail.com', '123', null);
 
-INSERT INTO users (first_name, middle_name, last_name, email, password, phone, address, city, state, zipcode, bio, attending, photo, permissions, show_profile, stripe_token) VALUES
-('Gustav', 'Big Boy Pants', 'Nordstrom', 'gus@gmail.com', '123', '2345678876', '123 Fake Street, apartment 27', 'Provo', 'Utah', '98765', 'This is the bio of a great man', true, '1_Myrick_Mon+Jul+17+2017+22%3A29%3A07+GMT-0600+(Mountain+Daylight+Time).jpeg', 'member', true, 'token');
+INSERT INTO users (first_name, middle_name, last_name, email, password, phone, address, city, state, zipcode, attending, permissions, show_profile, stripe_token, photo_one) VALUES
+('Gustav', 'Big Boy Pants', 'Nordstrom', 'gus@gmail.com', '123', '2345678876', '123 Fake Street, apartment 27', 'Provo', 'Utah', '98765', true, 'member', true, 'token', '1_Myrick_Mon+Jul+17+2017+22%3A29%3A07+GMT-0600+(Mountain+Daylight+Time).jpeg');

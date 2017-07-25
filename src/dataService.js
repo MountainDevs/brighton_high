@@ -23,6 +23,7 @@ let userData = {
   stripe_token: false,
   facebookPage: '', 
   pastResidence: '',
+  family: '',
   millitaryService: '',
   occupation: '',
   college: '',
@@ -58,7 +59,8 @@ function clearData(){
     permissions: '',
     showProfile: false,
     stripe_token: false,
-    facebookPage: '', 
+    facebookPage: '',
+    family: '', 
     pastResidence: '',
     millitaryService: '',
     occupation: '',
@@ -129,24 +131,25 @@ function serializeUser(data) {
   if (data.password) userData.password = data.password;
   if (data.show_profile !== null && data.show_profile !== undefined) userData.showProfile = data.show_profile;
   if (data.stripe_token !== null && data.stripe_token !== undefined) userData.stripe_token = data.stripe_token;
-  if (data.facebookPage) userData.facebookPage = data.facebookPage;
-  if (data.pastResidence) userData.pastResidence = data.pastResidence;
-  if (data.millitaryService) userData.millitaryService = data.millitaryService;
+  if (data.facebook_page) userData.facebookPage = data.facebook_page;
+  if (data.family) userData.family = data.family;
+  if (data.past_residence) userData.pastResidence = data.past_residence;
+  if (data.millitary_service) userData.millitaryService = data.millitary_service;
   if (data.occupation) userData.occupation = data.occupation;
   if (data.college) userData.college = data.college;
   if (data.hobbies) userData.hobbies = data.hobbies;
   if (data.honors) userData.honors = data.honors;
   if (data.travel) userData.travel = data.travel;
-  if (data.bestMemory) userData.bestMemory = data.bestMemory;
-  if (data.worstMemory) userData.worstMemory = data.worstMemory;
+  if (data.best_memory) userData.bestMemory = data.best_memory;
+  if (data.worst_memory) userData.worstMemory = data.worst_memory;
   if (data.dumb) userData.dumb = data.dumb;
   if (data.crushes) userData.crushes = data.crushes;
   if (data.changes) userData.changes = data.changes;
   if (data.retirement) userData.retirement = data.retirement;
-  if (data.tenYears) userData.tenYears = data.tenYears;
-  if (data.photoOne) userData.photoOne = data.photoOne;
-  if (data.photoTwo) userData.photoTwo = data.photoTwo;
-  if (data.photoThree) userData.photoThree = data.photoThree;
+  if (data.ten_years) userData.tenYears = data.ten_years;
+  if (data.photo_one) userData.photoOne = data.photo_one;
+  if (data.photo_two) userData.photoTwo = data.photo_two;
+  if (data.photo_three) userData.photoThree = data.photo_three;
   return userData;
 }
 
@@ -169,24 +172,25 @@ function deserializeUser(data) {
   if (data.password) returnData.password = data.password;
   if (data.showProfile !== null && data.showProfile !== undefined) returnData.show_profile = data.showProfile;
   if (data.stripe_token !== null && data.stripe_token !== undefined) returnData.stripe_token = data.stripe_token;
-  if (data.facebookPage) userData.facebookPage = data.facebook_page;
-  if (data.pastResidence) userData.pastResidence = data.past_residence;
-  if (data.millitaryService) userData.millitaryService = data.millitary_service;
-  if (data.occupation) userData.occupation = data.occupation;
-  if (data.college) userData.college = data.college;
-  if (data.hobbies) userData.hobbies = data.hobbies;
-  if (data.honors) userData.honors = data.honors;
-  if (data.travel) userData.travel = data.travel;
-  if (data.bestMemory) userData.bestMemory = data.best_memory;
-  if (data.worstMemory) userData.worstMemory = data.worst_memory;
-  if (data.dumb) userData.dumb = data.dumb;
-  if (data.crushes) userData.crushes = data.crushes;
-  if (data.changes) userData.changes = data.changes;
-  if (data.retirement) userData.retirement = data.retirement;
-  if (data.tenYears) userData.tenYears = data.ten_years;
-  if (data.photoOne) userData.photoOne = data.photo_one;
-  if (data.photoTwo) userData.photoTwo = data.photo_two;
-  if (data.photoThree) userData.photoThree = data.photo_three;
+  if (data.facebookPage) returnData.facebook_page = data.facebookPage;
+  if (data.family) returnData.family = data.family;
+  if (data.pastResidence) returnData.past_residence = data.pastResidence;
+  if (data.millitaryService) returnData.millitary_service = data.millitaryService;
+  if (data.occupation) returnData.occupation = data.occupation;
+  if (data.college) returnData.college = data.college;
+  if (data.hobbies) returnData.hobbies = data.hobbies;
+  if (data.honors) returnData.honors = data.honors;
+  if (data.travel) returnData.travel = data.travel;
+  if (data.bestMemory) returnData.best_memory = data.bestMemory;
+  if (data.worstMemory) returnData.worst_memory = data.worstMemory;
+  if (data.dumb) returnData.dumb = data.dumb;
+  if (data.crushes) returnData.crushes = data.crushes;
+  if (data.changes) returnData.changes = data.changes;
+  if (data.retirement) returnData.retirement = data.retirement;
+  if (data.tenYears) returnData.ten_years = data.tenYears;
+  if (data.photoOne) returnData.photo_one = data.photoOne;
+  if (data.photoTwo) returnData.photo_two = data.photoTwo;
+  if (data.photoThree) returnData.photo_three = data.photoThree;
   return returnData;
 }
 
@@ -274,7 +278,6 @@ function sendToStripe(data) {
 function getUser(id) {
   return axios.get(`/api/user/${id}`)
   .then(res => {
-    serializeUser(res.data);
     return res.data;
   })
 }
