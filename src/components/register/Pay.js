@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import StripeAlumniEarly from '../Stripe/StripeAlumniEarly';
-import StripeAlumniSpouseEarly from '../Stripe/StripeAlumniSpouseEarly';
-import StripeAlumni from '../Stripe/StripeAlumni';
-import StripeAlumniSpouse from '../Stripe/StripeAlumniSpouse';
-import StripeAlumniSpouseDayOf from '../Stripe/StripeAlumniSpouseDayOf';
-import StripeAlumniDayOf from '../Stripe/StripeAlumniDayOf';
-import StripeAlumniNonAttending from '../Stripe/StripeAlumniNonAttending';
 import { postUser, userData, verifyUser, setUserFromLocal } from '../../dataService'
+import StripeComponent from '../Stripe/StripeComponent';
 import './Pay.css';
 
 class Pay extends Component {
@@ -20,7 +14,10 @@ class Pay extends Component {
             event_over: false,
             corp_sponsor: false,
             more_info: false,
-            loggedIn: true
+            loggedIn: true,
+            registration_complete: false,
+            registration_error: true,
+            user: {}
         }
     }
 
@@ -59,6 +56,8 @@ class Pay extends Component {
         const day = time.getDate()
         const year = time.getFullYear()
 
+        this._handleErrorCheck()
+
         if (year > 2017 || (month >= 10 && day > 14)) {
             this.setState({
                 early_registration: false,
@@ -84,8 +83,23 @@ class Pay extends Component {
                 registration: true,
                 day_of_registration: false
             })
-
         }
+
+    }
+
+    _handleErrorCheck = () => {
+        if(userData.id) {
+            this.setState({
+                registration_error: false
+            })
+        }
+
+        if(userData.id && userData.stripe_token) {
+            this.setState({
+                registration_complete: true
+            })
+        }
+
     }
 
     _handleCorpSponsor = () => {
@@ -121,21 +135,37 @@ class Pay extends Component {
                     <div className='pay-header'>Registration Fee</div>
                     <div className='pay-body'>
 
-                        {this.state.early_registration ? (
+                        {this.state.early_registration && !this.state.registration_complete && !this.state.registration_error ? (
                             <p>Early Registration is open until August 1st. </p>
                         ) : null}
 
-                        {this.state.registration ? (
+                        {this.state.registration && !this.state.registration_complete && !this.state.registration_error ? (
                             <p>Registration is open until Oct. 13th.</p>
                         ) : null}
 
-                        {this.state.day_of_registration ? (
+                        {this.state.day_of_registration && !this.state.registration_complete && !this.state.registration_error ? (
                             <p>Today is the Day! </p>
                         ) : null}
 
                         <section className='stripe-code'>
+                            {this.state.registration_error ? (
+                                <div style={styles.registration_error}>
+                                    <p>
+                                    There was an error registering, please go back and try registering again. If you have already registered, please log in.  
+                                    </p>
+                                    <p>
+                                    If you continue to have a problem, contact Jessica at jessica@brightonhigh1987.com
+                                    </p>
+                                </div>
+                            ) : null }
 
-                            {this.state.early_registration ? (
+                            {this.state.registration_complete ? 
+                                <div style={styles.completed_registration}>
+                                    Congratulations, you're already paid and registered.
+                                </div>
+                            : null }
+
+                             {this.state.early_registration && !this.state.registration_complete && !this.state.registration_error ? ( 
                                 <div style={styles.table}>
                                     <h3>
                                         Early Registration
@@ -144,24 +174,25 @@ class Pay extends Component {
                                         <tr style={styles.table_row_border}>
                                             <td style={styles.table_description}>Alumni Only </td>
                                             <td style={styles.table_cost}>$94</td>
-                                              <td style={styles.table_button}><StripeAlumniEarly /></td>  
+                                              <td style={styles.table_button}><StripeComponent amount={9400} description="Alumni Only" name="Early Registration" /></td>  
                                         </tr>
                                         <tr style={styles.table_row_border}>
                                             <td style={styles.table_description}>Alumni + Spouse </td>
                                             <td style={styles.table_cost}>$157</td>
-                                             <td style={styles.table_button}><StripeAlumniSpouseEarly /></td> 
+                                             <td style={styles.table_button}><StripeComponent amount={15700} description="Alumni + Spouse" name="Early Registration" /></td> 
                                         </tr>
                                         <tr style={styles.table_row_no_border}>
                                             <td style={styles.table_description}>Non-Attending Alumni </td>
                                             <td style={styles.table_cost}>$30</td>
-                                             <td style={styles.table_button}><StripeAlumniNonAttending /></td> 
+                                             <td style={styles.table_button}><StripeComponent amount={3000} description="We're sorry you can't make it!" name="Non-Attending Alumni" /></td> 
                                             <td style={styles.more_info} onClick={this._handleShowMoreInfo}>More Info</td>
                                         </tr>
                                     </table>
                                 </div>
-                            ) : null}
+                             ) : null} 
 
-                             {this.state.registration ? (
+
+                             {this.state.registration && !this.state.registration_complete && !this.state.registration_error ? ( 
                                 <div style={styles.table}>
                                     <h3>
                                         Registration
@@ -170,23 +201,23 @@ class Pay extends Component {
                                         <tr style={styles.table_row_border}>
                                             <td style={styles.table_description}>Alumni Only </td>
                                             <td style={styles.table_cost}>$104</td>
-                                            <td style={styles.table_button}><StripeAlumni /></td>
+                                            <td style={styles.table_button}><StripeComponent amount={10400} description="Alumni Only" name="Registration" /></td>
                                         </tr>
                                         <tr style={styles.table_row_border}>
                                             <td style={styles.table_description}>Alumni + Spouse </td>
                                             <td style={styles.table_cost}>$167</td>
-                                            <td style={styles.table_button}><StripeAlumniSpouse /></td>
+                                            <td style={styles.table_button}><StripeComponent amount={16700} description="Alumni + Spouse" name="Registration" /></td>
                                         </tr>
                                         <tr style={styles.table_row_no_border}>
                                             <td style={styles.table_description}>Non-Attending Alumni </td>
                                             <td style={styles.table_cost}>$30</td>
-                                            <td style={styles.table_button}><StripeAlumniNonAttending /></td>
+                                            <td style={styles.table_button}><StripeComponent amount={3000} description="We're sorry you can't make it!" name="Non-Attending Alumni" /></td>
                                         </tr>
                                     </table>
                                 </div>
-                            ) : null}
+                             ) : null} 
 
-                            {this.state.day_of_registration ? (
+                             {this.state.day_of_registration && !this.state.registration_complete && !this.state.registration_error ? ( 
                                 <div style={styles.table}>
                                     <h3>
                                         Day Of Registration
@@ -195,20 +226,21 @@ class Pay extends Component {
                                         <tr style={styles.table_row_border}>
                                             <td style={styles.table_description}>Day Of - Alumni Only </td>
                                             <td style={styles.table_cost}>$120</td>
-                                            <td style={styles.table_button}><StripeAlumniDayOf /></td>
+                                            <td style={styles.table_button}><StripeComponent amount={12000} description="Alumni Only" name="Day of Registration" /></td>
                                         </tr>
                                         <tr style={styles.table_row_border}>
                                             <td style={styles.table_description}>Day Of - Alumni + Spouse </td>
                                             <td style={styles.table_cost}>$183</td>
-                                            <td style={styles.table_button}><StripeAlumniSpouseDayOf /></td>
+                                            <td style={styles.table_button}><StripeComponent amount={18300} description="Alumni + Spouse" name="Day of Registration" /></td>
                                         </tr>
                                         <tr style={styles.table_row_no_border}>
                                             <td style={styles.table_description}>Non-Attending Alumni </td>
                                             <td style={styles.table_cost}>$30</td>
-                                            <td style={styles.table_button}><StripeAlumniNonAttending /></td>
+                                            <td style={styles.table_button}><StripeComponent amount={3000} description="We're sorry you can't make it!" name="Non-Attending Alumni" /></td>
                                         </tr>
                                     </table>
-                                </div>) : null} 
+                                </div>
+                                 ) : null}  
 
                             {this.state.corp_sponsor ? (
                                 <div style={styles.registration_desc}>
@@ -258,7 +290,9 @@ class Pay extends Component {
                                 <div style={styles.event_over}>
                                     We're sorry we missed you!  We'll see you next time!
                                 </div>
-                            ) : (
+                            ) : null }
+
+                            {!this.state.registration_complete && !this.state.registration_error ? (
                                 <div>
                                     <div style={styles.registration_desc}>
                                         <h3>
@@ -272,15 +306,24 @@ class Pay extends Component {
                                         </p>
                                     </div>
                                 </div>
-                            )}
+                            ) : null }
                         </section>
-                            <div style={styles.corp_sponsor}>
-                                Interested in becoming a corporate sponsor?
-                                <span onClick={this._handleCorpSponsor} style={styles.corp_button}> Click Here</span>
-                            </div>
+
+                        <div style={styles.corp_sponsor}>
+                            Interested in becoming a corporate sponsor?
+                            <span onClick={this._handleCorpSponsor} style={styles.corp_button}> Click Here</span>
+                        </div>
+
                         <div className='pay-buttons'>
-                            <Link to='/register'>Back</Link>
-                            <Link to='/register/continue'>Continue</Link>
+
+                            {this.state.registration_complete ? 
+                                <Link to='/' style={styles.home_button}>Home</Link>
+                            :
+                                <Link to='/register' style={styles.home_button}>Back</Link>
+                            }
+
+                            {!this.state.registration_error && !this.state.registration_complete ? <Link to='/register/continue'>Continue</Link>
+                            : null }
                         </div> 
                     </div>
                 </div>
@@ -289,6 +332,17 @@ class Pay extends Component {
     }
     styles () {
         return {
+            completed_registration: {
+                textAlign: 'center',
+                fontWeight: 'bold',
+                color: 'green',
+                margin: 15
+            },
+            registration_error: {
+                margin: 15,
+                color: 'red',
+                fontWeight: 'bold'
+            },
             table: {
                 margin: 10
             },
@@ -342,8 +396,13 @@ class Pay extends Component {
             more_info: {
                 cursor: 'pointer',
                 textDecoration: 'underline'
+            },
+            home_button: {
+                border: 'solid 1px #EAEAEA',
+                borderRadius: 3,
+                width: 75,
+                textAlign: 'center'
             }
-
         }
     }
 }
