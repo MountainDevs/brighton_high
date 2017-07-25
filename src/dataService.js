@@ -294,6 +294,11 @@ function getClassmates() {
   .then(res =>  res.data)
 } 
 
+function removeClassmate (classmate_id) {
+  return axios.put(`/api/alumni/found`, {id: classmate_id})
+  .then(res => res.data).then(getClassmates())
+}
+
 function changePhoto(photoString) {
   var oldPhoto = userData.photo;
   if (oldPhoto) {
@@ -358,7 +363,8 @@ module.exports = {
   sendToStripe,
   updateShowProfile,
   getDisplayingUsers,
-  serializeUser
+  serializeUser,
+  removeClassmate
   // loginWithStripeToken
 }
 

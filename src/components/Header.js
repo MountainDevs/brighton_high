@@ -24,7 +24,6 @@ class Header extends Component {
                         <div>
                             <Link 
                                 to="/register/pay"
-                                onClick={this.props.switchLogin.bind(null, false)}
                                 style={styles.button}
                             >
                                 Pay
@@ -62,7 +61,6 @@ class Header extends Component {
                 color: '#ffffff',
                 textAlign: 'center',
                 width: 75,
-                padding: 15,
                 background: '#537187',
                 cursor: 'pointer',
                 fontSize: 12,

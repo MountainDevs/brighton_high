@@ -38,19 +38,15 @@ app.get('/api/alumni/lost', (req, res, next) => {
 });
 
 app.put('/api/alumni/found', (req, res, next) => {
-  var ids = req.body.ids;
-  var idString = "(";
-  for (var i = 0; i < ids.length; i++) {
-    if (i === ids.length -1) {
-      idString += `${ids[i]})`;
-    } else {
-      idString += `${ids[i]}, `;
-    }
-  }
+  var id = req.body.id;
 
-  db.run(`UPDATE alumni SET found = true WHERE id IN ${idString} RETURNING *`)
+  db.alumni.update({
+    id: id,
+    found: true
+  })
     .then(alumni => {
       res.json(alumni);
+      console.log("found");
     })
     .catch(err => {
       res.status(500).json(err);
