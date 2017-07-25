@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import StripeAlumniEarly from '../Stripe/StripeAlumniEarly';
 import StripeAlumniSpouseEarly from '../Stripe/StripeAlumniSpouseEarly';
 import StripeAlumni from '../Stripe/StripeAlumni';
@@ -7,7 +7,7 @@ import StripeAlumniSpouse from '../Stripe/StripeAlumniSpouse';
 import StripeAlumniSpouseDayOf from '../Stripe/StripeAlumniSpouseDayOf';
 import StripeAlumniDayOf from '../Stripe/StripeAlumniDayOf';
 import StripeAlumniNonAttending from '../Stripe/StripeAlumniNonAttending';
-import { postUser, permissions, userData } from '../../dataService'
+import { postUser, userData, verifyUser, setUserFromLocal } from '../../dataService'
 import './Pay.css';
 
 class Pay extends Component {
@@ -19,13 +19,24 @@ class Pay extends Component {
             day_of_registration: false,
             event_over: false,
             corp_sponsor: false,
-            more_info: false
+            more_info: false,
+            loggedIn: true
         }
     }
 
-    componentWillUnmount(){
-        permissions.payed = true;
-        // this.registerUser();
+    componentWillMount(){
+        let userVerified = verifyUser();
+        if(userData.id) {
+            this.setState({
+                loggedIn: true
+            })
+        } else if (userVerified){
+            setUserFromLocal().then(data => {
+                this.setState({
+                    loggedIn: true
+                })
+            })
+        }
     }
 
   registerUser() {
@@ -102,8 +113,9 @@ class Pay extends Component {
     }
 
     render() {
+        console.log(userData)
         const styles=this.styles()
-        return (
+        return !this.state.loggedIn ? <Redirect to='/' /> : (
             <div className='pay-bg'>
                 <div className='pay-wrapper'>
                     <div className='pay-header'>Registration Fee</div>

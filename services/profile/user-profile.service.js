@@ -5,15 +5,15 @@ const app = require('../../server');
 const db = app.get('db');
 
 
-//=================================================//
-db.tables_seed()
-.then(data => {
-  console.log('All tables successfully reset');
-})
-.catch(err => {
-  console.log(err)
-});
-//=================================================//
+// //=================================================//
+// db.tables_seed()
+// .then(data => {
+//   console.log('All tables successfully reset');
+// })
+// .catch(err => {
+//   console.log(err)
+// });
+// //=================================================//
 
 
 

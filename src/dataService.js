@@ -72,7 +72,6 @@ function setUserFromLocal(){
     let id = getIdFromLocal()
     if(!id) return false;
     else {
-      console.log('step 2')
       getUser(id).then(res => {
         resolve()
       })
@@ -124,7 +123,6 @@ function deserializeUser(data) {
 }
 
 function login(email, password) {
-  console.log("login called");
   var data = { email: email, password: password };
   return axios.post(`/api/sessions/create`, data)
     .then(res => {
@@ -133,7 +131,6 @@ function login(email, password) {
       localStorage.setItem('jwt', JSON.stringify(token));
       axios.defaults.headers.common['Authorization'] = "Bearer " + token;
       serializeUser(res.data.user);
-      console.log("user login return: ", res.data.user);
       return true
     })
     .catch(err => {
@@ -206,11 +203,8 @@ function sendToStripe(data) {
 }
 
 function getUser(id) {
-  console.log(id)
   return axios.get(`/api/user/${id}`)
   .then(res => {
-    console.log('step ...')
-    console.log(res)
     serializeUser(res.data);
     return res.data;
   })
@@ -295,6 +289,7 @@ module.exports = {
   sendToStripe,
   updateShowProfile,
   getDisplayingUsers,
+  serializeUser
   // loginWithStripeToken
 }
 
