@@ -35,6 +35,7 @@ class ClassMates extends Component {
                     name={`${classmate.name}`}
                     found={(classmate.found) ? "Yes" : "No" }
                     key={classmate.id}
+                    id={classmate.id}
                 />
             )
         })
