@@ -1,22 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { userData, removeClassmate } from '../../../dataService';
 
 // CSS
 import './CardClassmates.css';
 
-const CardClassmates = props => {
+class CardClassmates extends Component {
+  constructor(props) {
+    super(props);
+
+  }
+
+  removeClassmateComponent(id) {
+    removeClassmate(id)
+      .then(res => {
+        this.props.reloadClassmates();
+      });
+  }
+
+    render() {
     return (
         <div className="class-card">
             <div className="class-card-left">
-                <div className="card-left-text">{props.name}</div>
+                <div className="card-left-text">{this.props.name}</div>
             </div>
-            <div className="card-right">{props.found}</div>
+            <div className="card-right">{this.props.found}</div>
+            {userData.permissions === 'admin' ? (
+                <div 
+                    className='delete-button' 
+                    onClick={this.removeClassmateComponent.bind(this, this.props.id)}
+                >
+                Person Found
+            </div>
+            ) : null }
         </div>
     );
 };
 
-CardClassmates.defaultProps = {
-    name: 'John Smith',
-    found: 'N/A'
 }
 
 export default CardClassmates;
