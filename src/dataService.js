@@ -17,12 +17,28 @@ let userData = {
   city: '',
   state: '',
   zipcode: '',
-  bio: '',
   attending: false,
-  photo: '',
   permissions: '',
   showProfile: false,
-  stripe_token: false
+  stripe_token: false,
+  facebookPage: '', 
+  pastResidence: '',
+  millitaryService: '',
+  occupation: '',
+  college: '',
+  hobbies: '',
+  honors: '',
+  travel: '',
+  bestMemory: '',
+  worstMemory: '',
+  dumb: '',
+  crushes: '',
+  changes: '',
+  retirement: '',
+  tenYears: '',
+  photoOne: '',
+  photoTwo: '',
+  photoThree: ''
 }
 
 function clearData(){
@@ -38,12 +54,28 @@ function clearData(){
     city: '',
     state: '',
     zipcode: '',
-    bio: '',
     attending: false,
-    photo: '',
     permissions: '',
     showProfile: false,
-    stripe_token: ''
+    stripe_token: false,
+    facebookPage: '', 
+    pastResidence: '',
+    millitaryService: '',
+    occupation: '',
+    college: '',
+    hobbies: '',
+    honors: '',
+    travel: '',
+    bestMemory: '',
+    worstMemory: '',
+    dumb: '',
+    crushes: '',
+    changes: '',
+    retirement: '',
+    tenYears: '',
+    photoOne: '',
+    photoTwo: '',
+    photoThree: ''
   }
 }
 
@@ -86,7 +118,6 @@ function serializeUser(data) {
   if (data.first_name) userData.firstName = data.first_name;
   if (data.last_name) userData.lastName = data.last_name;
   if (data.middle_name) userData.middleName = data.middle_name;
-  if (data.phone) userData.phone = data.phone;
   if (data.address) userData.address = data.address;
   if (data.city) userData.city = data.city;
   if (data.state) userData.state = data.state;
@@ -98,6 +129,24 @@ function serializeUser(data) {
   if (data.password) userData.password = data.password;
   if (data.show_profile !== null && data.show_profile !== undefined) userData.showProfile = data.show_profile;
   if (data.stripe_token !== null && data.stripe_token !== undefined) userData.stripe_token = data.stripe_token;
+  if (data.facebookPage) userData.facebookPage = data.facebookPage;
+  if (data.pastResidence) userData.pastResidence = data.pastResidence;
+  if (data.millitaryService) userData.millitaryService = data.millitaryService;
+  if (data.occupation) userData.occupation = data.occupation;
+  if (data.college) userData.college = data.college;
+  if (data.hobbies) userData.hobbies = data.hobbies;
+  if (data.honors) userData.honors = data.honors;
+  if (data.travel) userData.travel = data.travel;
+  if (data.bestMemory) userData.bestMemory = data.bestMemory;
+  if (data.worstMemory) userData.worstMemory = data.worstMemory;
+  if (data.dumb) userData.dumb = data.dumb;
+  if (data.crushes) userData.crushes = data.crushes;
+  if (data.changes) userData.changes = data.changes;
+  if (data.retirement) userData.retirement = data.retirement;
+  if (data.tenYears) userData.tenYears = data.tenYears;
+  if (data.photoOne) userData.photoOne = data.photoOne;
+  if (data.photoTwo) userData.photoTwo = data.photoTwo;
+  if (data.photoThree) userData.photoThree = data.photoThree;
   return userData;
 }
 
@@ -120,6 +169,24 @@ function deserializeUser(data) {
   if (data.password) returnData.password = data.password;
   if (data.showProfile !== null && data.showProfile !== undefined) returnData.show_profile = data.showProfile;
   if (data.stripe_token !== null && data.stripe_token !== undefined) returnData.stripe_token = data.stripe_token;
+  if (data.facebookPage) userData.facebookPage = data.facebook_page;
+  if (data.pastResidence) userData.pastResidence = data.past_residence;
+  if (data.millitaryService) userData.millitaryService = data.millitary_service;
+  if (data.occupation) userData.occupation = data.occupation;
+  if (data.college) userData.college = data.college;
+  if (data.hobbies) userData.hobbies = data.hobbies;
+  if (data.honors) userData.honors = data.honors;
+  if (data.travel) userData.travel = data.travel;
+  if (data.bestMemory) userData.bestMemory = data.best_memory;
+  if (data.worstMemory) userData.worstMemory = data.worst_memory;
+  if (data.dumb) userData.dumb = data.dumb;
+  if (data.crushes) userData.crushes = data.crushes;
+  if (data.changes) userData.changes = data.changes;
+  if (data.retirement) userData.retirement = data.retirement;
+  if (data.tenYears) userData.tenYears = data.ten_years;
+  if (data.photoOne) userData.photoOne = data.photo_one;
+  if (data.photoTwo) userData.photoTwo = data.photo_two;
+  if (data.photoThree) userData.photoThree = data.photo_three;
   return returnData;
 }
 

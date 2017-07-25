@@ -13,12 +13,28 @@ CREATE TABLE users (
     city TEXT,
     state TEXT,
     zipcode TEXT,
-    bio TEXT,
     attending BOOLEAN,
-    photo TEXT,
     permissions VARCHAR(15),
     show_profile BOOLEAN DEFAULT false,
-    stripe_token VARCHAR(255)
+    stripe_token VARCHAR(255),
+    facebook_page VARCHAR(255),
+    past_residence TEXT,
+    millitary_service TEXT,
+    occupation TEXT,
+    college TEXT,
+    hobbies TEXT,
+    honors TEXT,
+    travel TEXT,
+    best_memory TEXT,
+    worst_memory TEXT,
+    dumb TEXT,
+    crushes TEXT,
+    changes TEXT,
+    retirement TEXT,
+    ten_years TEXT,
+    photo_one TEXT,
+    photo_two TEXT,
+    photo_three TEXT
 );
 
 INSERT INTO users (first_name, last_name, email, password, permissions) VALUES

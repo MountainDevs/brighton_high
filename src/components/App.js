@@ -9,11 +9,7 @@ import UserProfile from './pages/UserProfile';
 import Admin from './pages/Admin';
 import Login from './login/Login';
 import Register from './register/Register';
-import Personal from './register/Personal';
-import Additional from './register/Additional';
-import ContactInfo from './register/ContactInfo';
 import Pay from './register/Pay';
-import Done from './register/Done';
 import Header from './Header';
 import SideNav from './SideNav';
 import Continue from './register/Continue';
@@ -125,11 +121,7 @@ class App extends Component {
               }/>
               <Route exact path="/register" component={Register}/>
               <Route exact path="/login" component={Login}/>
-              <Route exact path="/register/personal" component={Personal}/>
-              <Route exact path="/register/additional" component={Additional}/>
-              <Route exact path="/register/contact_info" component={ContactInfo}/>
               <Route exact path="/register/pay" component={Pay}/>
-              <Route exact path="/register/done" component={Done}/>
               <Route exact path="/register/continue" component={Continue}/>
           </Switch>
         </section>
