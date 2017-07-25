@@ -27,16 +27,33 @@ class ClassMates extends Component {
         }
     }
 
+    reloadClassmates() {
+      console.log("happening");
+
+      getClassmates()
+        .then(res => {
+          this.setState({
+            classmates: res
+          })
+          console.log("classmates");
+        })
+    }
+
     render() {
+      console.log('reload');
+      var self = this;
         let classmateList = this.state.classmates.map( classmate => {
             return !this.props.loggedIn ? <Link to='/login'>Please Login</Link> :
             (
+              !classmate.found ?
                 <CardClassmates 
                     name={`${classmate.name}`}
                     found={(classmate.found) ? "Yes" : "No" }
                     key={classmate.id}
+                    reloadClassmates={self.reloadClassmates.bind(self)}
                     id={classmate.id}
                 />
+                : null
             )
         })
 
