@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import StripeComponent from '../Stripe/StripeComponent';
-import StripeAlumniEarly from '../Stripe/StripeAlumniEarly';
-import StripeAlumniSpouseEarly from '../Stripe/StripeAlumniSpouseEarly';
-import StripeAlumni from '../Stripe/StripeAlumni';
-import StripeAlumniSpouse from '../Stripe/StripeAlumniSpouse';
-import StripeAlumniSpouseDayOf from '../Stripe/StripeAlumniSpouseDayOf';
-import StripeAlumniDayOf from '../Stripe/StripeAlumniDayOf';
-import StripeAlumniNonAttending from '../Stripe/StripeAlumniNonAttending';
 import { postUser, permissions, userData } from '../../dataService'
 import './Pay.css';
 
@@ -161,7 +154,7 @@ class Pay extends Component {
                                 </div>
                             : null }
 
-                            {/* {this.state.early_registration && !this.state.registration_complete && !this.state.registration_error ? ( */}
+                             {this.state.early_registration && !this.state.registration_complete && !this.state.registration_error ? ( 
                                 <div style={styles.table}>
                                     <h3>
                                         Early Registration
@@ -185,10 +178,10 @@ class Pay extends Component {
                                         </tr>
                                     </table>
                                 </div>
-                            {/* ) : null} */}
+                             ) : null} 
 
 
-                            {this.state.registration && !this.state.registration_complete && !this.state.registration_error ? (
+                             {this.state.registration && !this.state.registration_complete && !this.state.registration_error ? ( 
                                 <div style={styles.table}>
                                     <h3>
                                         Registration
@@ -211,9 +204,9 @@ class Pay extends Component {
                                         </tr>
                                     </table>
                                 </div>
-                            ) : null}
+                             ) : null} 
 
-                            {this.state.day_of_registration && !this.state.registration_complete && !this.state.registration_error ? (
+                             {this.state.day_of_registration && !this.state.registration_complete && !this.state.registration_error ? ( 
                                 <div style={styles.table}>
                                     <h3>
                                         Day Of Registration
@@ -235,7 +228,8 @@ class Pay extends Component {
                                             <td style={styles.table_button}><StripeComponent amount={3000} description="We're sorry you can't make it!" name="Non-Attending Alumni" /></td>
                                         </tr>
                                     </table>
-                                </div>) : null} 
+                                </div>
+                                 ) : null}  
 
                             {this.state.corp_sponsor ? (
                                 <div style={styles.registration_desc}>
