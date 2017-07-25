@@ -16,6 +16,7 @@ class StripeComponent extends Component {
     }
   }
 
+  // Is this necessary? 
   // componentWillMount() {
   //     this.setState({
   //       id: userData.id,
