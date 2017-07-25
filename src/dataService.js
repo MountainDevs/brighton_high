@@ -70,7 +70,6 @@ function getIdFromLocal() {
 function setUserFromLocal(){
   return new Promise((resolve, reject) => {
     let id = getIdFromLocal()
-    console.log(id)
     if(!id) return false;
     else {
       getUser(id).then(res => {
@@ -133,8 +132,6 @@ function login(user) {
       localStorage.setItem('jwt', JSON.stringify(token));
       axios.defaults.headers.common['Authorization'] = "Bearer " + token;
       let response = serializeUser(res.data.user);
-      console.log(response)
-      console.log(userData)
       return true
     })
     .catch(err => {
@@ -180,7 +177,7 @@ function postUser(value) {
     email: value.email,
     password: value.password
   }
-  console.log(data);
+
   return axios.post(`/api/user`, data)
   .then(res => {
     return login(res.data)

@@ -18,7 +18,7 @@ const db = app.get('db');
 
 
 function getUser(req, res, next) {
-  console.log('step 3')
+
   db.users.findOne(Number(req.params.id))
   .then(data => {
     res.json(data || {});
@@ -28,7 +28,7 @@ function getUser(req, res, next) {
 }
 
 function postUser(req, res, next) {
-  console.log(req.body)
+
   db.users.insert({
     first_name: req.body.firstName,
     last_name: req.body.lastName,
@@ -37,7 +37,6 @@ function postUser(req, res, next) {
     password: req.body.password
   })
   .then(user => {
-    console.log(user)
     res.send(user)
   })
   .catch(err => {
