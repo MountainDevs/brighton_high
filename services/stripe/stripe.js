@@ -8,11 +8,6 @@ const stripe = require('stripe')(
   config.stripeKey
 )
 
-
-// stripe.charges.retrieve("ch_1AhniyGqXGDtzOtcd9La8uOM", {
-//   api_key: "sk_test_MiQTqPAvBkeVnQt4Y7H8VIf6"
-// });
-
 function getId(description) {
   if ( parseInt(description.substring(description.indexOf("-") + 1, description.lastIndexOf("-"))) && typeof parseInt(description.substring(description.indexOf("-") + 1, description.lastIndexOf("-"))) === 'number' ) {
     return parseInt(description.substring(description.indexOf("-") + 1, description.lastIndexOf("-")));
