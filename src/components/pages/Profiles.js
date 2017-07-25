@@ -30,13 +30,13 @@ class Profiles extends Component {
             })
         }
     }
-    componentWillUpdate() {
-        if(this.props.loggedIn && this.state.users.length === 0) {
-            getDisplayingUsers().then( users => {
-                this.setState({users})
-            })
-        }
-    }
+    // componentWillUpdate() {
+    //     if(this.props.loggedIn && this.state.users.length === 0) {
+    //         getDisplayingUsers().then( users => {
+    //             this.setState({users})
+    //         })
+    //     }
+    // }
 
     render() {
         let profileList = this.state.users.map( user => {
