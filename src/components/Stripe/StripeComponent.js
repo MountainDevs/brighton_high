@@ -16,18 +16,6 @@ class StripeComponent extends Component {
     }
   }
 
-  // Is this necessary? 
-  // componentWillMount() {
-  //     this.setState({
-  //       id: userData.id,
-  //       email: userData.email,
-  //       password: userData.password,
-  //       firstName: userData.firstName,
-  //       lastName: userData.lastName,
-  //       middleName: userData.middleName
-  //     });
-  // }
-
   onToken = (token) => {
     token.amount = this.props.amount;
     token.chargeDescription = `-${userData.id}- ${userData.firstName} ${userData.lastName} ${this.state.email}`;
