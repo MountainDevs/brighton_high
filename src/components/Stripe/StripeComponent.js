@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import { sendToStripe, userData } from '../../dataService.js';
 
-class StripeAlumniEarly extends Component {
+class StripeComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -46,7 +46,7 @@ class StripeAlumniEarly extends Component {
   }
 
   onToken = (token) => {
-    token.amount = this.state.amount;
+    token.amount = this.props.amount;
     console.log("On token state: ", this.state);
     console.log("On token data: ", userData);
     token.chargeDescription = `${this.state.email}`;
@@ -81,10 +81,10 @@ class StripeAlumniEarly extends Component {
     return (
       <div>
          <StripeCheckout
-          name="Early Registration"
-          description="Alumni Only"
+          name={this.props.name}
+          description={this.props.description}
           panelLabel="Register"
-          amount={this.state.amount}
+          amount={this.props.amount}
           email={this.state.email}
           currency="USD"
           stripeKey="pk_test_mjnzkL9ebrh2Zbb5vy8hzniN"
@@ -100,4 +100,4 @@ class StripeAlumniEarly extends Component {
   }
 }
 
-export default StripeAlumniEarly;
+export default StripeComponent;
