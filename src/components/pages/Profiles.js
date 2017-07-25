@@ -44,8 +44,9 @@ class Profiles extends Component {
             )
         })
 
-        return !this.props.loggedIn ? <LoginRequest></LoginRequest> :
-            this.state.users.length === 0 ? <img src="https://media.giphy.com/media/11fxhMPSRtnbTa/giphy.gif" alt=""/> :
+        // return !this.props.loggedIn ? <LoginRequest></LoginRequest> :
+        //     this.state.users.length === 0 ? <img src="https://media.giphy.com/media/11fxhMPSRtnbTa/giphy.gif" alt=""/> :
+        return
             (
             // <div className="component-wrapper">
             //     <Title title="Classmate Profiles"/>
