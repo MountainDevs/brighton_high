@@ -19,7 +19,6 @@ function getId(description) {
   } else {
     throw new Error("Something obviously went wrong");
   }
-    
 }
 
 module.exports = {
@@ -35,10 +34,13 @@ module.exports = {
     }, function(err, response) {
       if (err) return res.status(500).json(err);
       try {
-        var email = response.description;
-        return db.email_token_update([response.id, email])
+        var id = getId(response.description);
+        return db.users.update({
+          id: id,
+          stripe_token: response.id
+        })
         .then(data => {
-          return res.json({stripeData: response});
+          return res.json({dbData: data, stripeData: response});
         })
         .catch(err => err);
       } catch (e) {

@@ -16,20 +16,20 @@ class StripeComponent extends Component {
     }
   }
 
-  componentWillMount() {
-      this.setState({
-        id: userData.id,
-        email: userData.email,
-        password: userData.password,
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        middleName: userData.middleName
-      });
-  }
+  // componentWillMount() {
+  //     this.setState({
+  //       id: userData.id,
+  //       email: userData.email,
+  //       password: userData.password,
+  //       firstName: userData.firstName,
+  //       lastName: userData.lastName,
+  //       middleName: userData.middleName
+  //     });
+  // }
 
   onToken = (token) => {
     token.amount = this.props.amount;
-    token.chargeDescription = `${this.state.email}`;
+    token.chargeDescription = `-${userData.id}- ${userData.firstName} ${userData.lastName} ${this.state.email}`;
     sendToStripe(token)
       .then(response => {
         alert("Payment successful");
