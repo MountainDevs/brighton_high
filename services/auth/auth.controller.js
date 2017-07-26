@@ -44,7 +44,7 @@ app.post('/api/sessions/stripe_token', (req, res, next) => {
   });
 });
 
-app.get('/api/sessions/current', expressJwt({secret: config.secret}), (err, req, res, next) => {
+app.get('/api/sessions/current', expressJwt({secret: config.secret}), (req, res, next) => {
   // if (err) {
   //   res.status(500).json("No valid token");
   // }

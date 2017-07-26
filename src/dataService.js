@@ -1,4 +1,6 @@
-let axios = require('axios');
+let axios = require('axios').create({
+      baseURL: 'http://localhost:5000'
+    });;
 
 let permissions = {
   payed: false,
@@ -93,7 +95,7 @@ function verifyUser() {
 function getIdFromLocal() {
   let jwt = localStorage.getItem('jwt');
   if(jwt) {
-    // checkUser();
+    checkUser();
     return parseJwt(jwt)['0'].id;
   } 
   else return false;
@@ -196,7 +198,6 @@ function login(user) {
   var data = { email: user.email, password: user.password };
   return axios.post(`/api/sessions/create`, data)
     .then(res => {
-      console.log("login successful");
       var token = res.data.id_token;
       localStorage.setItem('jwt', JSON.stringify(token));
       axios.defaults.headers.common['Authorization'] = "Bearer " + token;
@@ -214,6 +215,20 @@ function logout() {
   window.reload();
 }
 
+function setHeaderToken() {
+  var token = '';
+  try {
+    token = JSON.parse(localStorage.getItem('jwt'));
+  } catch (e) {
+    token = null;
+  }
+  if (token !== null) {
+    axios.defaults.headers.common['Authorization'] = "Bearer " + token;
+    return;
+  } else {
+    return "No information";
+  }
+}
 
 function checkUser() {
   var token = '';
@@ -293,11 +308,16 @@ function getDisplayingUsers() {
 function getClassmates() {
   return axios.get(`/api/alumni`)
   .then(res =>  res.data)
+  .catch(res => {console.log(res); return;});
 } 
 
 function removeClassmate (classmate_id) {
   return axios.put(`/api/alumni/found`, {id: classmate_id})
   .then(res => res.data).then(getClassmates())
+  .catch(res => {
+    console.log(res);
+    return;
+  })
 }
 
 function changePhoto(photoString) {
@@ -325,6 +345,10 @@ function updateShowProfile(value) {
     .then(res => {
       serializeUser(res.data);
       return res.data;
+    })
+    .catch(res => {
+      console.log(res) 
+      return
     });
 }
 
@@ -342,7 +366,7 @@ function updateShowProfile(value) {
 //     })
 // }
 
-// checkUser();
+checkUser();
 
 module.exports = {
   userData,
