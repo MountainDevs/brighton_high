@@ -38,6 +38,17 @@ CREATE TABLE users (
     photo_three TEXT
 );
 
+DROP TABLE IF EXISTS alumni;
+
+CREATE TABLE alumni (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+  found BOOLEAN DEFAULT false
+);
+
+INSERT INTO users (first_name, last_name, email, password, permissions, stripe_token) VALUES
+('Jessica', 'Church', 'Jessica@brightonhigh1987.com', 'Brighton_87', 'admin', 'token');
+
 INSERT INTO users (first_name, last_name, email, password, permissions) VALUES
 ('Jon', 'Myrick', 'jon@gmail.com', '123', 'member'),
 ('Sara', 'Johnson', 'sara@gmail.com', '123', null);
