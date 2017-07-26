@@ -12,3 +12,18 @@
     align-items: center;
     padding-left: 140px;  
 }
+
+.delete-button {
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    text-align: center;
+    width: 75px;
+    background: green;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 60px;
+    margin-top: 25px;
+    padding: 13px;
+    height: 20px;
+}

@@ -3,8 +3,10 @@ import { updateShowProfile, userData } from '../../dataService';
 
  // Components
 import TopInfo from './MyProfile/TopInfo';
+import PhotoUpload from './MyProfile/PhotoUpload';
 import ContactForm from './MyProfile/ContactForm';
 import AboutForm from './MyProfile/AboutForm';
+import Questionnaire from './MyProfile/Questionnaire';
 import LoginRequest from '../login/LoginRequest';
 // CSS
 import './MyProfile.css';
@@ -44,9 +46,12 @@ class MyProfile extends Component {
                   <button className="blue-button" onClick={this.showProfileTrue}>Show Profile</button>
                 </div>
               )}
+     
                 <TopInfo />
-                <ContactForm />
-                <AboutForm />
+                <PhotoUpload />
+                <ContactForm /> 
+                {/* <AboutForm /> */}
+                <Questionnaire />
             </div>
         );
     }

@@ -11,13 +11,13 @@ import FileUpload from '../../FileUpload/FileUpload';
 class TopInfo extends Component {
     constructor(props) {
         super(props);
+        console.log(userData);
         this.state = {
             firstName: userData.firstName,
             lastName: userData.lastName,
             middleName: userData.middleName,
-            email: userData.email || '',
-            phone: userData.phone,
-            photoSrc: userData.photo,
+            email: userData.email,
+            photoSrc: userData.photoOne,
             hideUpload: true
         }
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -35,7 +35,7 @@ class TopInfo extends Component {
     onCompleteUpload(value) {
       this.setState({
         hideUpload: value,
-        photoSrc: userData.photo
+        photoSrc: userData.photoOne
       })
     }
 
@@ -70,7 +70,7 @@ class TopInfo extends Component {
                     {
                       this.state.photoSrc
                       ? <img src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photoSrc} alt={this.state.firstName || ""}/>
-                      : <img src={prof_pic} alt="" />
+                     : <img src={prof_pic} alt="" />
                     }
                     <div onClick={this.hideUpload} className="pointer">Upload Photo</div>
                     <FileUpload hideUpload={ this.state.hideUpload } onCompleteUpload={ self.onCompleteUpload.bind(self) }/>

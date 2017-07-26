@@ -1,6 +1,4 @@
-let axios = require('axios').create({
-      baseURL: 'http://localhost:5000'
-    });
+let axios = require('axios');
 
 let permissions = {
   payed: false,
@@ -17,12 +15,29 @@ let userData = {
   city: '',
   state: '',
   zipcode: '',
-  bio: '',
   attending: false,
-  photo: '',
   permissions: '',
   showProfile: false,
-  stripe_token: false
+  stripe_token: false,
+  facebookPage: '', 
+  pastResidence: '',
+  family: '',
+  millitaryService: '',
+  occupation: '',
+  college: '',
+  hobbies: '',
+  honors: '',
+  travel: '',
+  bestMemory: '',
+  worstMemory: '',
+  dumb: '',
+  crushes: '',
+  changes: '',
+  retirement: '',
+  tenYears: '',
+  photoOne: '',
+  photoTwo: '',
+  photoThree: ''
 }
 
 function clearData(){
@@ -38,12 +53,29 @@ function clearData(){
     city: '',
     state: '',
     zipcode: '',
-    bio: '',
     attending: false,
-    photo: '',
     permissions: '',
     showProfile: false,
-    stripe_token: ''
+    stripe_token: false,
+    facebookPage: '',
+    family: '', 
+    pastResidence: '',
+    millitaryService: '',
+    occupation: '',
+    college: '',
+    hobbies: '',
+    honors: '',
+    travel: '',
+    bestMemory: '',
+    worstMemory: '',
+    dumb: '',
+    crushes: '',
+    changes: '',
+    retirement: '',
+    tenYears: '',
+    photoOne: '',
+    photoTwo: '',
+    photoThree: ''
   }
 }
 
@@ -61,7 +93,7 @@ function verifyUser() {
 function getIdFromLocal() {
   let jwt = localStorage.getItem('jwt');
   if(jwt) {
-    checkUser();
+    // checkUser();
     return parseJwt(jwt)['0'].id;
   } 
   else return false;
@@ -72,7 +104,6 @@ function setUserFromLocal(){
     let id = getIdFromLocal()
     if(!id) return false;
     else {
-      console.log('step 2')
       getUser(id).then(res => {
         resolve()
       })
@@ -87,7 +118,6 @@ function serializeUser(data) {
   if (data.first_name) userData.firstName = data.first_name;
   if (data.last_name) userData.lastName = data.last_name;
   if (data.middle_name) userData.middleName = data.middle_name;
-  if (data.phone) userData.phone = data.phone;
   if (data.address) userData.address = data.address;
   if (data.city) userData.city = data.city;
   if (data.state) userData.state = data.state;
@@ -99,6 +129,26 @@ function serializeUser(data) {
   if (data.password) userData.password = data.password;
   if (data.show_profile !== null && data.show_profile !== undefined) userData.showProfile = data.show_profile;
   if (data.stripe_token !== null && data.stripe_token !== undefined) userData.stripe_token = data.stripe_token;
+  if (data.facebook_page) userData.facebookPage = data.facebook_page;
+  if (data.family) userData.family = data.family;
+  if (data.past_residence) userData.pastResidence = data.past_residence;
+  if (data.millitary_service) userData.millitaryService = data.millitary_service;
+  if (data.occupation) userData.occupation = data.occupation;
+  if (data.college) userData.college = data.college;
+  if (data.hobbies) userData.hobbies = data.hobbies;
+  if (data.honors) userData.honors = data.honors;
+  if (data.travel) userData.travel = data.travel;
+  if (data.best_memory) userData.bestMemory = data.best_memory;
+  if (data.worst_memory) userData.worstMemory = data.worst_memory;
+  if (data.dumb) userData.dumb = data.dumb;
+  if (data.crushes) userData.crushes = data.crushes;
+  if (data.changes) userData.changes = data.changes;
+  if (data.retirement) userData.retirement = data.retirement;
+  if (data.ten_years) userData.tenYears = data.ten_years;
+  if (data.photo_one) userData.photoOne = data.photo_one;
+  if (data.photo_two) userData.photoTwo = data.photo_two;
+  if (data.photo_three) userData.photoThree = data.photo_three;
+  return userData;
 }
 
 function deserializeUser(data) {
@@ -120,20 +170,37 @@ function deserializeUser(data) {
   if (data.password) returnData.password = data.password;
   if (data.showProfile !== null && data.showProfile !== undefined) returnData.show_profile = data.showProfile;
   if (data.stripe_token !== null && data.stripe_token !== undefined) returnData.stripe_token = data.stripe_token;
+  if (data.facebookPage) returnData.facebook_page = data.facebookPage;
+  if (data.family) returnData.family = data.family;
+  if (data.pastResidence) returnData.past_residence = data.pastResidence;
+  if (data.millitaryService) returnData.millitary_service = data.millitaryService;
+  if (data.occupation) returnData.occupation = data.occupation;
+  if (data.college) returnData.college = data.college;
+  if (data.hobbies) returnData.hobbies = data.hobbies;
+  if (data.honors) returnData.honors = data.honors;
+  if (data.travel) returnData.travel = data.travel;
+  if (data.bestMemory) returnData.best_memory = data.bestMemory;
+  if (data.worstMemory) returnData.worst_memory = data.worstMemory;
+  if (data.dumb) returnData.dumb = data.dumb;
+  if (data.crushes) returnData.crushes = data.crushes;
+  if (data.changes) returnData.changes = data.changes;
+  if (data.retirement) returnData.retirement = data.retirement;
+  if (data.tenYears) returnData.ten_years = data.tenYears;
+  if (data.photoOne) returnData.photo_one = data.photoOne;
+  if (data.photoTwo) returnData.photo_two = data.photoTwo;
+  if (data.photoThree) returnData.photo_three = data.photoThree;
   return returnData;
 }
 
-function login(email, password) {
-  console.log("login called");
-  var data = { email: email, password: password };
+function login(user) {
+  var data = { email: user.email, password: user.password };
   return axios.post(`/api/sessions/create`, data)
     .then(res => {
       console.log("login successful");
       var token = res.data.id_token;
       localStorage.setItem('jwt', JSON.stringify(token));
       axios.defaults.headers.common['Authorization'] = "Bearer " + token;
-      serializeUser(res.data.user);
-      console.log("user login return: ", res.data.user);
+      let response = serializeUser(res.data.user);
       return true
     })
     .catch(err => {
@@ -144,6 +211,7 @@ function login(email, password) {
 function logout() {
   localStorage.removeItem('jwt');
   clearData();
+  window.reload();
 }
 
 
@@ -170,18 +238,18 @@ function checkToken() {
       }).catch(err => err);
 }
 
-function postUser() {
-  var data = {
-    firstName: userData.firstName,
-    middleName: userData.middleName,
-    lastName: userData.lastName,
-    email: userData.email,
-    password: userData.password
+function postUser(value) {
+  let data = {
+    firstName: value.firstName,
+    middleName: value.middleName,
+    lastName: value.lastName,
+    email: value.email,
+    password: value.password
   }
+
   return axios.post(`/api/user`, data)
   .then(res => {
-    login(data.email, data.password);
-    return res.data
+    return login(res.data)
   })
   .catch(err => err);
 }
@@ -206,12 +274,8 @@ function sendToStripe(data) {
 }
 
 function getUser(id) {
-  console.log(id)
   return axios.get(`/api/user/${id}`)
   .then(res => {
-    console.log('step ...')
-    console.log(res)
-    serializeUser(res.data);
     return res.data;
   })
 }
@@ -230,6 +294,11 @@ function getClassmates() {
   return axios.get(`/api/alumni`)
   .then(res =>  res.data)
 } 
+
+function removeClassmate (classmate_id) {
+  return axios.put(`/api/alumni/found`, {id: classmate_id})
+  .then(res => res.data).then(getClassmates())
+}
 
 function changePhoto(photoString) {
   var oldPhoto = userData.photo;
@@ -273,7 +342,7 @@ function updateShowProfile(value) {
 //     })
 // }
 
-checkUser();
+// checkUser();
 
 module.exports = {
   userData,
@@ -295,6 +364,8 @@ module.exports = {
   sendToStripe,
   updateShowProfile,
   getDisplayingUsers,
+  serializeUser,
+  removeClassmate
   // loginWithStripeToken
 }
 

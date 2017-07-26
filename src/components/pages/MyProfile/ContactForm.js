@@ -48,7 +48,7 @@ class ContactForm extends Component {
             <section>
               <div>
                 <label htmlFor="phone">Phone Number</label>
-                <input type="phone" id='phone' name='phone' value={this.state.phone} onChange={this.handleInputChange}/>
+                <input type="text" id='phone' name='phone' value={this.state.phone} onChange={this.handleInputChange}/>
               </div>
               <div>
                 <label htmlFor="address">Address</label>

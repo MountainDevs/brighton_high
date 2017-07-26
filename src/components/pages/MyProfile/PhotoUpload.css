@@ -1,0 +1,27 @@
+.photo-wrapper {
+  background: #FFFFFF;
+  width: 700px;
+  height: 200px;
+  margin: 0 auto 40px auto;
+  border: 1px solid black;
+}
+
+.photo-header {
+  font-size: 13px;
+  background: #537187;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.photo-body {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.photo-body div {
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  text-align: center;
+}

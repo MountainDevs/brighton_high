@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import { Redirect } from 'react-router-dom';
 import { sendToStripe, userData } from '../../dataService.js';
 
 class StripeComponent extends Component {
@@ -12,34 +13,26 @@ class StripeComponent extends Component {
       password: userData.password,
       firstName: userData.firstName,
       lastName: userData.lastName,
-      middleName: userData.middleName
+      middleName: userData.middleName,
+      redirect: false
     }
-  }
-
-  componentWillMount() {
-      this.setState({
-        id: userData.id,
-        email: userData.email,
-        password: userData.password,
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        middleName: userData.middleName
-      });
   }
 
   onToken = (token) => {
     token.amount = this.props.amount;
-    token.chargeDescription = `${this.state.email}`;
+    token.chargeDescription = `-${userData.id}- ${userData.firstName} ${userData.lastName} ${this.state.email}`;
     sendToStripe(token)
       .then(response => {
-        alert("Payment successful");
         userData.stripe_token = response.data.stripeData.id;
+        this.setState({
+          redirect: true
+        })
       })
       .catch(err => {console.log(err)});
   }
 
   render() {
-    return (
+    return this.state.redirect ? <Redirect to="/register/continue"/> : (
       <div>
          <StripeCheckout
           name={this.props.name}
@@ -48,7 +41,7 @@ class StripeComponent extends Component {
           amount={this.props.amount}
           email={this.state.email}
           currency="USD"
-          stripeKey="pk_test_mjnzkL9ebrh2Zbb5vy8hzniN"
+          stripeKey="pk_live_WeJHviSeMcRIm5I7LIWIz2l3"
           zipCode={false}
           allowRememberMe
           token={this.onToken}
