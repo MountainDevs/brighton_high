@@ -55,20 +55,16 @@ const NavItems = () => {
                             exact>
                                 My Profile
                         </NavLink>
-<<<<<<< HEAD
-                    </li>
-                    <li className={ userData.admin === 'admin' ? '' : 'hidden' }>
+                    </li> */}
+                    <li className={ userData.permissions === 'admin' ? '' : 'hidden' }>
                         <NavLink 
-                            to="/my_profile" 
+                            to="/print" 
                             className="navitems-link" 
                             activeClassName="navitems-link-selected" 
                             exact>
-                                My Profile
+                                Print Registrants
                         </NavLink>
                     </li>
-=======
-                    </li> */}
->>>>>>> production
                 </ul>
             </div>
         </div>

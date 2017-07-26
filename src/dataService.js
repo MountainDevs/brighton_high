@@ -1,4 +1,6 @@
-let axios = require('axios');
+let axios = require('axios').create({
+      baseURL: 'http://localhost:5000'
+    });;
 
 let permissions = {
   payed: false,
@@ -328,6 +330,18 @@ function updateShowProfile(value) {
     });
 }
 
+function getRegisteredUsers() {
+  return axios.get('/api/registered_users')
+    .then(res => {
+      console.log(res.data);
+      return;
+    })
+    .catch(err => {
+      console.log(err);
+      return;
+    });
+}
+
 // function loginWithStripeToken(value) {
 //   var data = {
 //     stripe_token: value
@@ -365,7 +379,8 @@ module.exports = {
   updateShowProfile,
   getDisplayingUsers,
   serializeUser,
-  removeClassmate
+  removeClassmate,
+  getRegisteredUsers
   // loginWithStripeToken
 }
 
