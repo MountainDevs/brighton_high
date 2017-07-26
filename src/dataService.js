@@ -333,8 +333,7 @@ function updateShowProfile(value) {
 function getRegisteredUsers() {
   return axios.get('/api/registered_users')
     .then(res => {
-      console.log(res.data);
-      return;
+      return res.data;
     })
     .catch(err => {
       console.log(err);
