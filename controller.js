@@ -7,10 +7,9 @@ const csvService = require('./services/csv/csv.service');
 const config = require('./config.json');
 
 
-// app.use('/api/user', jwt({secret: config.secret}));
 
 app.post('/api/user', userService.postUser);
-app.put('/api/user', jwt({secret: config.secret}), userService.updateUser);
+app.put('/api/user', userService.updateUser);
 app.put('/api/user/show_profile', userService.updateShowProfile);
 app.get('/api/user', userService.getUser);
 app.put('/api/classmates', userService.updateClassmates);
@@ -23,9 +22,10 @@ app.post('/api/stripe_record', userService.postStripeRecord);
 app.post('/api/stripe/create_charge', stripeService.createCharge);
 app.post('/api/export_csv', function (req, res, next) {
   try {
-    csv.createCsv(req.body);
+    csvService.createCSV(req.body);
     return res.sendStatus(200);
-  } catch (err) {
-    return res.status(500).json(err);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json(error);
   }
 });

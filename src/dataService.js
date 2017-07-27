@@ -351,6 +351,19 @@ function parseRegistrants(registrants) {
   return parsed
 }
 
+function printRegistrants(csvString) {
+  var data = { registrants: csvString };
+  return axios.post('/api/export_csv', data)
+    .then(res => {
+      if (res.status === 200) {
+        window.location = './assets/registrants.csv';
+      } else {
+        console.log(res.data);
+        return;
+      }
+    })
+}
+
 // function loginWithStripeToken(value) {
 //   var data = {
 //     stripe_token: value
@@ -390,7 +403,8 @@ module.exports = {
   serializeUser,
   removeClassmate,
   getRegisteredUsers,
-  parseRegistrants
+  parseRegistrants,
+  printRegistrants
   // loginWithStripeToken
 }
 

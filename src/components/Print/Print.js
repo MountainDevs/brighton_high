@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { getRegisteredUsers, parseRegistrants } from '../../dataService';
+import { getRegisteredUsers, parseRegistrants, printRegistrants } from '../../dataService';
 import '../../styles/common.css';
 import '../pages/Classmates.css';
 import './Print.css';
@@ -27,7 +27,13 @@ class Print extends Component {
 
   handleSubmit() {
     var csvString = parseRegistrants(this.state.registrants);
-    console.log(csvString);
+    printRegistrants(csvString)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        alert("There was an error, please try again");
+      })
   }
 
   render() {

@@ -1,10 +1,10 @@
 const fs = require('fs');
 
 exports.createCSV = (data) => {
-  if (fs.existsSync('./public/assets/everything.csv')) {
-    fs.unlinkSync('./public/assets/everything.csv');
+  if (fs.existsSync('./src/assets/registrants.csv')) {
+    fs.unlinkSync('./src/assets/registrants.csv');
   }
-  
-  fs.appendFileSync('./public/assets/everything.csv', `First Name,Last Name\n${data.registrants}`, encoding="utf8");
+    
+  fs.appendFileSync('./src/assets/registrants.csv', `First Name,Last Name\n${data.registrants}`, encoding="utf8");
 
 }
