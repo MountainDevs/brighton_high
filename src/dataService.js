@@ -341,6 +341,16 @@ function getRegisteredUsers() {
     });
 }
 
+function parseRegistrants(registrants) {
+  var parsed = '';
+  registrants.forEach(user => {
+    var first = user.first_name || '';
+    var last = user.last_name || '';
+    parsed += `${first},${last}\n`;
+  });
+  return parsed
+}
+
 // function loginWithStripeToken(value) {
 //   var data = {
 //     stripe_token: value
@@ -379,7 +389,8 @@ module.exports = {
   getDisplayingUsers,
   serializeUser,
   removeClassmate,
-  getRegisteredUsers
+  getRegisteredUsers,
+  parseRegistrants
   // loginWithStripeToken
 }
 
