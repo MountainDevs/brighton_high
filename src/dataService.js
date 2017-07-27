@@ -342,19 +342,17 @@ function getRegisteredUsers() {
     });
 }
 
-function parseRegistrants(registrants) {
+function printRegistrants(registrants) {
   var parsed = '';
   registrants.forEach(user => {
     var first = user.first_name || '';
     var last = user.last_name || '';
     parsed += `${first},${last}\n`;
   });
-  return parsed
+   
+  fileDownload(`First Name,Last Name\n${parsed}`, 'registrants.csv');
 }
 
-function printRegistrants(csvString) {
-  fileDownload(`First Name,Last Name\n${csvString}`, 'registrants.csv');
-}
 
 
 // checkUser();
@@ -382,8 +380,6 @@ module.exports = {
   serializeUser,
   removeClassmate,
   getRegisteredUsers,
-  parseRegistrants,
   printRegistrants
-  // loginWithStripeToken
 }
 

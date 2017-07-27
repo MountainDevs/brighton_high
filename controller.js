@@ -3,7 +3,6 @@ const app = require('./server');
 const jwt = require('express-jwt');
 const userService = require('./services/profile/user-profile.service');
 const stripeService = require('./services/stripe/stripe');
-const csvService = require('./services/csv/csv.service');
 const config = require('./config.json');
 
 
@@ -20,12 +19,3 @@ app.get('/api/registered_users', userService.getRegisteredUsers);
 app.get('/api/classmates', userService.getClassmates);
 app.post('/api/stripe_record', userService.postStripeRecord);
 app.post('/api/stripe/create_charge', stripeService.createCharge);
-app.post('/api/export_csv', function (req, res, next) {
-  try {
-    csvService.createCSV(req.body);
-    return res.sendStatus(200);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json(error);
-  }
-});
