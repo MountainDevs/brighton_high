@@ -101,6 +101,17 @@ function getDisplayingUsers(req, res, next) {
   })
 }
 
+function getRegisteredUsers(req, res, next) {
+  db.users.find({
+    "stripe_token <>": ''
+  }).then(users => {
+    res.json(users);
+  })
+  .catch(err => {
+    res.status(500).json(err);
+  });
+}
+
 function getClassmates(req, res, next) {
   db.get_classmates()
   .then(classmates => {
@@ -134,5 +145,6 @@ module.exports = {
   getClassmates,
   postStripeRecord,
   updateShowProfile,
-  getDisplayingUsers
+  getDisplayingUsers,
+  getRegisteredUsers
 }

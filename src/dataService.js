@@ -1,4 +1,7 @@
-let axios = require('axios');
+let axios = require('axios').create({
+      baseURL: 'http://localhost:5000'
+    });;
+let fileDownload = require('react-file-download');
 
 let permissions = {
   payed: false,
@@ -93,7 +96,6 @@ function verifyUser() {
 function getIdFromLocal() {
   let jwt = localStorage.getItem('jwt');
   if(jwt) {
-    // checkUser();
     return parseJwt(jwt)['0'].id;
   } 
   else return false;
@@ -105,7 +107,15 @@ function setUserFromLocal(){
     if(!id) return false;
     else {
       getUser(id).then(res => {
-        resolve()
+        var data = {
+          email: res.email,
+          password: res.password
+        }
+        login(data)
+          .then(res => {
+            resolve();
+          })
+        // resolve()
       })
     }
   })
@@ -196,7 +206,6 @@ function login(user) {
   var data = { email: user.email, password: user.password };
   return axios.post(`/api/sessions/create`, data)
     .then(res => {
-      console.log("login successful");
       var token = res.data.id_token;
       localStorage.setItem('jwt', JSON.stringify(token));
       axios.defaults.headers.common['Authorization'] = "Bearer " + token;
@@ -224,7 +233,7 @@ function checkUser() {
   }
   if (token !== null) {
     axios.defaults.headers.common['Authorization'] = "Bearer " + token;
-    return checkToken();
+    // return checkToken();
   } else {
     return "No information";
   }
@@ -328,19 +337,29 @@ function updateShowProfile(value) {
     });
 }
 
-// function loginWithStripeToken(value) {
-//   var data = {
-//     stripe_token: value
-//   }
-//   return axios.put('/api/sessions/stripe_token', data)
-//     .then(res => {
-//       serializeUser(res.data);
-//       return res.data;
-//     })
-//     .catch(err => {
-//       return err;
-//     })
-// }
+function getRegisteredUsers() {
+  return axios.get('/api/registered_users')
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => {
+      console.log(err);
+      return;
+    });
+}
+
+function printRegistrants(registrants) {
+  var parsed = '';
+  registrants.forEach(user => {
+    var first = user.first_name || '';
+    var last = user.last_name || '';
+    parsed += `${first},${last}\n`;
+  });
+   
+  fileDownload(`First Name,Last Name\n${parsed}`, 'registrants.csv');
+}
+
+
 
 // checkUser();
 
@@ -365,7 +384,8 @@ module.exports = {
   updateShowProfile,
   getDisplayingUsers,
   serializeUser,
-  removeClassmate
-  // loginWithStripeToken
+  removeClassmate,
+  getRegisteredUsers,
+  printRegistrants
 }
 

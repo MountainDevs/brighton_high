@@ -51,7 +51,7 @@ INSERT INTO users (first_name, last_name, email, password, permissions, stripe_t
 
 INSERT INTO users (first_name, last_name, email, password, permissions) VALUES
 ('Jon', 'Myrick', 'jon@gmail.com', '123', 'member'),
-('Sara', 'Johnson', 'sara@gmail.com', '123', null);
+('Sara', 'Johnson', 'sara@gmail.com', '123', 'admin');
 
 INSERT INTO users (first_name, middle_name, last_name, email, password, phone, address, city, state, zipcode, attending, permissions, show_profile, stripe_token, photo_one) VALUES
 ('Gustav', 'Big Boy Pants', 'Nordstrom', 'gus@gmail.com', '123', '2345678876', '123 Fake Street, apartment 27', 'Provo', 'Utah', '98765', true, 'member', true, 'token', '1_Myrick_Mon+Jul+17+2017+22%3A29%3A07+GMT-0600+(Mountain+Daylight+Time).jpeg');

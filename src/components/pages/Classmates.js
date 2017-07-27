@@ -28,14 +28,12 @@ class ClassMates extends Component {
     }
 
     reloadClassmates() {
-      console.log("happening");
 
       getClassmates()
         .then(res => {
           this.setState({
             classmates: res
           })
-          console.log("classmates");
         })
     }
 
