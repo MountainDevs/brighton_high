@@ -4,8 +4,7 @@ const app = require('../../server'),
       config = require('../../config.json');
 
 
-app.get('/api/alumni', jwt({ secret: config.secret }), (err, req, res, next) => {
-  if (err) res.status(403).json(err);
+app.get('/api/alumni', (req, res, next) => {
   db.alumni.find()
     .then(alumni => {
       res.json(alumni);
