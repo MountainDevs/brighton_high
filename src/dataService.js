@@ -1,6 +1,7 @@
 let axios = require('axios').create({
       baseURL: 'http://localhost:5000'
     });;
+let fileDownload = require('react-file-download');
 
 let permissions = {
   payed: false,
@@ -352,31 +353,9 @@ function parseRegistrants(registrants) {
 }
 
 function printRegistrants(csvString) {
-  var data = { registrants: csvString };
-  return axios.post('/api/export_csv', data)
-    .then(res => {
-      if (res.status === 200) {
-        window.location = './assets/registrants.csv';
-      } else {
-        console.log(res.data);
-        return;
-      }
-    })
+  fileDownload(`First Name,Last Name\n${csvString}`, 'registrants.csv');
 }
 
-// function loginWithStripeToken(value) {
-//   var data = {
-//     stripe_token: value
-//   }
-//   return axios.put('/api/sessions/stripe_token', data)
-//     .then(res => {
-//       serializeUser(res.data);
-//       return res.data;
-//     })
-//     .catch(err => {
-//       return err;
-//     })
-// }
 
 // checkUser();
 

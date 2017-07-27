@@ -27,13 +27,14 @@ class Print extends Component {
 
   handleSubmit() {
     var csvString = parseRegistrants(this.state.registrants);
-    printRegistrants(csvString)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        alert("There was an error, please try again");
-      })
+    // printRegistrants(csvString)
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     alert("There was an error, please try again");
+    //   })
+    printRegistrants(csvString);
   }
 
   render() {
