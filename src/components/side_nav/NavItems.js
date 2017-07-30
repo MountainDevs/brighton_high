@@ -47,7 +47,7 @@ const NavItems = () => {
                                 Contact
                         </NavLink>
                     </li>
-                    {/* <li className={ userData.stripe_token ? '' : 'hidden' }>
+                     <li className={ userData.stripe_token ? '' : 'hidden' }>
                         <NavLink 
                             to="/my_profile" 
                             className="navitems-link" 
@@ -55,7 +55,7 @@ const NavItems = () => {
                             exact>
                                 My Profile
                         </NavLink>
-                    </li> */}
+                    </li> 
                 </ul>
             </div>
         </div>

@@ -68,7 +68,7 @@ class Questionnaire extends Component {
           <section>
             <div>
               <label>Put you facebook profile url here</label>
-              <textarea id="facebook" name='facebook' cols="30" rows="10" value={this.state.facebook} onChange={this.handleInputChange}></textarea>
+              <textarea id="facebook" name='facebookPage' cols="30" rows="10" value={this.state.facebookPage} onChange={this.handleInputChange}></textarea>
             </div>
             <div>
               <label>Where have you lived since graduation?</label>

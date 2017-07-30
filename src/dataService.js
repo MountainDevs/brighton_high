@@ -120,6 +120,7 @@ function serializeUser(data) {
   if (data.first_name) userData.firstName = data.first_name;
   if (data.last_name) userData.lastName = data.last_name;
   if (data.middle_name) userData.middleName = data.middle_name;
+  if (data.phone) userData.phone = data.phone;
   if (data.address) userData.address = data.address;
   if (data.city) userData.city = data.city;
   if (data.state) userData.state = data.state;

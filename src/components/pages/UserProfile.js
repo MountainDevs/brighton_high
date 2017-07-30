@@ -45,7 +45,7 @@ class UserProfile extends Component {
                                     <h3>Contact info</h3>
                                     <p>Email: {this.state.user.email || "N/A"}</p>
                                     <p>Phone: {this.state.user.phone || 'N/A'}</p>
-                                    <Link to={`${this.state.user.facebook_page}`}><p>Facebook Profile: {this.state.user.facebook_page || 'N/A'}</p></Link>
+                                    <p>Facebook Profile: <a href={this.state.user.facebook_page}>{this.state.user.facebook_page || 'N/A'}</a></p>
                                 </div>
                             </div>
                         </div>
