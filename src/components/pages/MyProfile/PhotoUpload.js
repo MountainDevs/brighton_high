@@ -11,10 +11,12 @@ class PhotoUpload extends Component {
             photoTwo: userData.photoTwo,
             photoThree: userData.photoThree,
             hideUploadTwo: true,
-            hideUploadThree: true
+            hideUploadThree: true,
+            beTall: false
         }
         this.hideUploadTwo = this.hideUploadTwo.bind(this);
         this.hideUploadThree = this.hideUploadThree.bind(this);
+        this.checkHeight = this.checkHeight.bind(this);
     }   
       
     hideUploadTwo() {
@@ -30,9 +32,29 @@ class PhotoUpload extends Component {
       })
     }
 
-    onCompleteUpload(value) {
+    checkHeight() {
+      if (!this.state.hideUploadThree || !this.state.hideUploadTwo) {
+        this.setState({
+          beTall: true
+        });
+      } else {
+        this.setState({
+          beTall: false
+        })
+      }
+    }
+
+    onCompleteUploadTwo(value) {
       this.setState({
-        hideUpload: value,
+        hideUploadTwo: value,
+        photoTwo: userData.photoTwo,
+        photoThree: userData.photoThree
+      })
+    }
+
+    onCompleteUploadThree(value) {
+      this.setState({
+        hideUploadThree: value,
         photoTwo: userData.photoTwo,
         photoThree: userData.photoThree
       })
@@ -41,7 +63,7 @@ class PhotoUpload extends Component {
   render() {
     var self = this;
     return (
-      <div className={ 'photo-wrapper ' + (this.state.hideUploadTwo || this.state.hideUploadThree ? '' : 'tall') }>
+      <div className={ 'photo-wrapper ' + (this.state.beTall ? 'tall' : '') }>
         <div className="photo-header">UPLOAD PHOTOS</div>
         <div className="photo-body">
           <div className="flex-column">  
@@ -51,7 +73,7 @@ class PhotoUpload extends Component {
               : <div className="photo-img1">Photo 2</div>
             }
             <div onClick={this.hideUploadTwo} className="pointer">Upload Photo</div>
-            <FileUpload hideUpload={ this.state.hideUploadTwo } photoType="photoTwo" onCompleteUpload={ self.onCompleteUpload.bind(self) }/>
+            <FileUpload hideUpload={ this.state.hideUploadTwo } photoType="photoTwo" onCompleteUpload={ self.onCompleteUploadTwo.bind(self) }/>
           </div>
           <div className="flex-column">
             {
@@ -60,7 +82,7 @@ class PhotoUpload extends Component {
               : <div className="photo-img1">Photo 3</div>
             }
             <div onClick={this.hideUploadThree} className="pointer">Upload Photo</div>
-            <FileUpload hideUpload={ this.state.hideUploadThree } photoType="photoThree" onCompleteUpload={ self.onCompleteUpload.bind(self) }/>
+            <FileUpload hideUpload={ this.state.hideUploadThree } photoType="photoThree" onCompleteUpload={ self.onCompleteUploadThree.bind(self) }/>
           </div>
         </div>
       </div>
