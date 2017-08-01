@@ -73,7 +73,7 @@ class TopInfo extends Component {
                      : <img src={prof_pic} alt="" />
                     }
                     <div onClick={this.hideUpload} className="pointer">Upload Photo</div>
-                    <FileUpload hideUpload={ this.state.hideUpload } onCompleteUpload={ self.onCompleteUpload.bind(self) }/>
+                    <FileUpload hideUpload={ this.state.hideUpload } photoType="photoOne" onCompleteUpload={ self.onCompleteUpload.bind(self) }/>
                 </div> 
                  <div className={'personal-info ' + (this.state.hideUpload ? '' : 'padding-left-0')}> 
                 <section style={{display: 'flex'}}>

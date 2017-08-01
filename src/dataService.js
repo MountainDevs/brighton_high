@@ -303,19 +303,19 @@ function removeClassmate (classmate_id) {
   .then(res => res.data).then(getClassmates())
 }
 
-function changePhoto(photoString) {
-  var oldPhoto = userData.photo;
+function changePhoto(photoString, photoType) {
+  var oldPhoto = userData[photoType];
   if (oldPhoto) {
     return axios.put(`/api/s3/delete`, {photoKey: oldPhoto})
       .then(res => {
-        userData.photo = photoString;
+        userData[photoType] = photoString;
         return updateUser();
       })
       .catch(err => {
         return err;
       })
   } else {
-    userData.photo = photoString;
+    userData[photoType] = photoString;
   }
 }
 

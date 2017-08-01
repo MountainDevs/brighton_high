@@ -27,7 +27,7 @@ const dataService = require('../../dataService');
         this.setState({step:4});
         setTimeout(() => {this.setState({step:1})}, 1500);
       } else {
-        dataService.changePhoto(JSON.parse(res.text).fileName);
+        dataService.changePhoto(JSON.parse(res.text).fileName, this.props.photoType);
         this.setState({step:3});
         setTimeout(() => {
           this.setState({step:1})
