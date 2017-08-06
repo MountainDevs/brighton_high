@@ -27,7 +27,6 @@ app.post('/api/sessions/create', (req, res, next) => {
 });
 
 app.post('/api/sessions/stripe_token', (req, res, next) => {
-  console.log(req.body);
   db.log_in_stripe_token([req.body.stripe_token]).then(user => {
     if (user[0]) {
       res.json({
@@ -44,10 +43,10 @@ app.post('/api/sessions/stripe_token', (req, res, next) => {
   });
 });
 
-app.get('/api/sessions/current', expressJwt({secret: config.secret}), (err, req, res, next) => {
-  if (err) {
-    res.status(500).json("No valid token");
-  }
+app.get('/api/sessions/current', expressJwt({secret: config.secret}), (req, res, next) => {
+  // if (err) {
+  //   res.status(500).json("No valid token");
+  // }
   if (req.user) {
     res.json({user: req.user});
   } else {

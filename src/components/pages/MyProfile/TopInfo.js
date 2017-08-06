@@ -11,7 +11,7 @@ import FileUpload from '../../FileUpload/FileUpload';
 class TopInfo extends Component {
     constructor(props) {
         super(props);
-        console.log(userData);
+
         this.state = {
             firstName: userData.firstName,
             lastName: userData.lastName,
