@@ -11,12 +11,10 @@ class PhotoUpload extends Component {
             photoTwo: userData.photoTwo,
             photoThree: userData.photoThree,
             hideUploadTwo: true,
-            hideUploadThree: true,
-            beTall: false
+            hideUploadThree: true
         }
         this.hideUploadTwo = this.hideUploadTwo.bind(this);
         this.hideUploadThree = this.hideUploadThree.bind(this);
-        this.checkHeight = this.checkHeight.bind(this);
     }   
       
     hideUploadTwo() {
@@ -30,18 +28,6 @@ class PhotoUpload extends Component {
       this.setState({
         hideUploadThree: newValue
       })
-    }
-
-    checkHeight() {
-      if (!this.state.hideUploadThree || !this.state.hideUploadTwo) {
-        this.setState({
-          beTall: true
-        });
-      } else {
-        this.setState({
-          beTall: false
-        })
-      }
     }
 
     onCompleteUploadTwo(value) {
@@ -62,8 +48,9 @@ class PhotoUpload extends Component {
 
   render() {
     var self = this;
+    var beTall = !this.state.hideUploadThree || !this.state.hideUploadTwo
     return (
-      <div className={ 'photo-wrapper ' + (this.state.beTall ? 'tall' : '') }>
+      <div className={ 'photo-wrapper ' + (beTall ? 'tall' : '') }>
         <div className="photo-header">UPLOAD PHOTOS</div>
         <div className="photo-body">
           <div className="flex-column">  
