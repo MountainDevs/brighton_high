@@ -20,11 +20,16 @@ class UserProfile extends Component {
 
     componentWillMount() {
         if(this.props.loggedIn) {
-            getUser(this.props.match.params.id).then( user => this.setState({user}))
+            // getUser(this.props.match.params.id).then( user => this.setState({user}))
+            getUser(this.props.match.params.id).then( user => {
+              console.log(user);
+              this.setState({user})
+            })
         }
      }
 
     render() {
+      var beTall = this.state.user.photo_two !== undefined || this.state.user.photo_three !== undefined;
         return (
             <div className="component-wrapper">
                 <Title title="Profile Page"/>
@@ -51,18 +56,18 @@ class UserProfile extends Component {
                         </div>
                     </div>
                     
-                    <div className="pcard">
+                    <div className={ beTall ? 'pcard-tall' : 'pcard' }>
                         <div className="pcard-about">
                             <div className="pcard-about-title">Photos</div>
-                            <div className="pcard-about-content">
+                            <div className="pcard-photo-div">
                               {
-                                    this.state.photoTwo
+                                    this.state.user.photo_two
                                     ? <img src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.user.photo_two} alt={this.state.user.first_name || ""}/>
                                     : <div className="photo-img1">Photo 2</div>
                                 }
                                 {
-                                    this.state.photo_three
-                                    ? <img src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photo_three} alt={this.state.first_name || ""}/>
+                                    this.state.user.photo_three
+                                    ? <img src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.user.photo_three} alt={this.state.user.first_name || ""}/>
                                     : <div className="photo-img1">Photo 3</div>
                                 }
                             </div>
