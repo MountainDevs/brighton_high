@@ -199,7 +199,6 @@ function login(user) {
   var data = { email: user.email, password: user.password };
   return axios.post(`/api/sessions/create`, data)
     .then(res => {
-      console.log("login successful");
       var token = res.data.id_token;
       localStorage.setItem('jwt', JSON.stringify(token));
       axios.defaults.headers.common['Authorization'] = "Bearer " + token;
