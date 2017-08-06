@@ -11,8 +11,15 @@
     height: 300px; 
     width: 80%;
     background-color: white;
-     border: 1px solid black;
+    border: 1px solid black;
     margin: 0 auto; 
+}
+.pcard-tall {
+    height: 500px; 
+    width: 80%;
+    background-color: white;
+    border: 1px solid black;
+    margin: 0 auto 40px; 
 }
 .pcard:not(:last-child) {
     margin: 0 auto 40px auto;
@@ -82,11 +89,25 @@
 }
 
 .pcard-about-title {
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 200;
     margin: 30px;
+    border-bottom: 1px solid rgb(220, 220, 220);
 }
 
 .pcard-about-content {
 
+}
+
+.pcard-photo-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pcard-photo-div > img {
+  width: 300px;
+  height: 300px; 
+  border: 2px solid black;
+  text-align: center;
 }

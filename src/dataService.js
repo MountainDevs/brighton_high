@@ -126,6 +126,7 @@ function serializeUser(data) {
   if (data.first_name) userData.firstName = data.first_name;
   if (data.last_name) userData.lastName = data.last_name;
   if (data.middle_name) userData.middleName = data.middle_name;
+  if (data.phone) userData.phone = data.phone;
   if (data.address) userData.address = data.address;
   if (data.city) userData.city = data.city;
   if (data.state) userData.state = data.state;
@@ -307,19 +308,19 @@ function removeClassmate (classmate_id) {
   .then(res => res.data).then(getClassmates())
 }
 
-function changePhoto(photoString) {
-  var oldPhoto = userData.photo;
+function changePhoto(photoString, photoType) {
+  var oldPhoto = userData[photoType];
   if (oldPhoto) {
     return axios.put(`/api/s3/delete`, {photoKey: oldPhoto})
       .then(res => {
-        userData.photo = photoString;
+        userData[photoType] = photoString;
         return updateUser();
       })
       .catch(err => {
         return err;
       })
   } else {
-    userData.photo = photoString;
+    userData[photoType] = photoString;
   }
 }
 

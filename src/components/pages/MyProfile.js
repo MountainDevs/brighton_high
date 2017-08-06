@@ -38,7 +38,7 @@ class MyProfile extends Component {
               {this.state.showProfile ? (
                 <div className="showProfile-wrapper">
                   <p>You are currently displaying your profile information to your fellow alumni. If you would like to hide, click here:</p>
-                  <button className="blue-button" onClick={this.showProfileFalse}>Hide profile</button>
+                  <button className="blue-button" onClick={this.showProfileFalse}>Hide Profile</button>
                 </div>
               ) : (
                 <div className="showProfile-wrapper">

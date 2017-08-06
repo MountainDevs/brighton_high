@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { userData } from '../../../dataService';
 import FileUpload from '../../FileUpload/FileUpload'
 import './PhotoUpload.css';
+import '../../../styles/common.css';
 
 class PhotoUpload extends Component {
   constructor(props) {
@@ -12,42 +13,65 @@ class PhotoUpload extends Component {
             hideUploadTwo: true,
             hideUploadThree: true
         }
-        // this.hideUpload = this.hideUpload.bind(this);
+        this.hideUploadTwo = this.hideUploadTwo.bind(this);
+        this.hideUploadThree = this.hideUploadThree.bind(this);
     }   
       
-    // hideUpload() {
-    //   var newValue = !this.state.hideUpload;
-    //   this.setState({
-    //     hideUpload: newValue
-    //   })
-    // }
-
-    onCompleteUpload(value) {
+    hideUploadTwo() {
+      var newValue = !this.state.hideUploadTwo;
       this.setState({
-        hideUpload: value,
-        photoTwo: userData.photoOne
+        hideUploadTwo: newValue
+      })
+    }
+    hideUploadThree() {
+      var newValue = !this.state.hideUploadThree;
+      this.setState({
+        hideUploadThree: newValue
+      })
+    }
+
+    onCompleteUploadTwo(value) {
+      this.setState({
+        hideUploadTwo: value,
+        photoTwo: userData.photoTwo,
+        photoThree: userData.photoThree
+      })
+    }
+
+    onCompleteUploadThree(value) {
+      this.setState({
+        hideUploadThree: value,
+        photoTwo: userData.photoTwo,
+        photoThree: userData.photoThree
       })
     }
 
   render() {
     var self = this;
+    var beTall = !this.state.hideUploadThree || !this.state.hideUploadTwo
     return (
-      <div className="photo-wrapper">
+      <div className={ 'photo-wrapper ' + (beTall ? 'tall' : '') }>
         <div className="photo-header">UPLOAD PHOTOS</div>
         <div className="photo-body">
-          {
-            this.state.photoTwo
-            ? <img src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photoTwo} alt={this.state.firstName || ""}/>
-            : <div className="photo-img1">Photo 2</div>
-          }
-          <FileUpload hideUpload={ this.state.hideUploadTwo } onCompleteUpload={ self.onCompleteUpload.bind(self) }/>
-          {
-            this.state.photoThree
-            ? <img src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photoThree} alt={this.state.firstName || ""}/>
-            : <div className="photo-img1">Photo 3</div>
-          }
+          <div className="flex-column">  
+            {
+              this.state.photoTwo
+              ? <img className="photo-img1" src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photoTwo} alt={this.state.firstName || ""}/>
+              : <div className="photo-img1">Photo 2</div>
+            }
+            <div onClick={this.hideUploadTwo} className="pointer">Upload Photo</div>
+            <FileUpload hideUpload={ this.state.hideUploadTwo } photoType="photoTwo" onCompleteUpload={ self.onCompleteUploadTwo.bind(self) }/>
+          </div>
+          <div className="flex-column">
+            {
+              this.state.photoThree
+              ? <img className="photo-img1" src={"https://s3-us-west-2.amazonaws.com/brighton-high-1987/" + this.state.photoThree} alt={this.state.firstName || ""}/>
+              : <div className="photo-img1">Photo 3</div>
+            }
+            <div onClick={this.hideUploadThree} className="pointer">Upload Photo</div>
+            <FileUpload hideUpload={ this.state.hideUploadThree } photoType="photoThree" onCompleteUpload={ self.onCompleteUploadThree.bind(self) }/>
+          </div>
         </div>
-          <FileUpload hideUpload={ this.state.hideUploadThree } onCompleteUpload={ self.onCompleteUpload.bind(self) }/>
       </div>
     );
   }

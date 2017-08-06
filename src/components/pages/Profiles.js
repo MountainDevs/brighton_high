@@ -44,13 +44,22 @@ class Profiles extends Component {
             )
         })
 
-            
-          return (
-            <div className="login-request">
-                <div className="login-request-container">
-                <p>Coming by August 10!</p>
+        return !this.props.loggedIn ? <LoginRequest></LoginRequest> :
+            this.state.users.length === 0 ? <img src="https://media.giphy.com/media/11fxhMPSRtnbTa/giphy.gif" alt=""/> :
+            (
+            <div className="component-wrapper">
+                <Title title="Classmate Profiles"/>
+
+                <div className="profiles-table">
+                    <div className="table-header">
+                        <div>Name</div>
+                        <div>Attending?</div>
+                    </div>
+     
+                    {profileList}
                 </div>
             </div>
+
         );
     }
 }
