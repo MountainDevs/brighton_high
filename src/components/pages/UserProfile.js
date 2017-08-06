@@ -20,11 +20,7 @@ class UserProfile extends Component {
 
     componentWillMount() {
         if(this.props.loggedIn) {
-            // getUser(this.props.match.params.id).then( user => this.setState({user}))
-            getUser(this.props.match.params.id).then( user => {
-              console.log(user);
-              this.setState({user})
-            })
+            getUser(this.props.match.params.id).then( user => this.setState({user}))
         }
      }
 
