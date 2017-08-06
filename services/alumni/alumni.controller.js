@@ -3,7 +3,6 @@ const app = require('../../server'),
       jwt = require('express-jwt'),
       config = require('../../config.json');
 
-app.use(jwt({ secret: config.secret }));
 
 app.get('/api/alumni', (req, res, next) => {
   db.alumni.find()
@@ -15,7 +14,8 @@ app.get('/api/alumni', (req, res, next) => {
     });
 });
 
-app.get('/api/alumni/found', (req, res, next) => {
+app.get('/api/alumni/found', jwt({ secret: config.secret }), (err, req, res, next) => {
+  if (err) res.status(403).json(err);
   db.alumni.find({
     found: true
   }).then(alumni => {
@@ -26,7 +26,8 @@ app.get('/api/alumni/found', (req, res, next) => {
   });
 });
 
-app.get('/api/alumni/lost', (req, res, next) => {
+app.get('/api/alumni/lost', jwt({ secret: config.secret }), (err, req, res, next) => {
+  if (err) res.status(403).json(err);
   db.alumni.find({
     found: false
   }).then(alumni => {
@@ -37,7 +38,8 @@ app.get('/api/alumni/lost', (req, res, next) => {
   })
 });
 
-app.put('/api/alumni/found', (req, res, next) => {
+app.put('/api/alumni/found', jwt({ secret: config.secret }), (err, req, res, next) => {
+  if (err) res.status(403).json(err);
   var id = req.body.id;
 
   db.alumni.update({
@@ -53,7 +55,8 @@ app.put('/api/alumni/found', (req, res, next) => {
     });
 });
 
-app.put('/api/alumni/lost', (req, res, next) => {
+app.put('/api/alumni/lost',jwt({ secret: config.secret }), (err, req, res, next) => {
+  if (err) res.status(403).json(err);
   var ids = req.body.ids;
   var idString = "(";
   for (var i = 0; i < ids.length; i++) {

@@ -8,6 +8,7 @@ import MyProfile from './pages/MyProfile';
 import UserProfile from './pages/UserProfile';
 import Admin from './pages/Admin';
 import Login from './login/Login';
+import Print from './Print/Print';
 import Register from './register/Register';
 import Pay from './register/Pay';
 import Header from './Header';
@@ -120,6 +121,15 @@ class App extends Component {
                         <div style={{display: 'flex'}}>
                           <SideNav loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
                           <Admin />
+                        </div>
+                      </div>
+              }/>
+              <Route exact path="/print" render={
+                () => <div>
+                        <Header loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
+                        <div style={{display: 'flex'}}>
+                          <SideNav loggedIn={this.state.loggedIn} switchLogin={this.switchLogin}/>
+                          <Print loggedIn={this.state.loggedIn}/>
                         </div>
                       </div>
               }/>

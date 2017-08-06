@@ -47,15 +47,24 @@ const NavItems = () => {
                                 Contact
                         </NavLink>
                     </li>
-                     <li className={ userData.stripe_token ? '' : 'hidden' }>
+                    <li className={ userData.stripe_token ? '' : 'hidden' }>
+                      <NavLink 
+                          to="/my_profile" 
+                          className="navitems-link" 
+                          activeClassName="navitems-link-selected" 
+                          exact>
+                              My Profile
+                      </NavLink>
+                    </li>  
+                    <li className={ userData.permissions === 'admin' ? '' : 'hidden' }>
                         <NavLink 
-                            to="/my_profile" 
+                            to="/print" 
                             className="navitems-link" 
                             activeClassName="navitems-link-selected" 
                             exact>
-                                My Profile
+                                Print Registrants
                         </NavLink>
-                    </li> 
+                    </li>
                 </ul>
             </div>
         </div>

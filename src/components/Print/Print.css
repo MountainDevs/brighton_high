@@ -1,0 +1,40 @@
+.print-button {
+  border-radius: 3px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 13px;
+  margin: 30px;
+  width: 75px;
+  padding: 15px;
+  background: #72B9D7;
+  cursor: pointer;
+}
+
+.print-table-content {
+  width: 600px;
+  margin-top: 20px;
+  padding-left: 140px; 
+}
+
+.print-table-content p {
+  font-size: 19px;
+}
+
+.title-top {
+    height: 34px;
+    display: flex;
+    align-items: center;
+} 
+.title-top-title {
+    margin-top: 15px;
+    margin-left: 50px;
+    font-size: 20px;
+    color: #444;
+} 
+
+.title-top-subtitle {
+  line-height: 100%;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-top: 16px;  
+}
