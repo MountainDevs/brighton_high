@@ -15,7 +15,7 @@ import Header from './Header';
 import SideNav from './SideNav';
 import Continue from './register/Continue';
 import './App.css';
-import { verifyUser, setUserFromLocal, clearData, logout, userData } from '../dataService';
+import { verifyUser, checkUser, clearData, logout, userData } from '../dataService';
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class App extends Component {
   componentWillMount() {
     let userVerified = verifyUser();
     if (userVerified && userVerified !== this.state.loggedIn) {
-      setUserFromLocal().then(data => {
+      checkUser().then(data => {
         if (userData.id) {
           this.setState({loggedIn: true});
         }
@@ -47,7 +47,7 @@ class App extends Component {
   componentWillUpdate() {
     let userVerified = verifyUser();
     if (userVerified && userVerified !== this.state.loggedIn) {
-      setUserFromLocal().then(data => {
+      checkUser().then(data => {
         if (userData.id) {
           this.setState({loggedIn: true});
         }

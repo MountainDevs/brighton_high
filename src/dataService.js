@@ -99,25 +99,7 @@ function getIdFromLocal() {
   else return false;
 }
 
-function setUserFromLocal(){
-  return new Promise((resolve, reject) => {
-    let id = getIdFromLocal()
-    if(!id) return false;
-    else {
-      getUser(id).then(res => {
-        var data = {
-          email: res.email,
-          password: res.password
-        }
-        login(data)
-          .then(res => {
-            resolve();
-          })
-        // resolve()
-      })
-    }
-  })
-}
+
 
 
 function serializeUser(data) {
@@ -222,26 +204,49 @@ function logout() {
   window.reload();
 }
 
+function setUserFromLocal(){
+  return new Promise((resolve, reject) => {
+    let id = getIdFromLocal()
+    if(!id) return false;
+    else {
+      getUser(id).then(res => {
+        var data = {
+          email: res.email,
+          password: res.password
+        }
+        login(data)
+          .then(res => {
+            resolve();
+          })
+        // resolve()
+      })
+    }
+  })
+}
 
 function checkUser() {
-  var token = '';
-  try {
-    token = JSON.parse(localStorage.getItem('jwt'));
-  } catch (e) {
-    token = null;
-  }
-  if (token !== null) {
-    axios.defaults.headers.common['Authorization'] = "Bearer " + token;
-    // return checkToken();
-  } else {
-    return "No information";
-  }
+  return new Promise((resolve, reject) => {
+    var token = '';
+    try {
+      token = JSON.parse(localStorage.getItem('jwt'));
+    } catch (e) {
+      token = null;
+    }
+    if (token !== null) {
+      axios.defaults.headers.common['Authorization'] = "Bearer " + token;
+      checkToken().then(res => {
+        resolve();
+      });
+    } else {
+      return "No information";
+    }
+  });
 }
 
 function checkToken() {
   return axios.get('/api/sessions/current')
       .then(res => {
-        serializeUser(res.data.user);
+        serializeUser(res.data.user["0"]);
         return;
       }).catch(err => err);
 }
