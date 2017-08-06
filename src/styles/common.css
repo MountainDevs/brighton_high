@@ -107,13 +107,6 @@
   padding: 13px;
 }
 
-/* .flex-row {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
-
 .flex-column {
   height: 100%;
   display: flex;
