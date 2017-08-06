@@ -83,7 +83,6 @@ function updateClassmates(req, res, next) {
 function getAllUsers(req, res, next) {
   db.get_all_users()
   .then(users => {
-    console.log(users)
     res.send(users)
   })
   .catch(err => {
