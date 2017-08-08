@@ -46,7 +46,6 @@ app.put('/api/alumni/found', jwt({ secret: config.secret }), (req, res, next) =>
   })
     .then(alumni => {
       res.json(alumni);
-      console.log("found");
     })
     .catch(err => {
       res.status(500).json(err);
