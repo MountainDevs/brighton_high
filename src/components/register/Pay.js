@@ -135,7 +135,7 @@ class Pay extends Component {
                     <div className='pay-body'>
 
                         {this.state.early_registration && !this.state.registration_complete && !this.state.registration_error ? (
-                            <p>Early Registration is open until August 1st. </p>
+                            <p>Early Registration is open until August 15th. </p>
                         ) : null}
 
                         {this.state.registration && !this.state.registration_complete && !this.state.registration_error ? (
@@ -280,7 +280,7 @@ class Pay extends Component {
                                         Non-Attending Alumni
                                     </h3>
                                     <p>
-                                        We so sorry if you are unable to attend! If you would like to access your classmates profiles, sign up for the Non-Attending Alumni. The price is necessary to help cover the cost of locating all alumni.  You'll have complete access to the profiles!
+                                        We're so sorry you are unable to attend! If you would like to access your classmates profiles, sign up for the Non-Attending Alumni. The price is necessary to help cover the cost of locating all alumni.  You'll have complete access to the profiles!
                                     </p>
                                 </div>
                             ) : null}
@@ -288,6 +288,19 @@ class Pay extends Component {
                             {this.state.event_over ? (
                                 <div style={styles.event_over}>
                                     We're sorry we missed you!  We'll see you next time!
+                                </div>
+                            ) : null }
+                            
+                            {!this.state.registration_complete && !this.state.registration_error && this.state.early_registration ? (
+                                <div>
+                                    <div style={styles.registration_desc}>
+                                        <h3>
+                                            Early Registration
+                                        </h3>
+                                        <p>
+                                            If you don't register by August 15th the price increase to $104.00. The price increase is because our total count is due to the venue by August 31st.
+                                        </p>
+                                    </div>
                                 </div>
                             ) : null }
 
@@ -306,6 +319,7 @@ class Pay extends Component {
                                     </div>
                                 </div>
                             ) : null }
+
                         </section>
 
                         <div style={styles.corp_sponsor}>

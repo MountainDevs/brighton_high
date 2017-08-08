@@ -1,4 +1,6 @@
-let axios = require('axios');
+let axios = require('axios').create({
+      baseURL: 'http://localhost:5000'
+    });;
 let fileDownload = require('react-file-download');
 
 let permissions = {
