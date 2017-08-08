@@ -56,7 +56,7 @@ class Continue extends Component {
                   </h1>
                 </div> 
                  <div style={styles.payment_body}>
-                    Thank you for registering. If you would like to view a list of classmates who have not been in contact yet, please click continue. And come back August 10th to create your profile and see other alumnis'.
+                    Thank you for registering. If you would like to view a list of classmates who have not been in contact yet, please click continue.
                 </div>
                 {/* <div style={styles.payment_body}>
                     If you'd like to continue on and create a full profile, click on Continue.  You can always come back and edit your profile at a later date.  Simply log in and go to "edit profile".
