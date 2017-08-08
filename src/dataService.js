@@ -326,6 +326,7 @@ function changePhoto(photoString, photoType) {
       })
   } else {
     userData[photoType] = photoString;
+    return updateUser();
   }
 }
 
