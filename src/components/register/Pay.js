@@ -71,7 +71,7 @@ class Pay extends Component {
                 registration: false,
                 day_of_registration: true
             })
-        } else if (month < 8) {
+        } else if ((month <= 8 && day <= 15)) {
             this.setState({
                 early_registration: true,
                 registration: false,
