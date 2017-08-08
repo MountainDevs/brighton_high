@@ -14,8 +14,8 @@ app.get('/api/alumni', (req, res, next) => {
     });
 });
 
-app.get('/api/alumni/found', jwt({ secret: config.secret }), (err, req, res, next) => {
-  if (err) res.status(403).json(err);
+app.get('/api/alumni/found', jwt({ secret: config.secret }), (req, res, next) => {
+
   db.alumni.find({
     found: true
   }).then(alumni => {
@@ -26,8 +26,7 @@ app.get('/api/alumni/found', jwt({ secret: config.secret }), (err, req, res, nex
   });
 });
 
-app.get('/api/alumni/lost', jwt({ secret: config.secret }), (err, req, res, next) => {
-  if (err) res.status(403).json(err);
+app.get('/api/alumni/lost', jwt({ secret: config.secret }), (req, res, next) => {
   db.alumni.find({
     found: false
   }).then(alumni => {
@@ -38,8 +37,7 @@ app.get('/api/alumni/lost', jwt({ secret: config.secret }), (err, req, res, next
   })
 });
 
-app.put('/api/alumni/found', jwt({ secret: config.secret }), (err, req, res, next) => {
-  if (err) res.status(403).json(err);
+app.put('/api/alumni/found', jwt({ secret: config.secret }), (req, res, next) => {
   var id = req.body.id;
 
   db.alumni.update({
@@ -55,8 +53,7 @@ app.put('/api/alumni/found', jwt({ secret: config.secret }), (err, req, res, nex
     });
 });
 
-app.put('/api/alumni/lost',jwt({ secret: config.secret }), (err, req, res, next) => {
-  if (err) res.status(403).json(err);
+app.put('/api/alumni/lost',jwt({ secret: config.secret }), (req, res, next) => {
   var ids = req.body.ids;
   var idString = "(";
   for (var i = 0; i < ids.length; i++) {
