@@ -25,7 +25,7 @@ const dataService = require('../../dataService');
       if (err) {
         console.log(err);
         this.setState({step:4});
-        setTimeout(() => {this.setState({step:1})}, 1500);
+        setTimeout(() => {this.setState({step:1})}, 3000);
       } else {
         dataService.changePhoto(JSON.parse(res.text).fileName, this.props.photoType);
         this.setState({step:3});
@@ -52,7 +52,7 @@ const dataService = require('../../dataService');
               All done!
             </div>
             <div className={"full-height-width " + (this.state.step === 4 ? 'flex-center' : 'hidden')}>
-              Oh no, there's been an error! Please try again.
+              Oh no, there's been an error! Please be aware that there is a size limit. Try keeping your photos to less than 775 kb.
             </div>
           </Dropzone>
         </div>
