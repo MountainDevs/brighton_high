@@ -1,12 +1,12 @@
 const AWS = require('aws-sdk');
 const config = require('../../config.json');
 
-const s3 = new AWS.S3();
 AWS.config.update({
-    accessKeyId: config.amazonAccess,
-    secretAccessKey: config.amazonSecretAccess,
-    subregion: 'us-west-2',
-  });
+  accessKeyId: config.amazonAccess,
+  secretAccessKey: config.amazonSecretAccess,
+  subregion: 'us-west-2',
+});
+const s3 = new AWS.S3();
 
 module.exports = {
   upload: (req, res, next) => {
