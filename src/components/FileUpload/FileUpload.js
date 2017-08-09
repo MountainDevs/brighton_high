@@ -19,7 +19,7 @@ const dataService = require('../../dataService');
     this.setState({
       step: 2
     });
-    superagent.post('http://localhost:5000/api/s3/upload')
+    superagent.post('/api/s3/upload')
     .attach('file', files[0], `${dataService.userData.id}_${dataService.userData.lastName}_${new Date()}`)
     .end((err, res) => {
       if (err) {
